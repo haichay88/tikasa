@@ -1,24 +1,1591 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿
+/*customize         -    ---------------------------------------------*/
+#loginModal .modal-dialog{
+    width:450px;
+}
+#registerModal .modal-dialog {
+    width: 450px;
+}
+body {
+    font-family: "Source Sans Pro", sans-serif;
+    padding-top: 70px;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+
+/*===============================================*/
+
+.user-overview table.user-details {
+    float: left;
+    width: 400px;
+    font-size: 12px
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+    .user-overview table.user-details.more {
+        width: 300px
+    }
+
+    .user-overview table.user-details th {
+        color: #555;
+        width: 120px;
+        text-align: left
+    }
+
+    .user-overview table.user-details th,
+    .user-overview table.user-details td {
+        padding: 0 0 4px 0
+    }
+
+.user-overview td.nodata {
+    opacity: 0.5;
+    background: transparent;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+ol#activity {
+    float: none;
+    clear: both;
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+#activity li {
+    list-style: none;
+    margin: 4px 0;
+    padding: 4px 4px 4px 26px;
+    border: 1px solid #CFCFCF;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: transparent url(https://d1zazrti94enmy.cloudfront.net/assets/icons/comments-cf2914a836f994690ec5954b8b89376b371705d06d85b6e2ed57b20eac2f640b.png) no-repeat 4px 50%
+}
+
+    #activity li.new,
+    #activity li.won {
+        background-image: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/success-b71b7413432fe1ae9fdf373eb35906ae1a7f22994892b03d1f10de90d616b7be.png);
+        border-color: #337AC3;
+        background-color: #EFF7FF
+    }
+
+        #activity li.new.attachment {
+            background-image: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/attach-aaffdf160660246c0e8ca69da953cb81b04eb2a2ff7392ae2397c73fca713fbc.png);
+            border: 1px solid #CFCFCF;
+            background-color: #FFFFFF
+        }
+
+    #activity li.cancelled {
+        background-image: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/cancel-8b5f3aae3588aedbc50d08f2a3f17def19fefc75ea0ea0ef8e648819d2b5422d.png);
+        border-color: #AA6666;
+        background-color: #FFEFF7
+    }
+
+    #activity li.ended {
+        background-image: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/hourglass-5397354a42e7cace268b8cda7f6b3a481a67ec1e2965b40e3e4b7fe90f999389.png)
+    }
+
+    #activity li.urgent {
+        border-color: #DF721B;
+        background-color: #FFF6EF
+    }
+
+    #activity li.bid,
+    #activity li.offer {
+        background-image: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/money-930613eb7a25103dd7a0edfdac89edd8c7e01b7e8e66a66688a9aef1a6f8b68d.png)
+    }
+
+    #activity li.newbid,
+    #activity li.newoffer {
+        background-image: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/money-add-a4a816d099c38031d732c66fa92e9914e8852f67c54df60565a0dc55b4c6478b.png)
+    }
+
+    #activity li.rejected {
+        background-image: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/money-reject-5915f6e922d5af08cce652b2620b74a9ee3fca556ad7512c177af57efd59104c.png)
+    }
+
+    #activity li.ending {
+        background-image: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/hourglass-5397354a42e7cace268b8cda7f6b3a481a67ec1e2965b40e3e4b7fe90f999389.png)
+    }
+
+    #activity li.comment.deleted {
+        background-image: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/comment_delete-71232fc726b7dbec4e16cf803a3fb132ee6dab6821dc7e85c8a5f623b3e338de.png)
+    }
+
+#activity a {
+    text-decoration: none
+}
+
+    #activity a.action {
+        text-decoration: underline
+    }
+
+#activity span.auction {
+    font-size: 80%;
+    color: #333
+}
+
+#activity span.time {
+    font-size: 80%;
+    color: #333;
+    padding-left: 10px;
+    float: right
+}
+
+a.events {
+    display: block;
+    padding: 4px 4px 4px 26px;
+    margin: 4px 0;
+    background: #eee;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    text-align: right
+}
+
+#facebook-widgets {
+    height: 50px;
+    float: right;
+    width: 250px
+}
+
+    #facebook-widgets .profile-pic {
+        float: left;
+        padding: 0 10px 0 0
+    }
+
+    #facebook-widgets .userinfo {
+        font-size: 0.95em
+    }
+
+    #facebook-widgets .login-button {
+        float: right
+    }
+
+h1 > span.watchers {
+    font-weight: normal;
+    font-size: 12px;
+    color: #666;
+    float: right
+}
+
+.credits span {
+    color: #25772d;
+    padding-top: 4px
+}
+
+dl.user-details {
+    width: 340px
+}
+
+    dl.user-details dt {
+        float: left;
+        clear: left;
+        width: 150px;
+        margin-bottom: 3px
+    }
+
+    dl.user-details dd {
+        float: right;
+        clear: right;
+        margin-bottom: 3px
+    }
+
+.dashboard-status-icon {
+    vertical-align: bottom;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 2px
+}
+
+.dashboard-value-complete {
+    color: #64ae3c
+}
+
+.dashboard-value-incomplete {
+    color: #AAA
+}
+
+.page.watchlist h1 {
+    border-bottom: 1px solid #e2e2e2;
+    margin-bottom: 20px
+}
+
+.seller-header {
+    margin: 30px 0 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e2e2e2;
+    position: relative
+}
+
+    .seller-header .watch-this {
+        position: absolute;
+        right: 0;
+        top: 0
+    }
+
+.watchlist-table {
+    margin-bottom: 30px
+}
+
+    .watchlist-table .parent-category {
+        color: #666
+    }
+
+    .watchlist-table h2 {
+        margin: 0
+    }
+
+    .watchlist-table td,
+    .watchlist-table th {
+        padding: 5px 0
+    }
+
+    .watchlist-table .number {
+        width: 100px;
+        text-align: right
+    }
+
+    .watchlist-table .time {
+        width: 140px;
+        text-align: right
+    }
+
+    .watchlist-table .action {
+        width: 150px;
+        text-align: right
+    }
+
+    .watchlist-table .watch-this {
+        margin: 0
+    }
+
+.user-profile .page.orange .content {
+    padding-bottom: 50px
+}
+
+.sidebarbox.navigation {
+    margin: 20px 0 20px 20px
+}
+
+    .sidebarbox.navigation li {
+        font-weight: bold;
+        color: #0a4270;
+        font-size: 14px;
+        margin: 5px 0
+    }
+
+        .sidebarbox.navigation li a {
+            text-decoration: none
+        }
+
+        .sidebarbox.navigation li ul {
+            padding-left: 10px;
+            border-bottom: 1px dotted #e2e2e2
+        }
+
+    .sidebarbox.navigation a,
+    .sidebarbox.navigation a:visited {
+        text-decoration: none;
+        font-weight: normal
+    }
+
+        .sidebarbox.navigation a.btn {
+            margin: 10px 0 20px;
+            display: block
+        }
+
+form.login {
+    margin: 0 0 25px 0
+}
+
+    form.login fieldset.details {
+        margin-bottom: 10px
+    }
+
+    form.login fieldset.save-and-submit label.button {
+        float: right
+    }
+
+    form.login .fieldrow.remember {
+        float: right
+    }
+
+        form.login .fieldrow.remember input.checkbox,
+        form.login .fieldrow.remember label {
+            float: none;
+            font-weight: normal;
+            white-space: nowrap
+        }
+
+.activateaccount {
+    width: 700px;
+    margin: 0 auto
+}
+
+    .activateaccount.auction {
+        width: 600px
+    }
+
+    .activateaccount.complete {
+        padding-bottom: 24px
+    }
+
+        .activateaccount.complete h1 {
+            text-align: left;
+            color: #0a4270
+        }
+
+        .activateaccount.complete h2 {
+            color: #2e9c39
+        }
+
+    .activateaccount h1 {
+        text-align: center;
+        margin-bottom: 20px
+    }
+
+    .activateaccount .main p {
+        text-align: center;
+        font-size: 1.2em;
+        line-height: 1.6
+    }
+
+    .activateaccount .verifyphone {
+        background: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/phone-0ac0a0a65c4530459d3af7f243a38513906d751138bd07c1b9f4d20a3a2874b5.png) no-repeat 0 50%;
+        font-size: 14px;
+        padding: 6px 0 6px 72px
+    }
+
+    .activateaccount .infobox {
+        margin: 18px 72px;
+        padding-left: 130px;
+        border: 1px solid #dbe5ee;
+        border-radius: 3px;
+        padding-bottom: 10px
+    }
+
+        .activateaccount .infobox.email {
+            background: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/email_open-5270da5506db6b093be284d47c80d0ee54da3076e37b4999d978695311769f0f.png) no-repeat 10px 50%;
+            margin: 18px 0;
+            padding-left: 145px
+        }
+
+        .activateaccount .infobox#twitter {
+            background: url(https://d1zazrti94enmy.cloudfront.net/images/backgrounds/twitter.gif) no-repeat 25px 50%
+        }
+
+        .activateaccount .infobox#facebook {
+            background: url(https://d1zazrti94enmy.cloudfront.net/images/backgrounds/facebook.jpg) no-repeat 25px 50%
+        }
+
+        .activateaccount .infobox#blog {
+            background: url(https://d1zazrti94enmy.cloudfront.net/images/backgrounds/rss-3d.png) no-repeat 25px 50%
+        }
+
+        .activateaccount .infobox h3 {
+            margin-top: 12px;
+            font-size: 1.2em;
+            background: #fff
+        }
+
+        .activateaccount .infobox p {
+            color: #0a4270;
+            margin: 12px 12px 12px 0
+        }
+
+        .activateaccount .infobox a {
+            font-weight: bold
+        }
+
+.private-message-content {
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e2e2e2
+}
+
+.message-actions {
+    display: inline-block
+}
+
+dl.message-details {
+    margin: 0 0 20px 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e2e2e2
+}
+
+    dl.message-details dt {
+        float: left;
+        width: 8em
+    }
+
+    dl.message-details * {
+        font-weight: bold
+    }
+
+    dl.message-details dt,
+    dl.message-details dd {
+        padding: 0 0 5px 0
+    }
+
+.urgent {
+    color: #BE0000
+}
+
+h1.invoice {
+    float: left
+}
+
+form#calltoaction-paynow {
+    float: right;
+    clear: left;
+    margin: 8px 0px 18px;
+    width: 100%
+}
+
+div.pdf-invoice-link {
+    padding-top: 2px;
+    padding-left: 2px
+}
+
+pre.invoice {
+    clear: both
+}
+
+#recentlistings-seller ul {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    font-size: 90%
+}
+
+dl.affiliatedata {
+    width: 20em
+}
+
+    dl.affiliatedata dt,
+    dl.affiliatedata dd {
+        padding: 0.3em 0 .3em;
+        border-bottom: 1px dotted #efefef
+    }
+
+    dl.affiliatedata dt {
+        font-weight: bold;
+        float: left;
+        width: 17em;
+        clear: left
+    }
+
+form.information .promoterscore label {
+    float: none;
+    width: auto;
+    display: inline;
+    position: relative;
+    width: 2em;
+    text-align: center;
+    padding: 0
+}
+
+    form.information .promoterscore label.endlabel {
+        padding: 0 10px
+    }
+
+    form.information .promoterscore label span {
+        position: absolute;
+        top: 15px;
+        left: 8px
+    }
+
+form.information .promoterscore .promoterscore-note {
+    margin-top: 20px
+}
+
+ul.tab-bar {
+    margin: 15px 0 0;
+    padding: 0;
+    list-style: inside none;
+    width: 100%;
+    float: left;
+    background: url(https://d1zazrti94enmy.cloudfront.net/images/backgrounds/blue-bottom-border.gif) repeat-x left bottom
+}
+
+    ul.tab-bar li {
+        list-style: inside none;
+        display: block;
+        float: left;
+        border-bottom: 1px solid #0a4270;
+        width: 110px;
+        margin: 0;
+        padding: 0;
+        background: #fff url(https://d1zazrti94enmy.cloudfront.net/images/backgrounds/blue-gradient-divider.png) no-repeat right bottom
+    }
+
+        ul.tab-bar li a {
+            display: block;
+            text-align: center;
+            padding: 8px 0;
+            text-decoration: none
+        }
+
+            ul.tab-bar li a:hover {
+                text-decoration: underline
+            }
+
+        ul.tab-bar li.current {
+            border-bottom: none
+        }
+
+            ul.tab-bar li.current a {
+                border: 1px solid #0a4270;
+                border-bottom: none;
+                background: #fff;
+                color: #0a4270
+            }
+
+.tabbed-table {
+    border: 1px solid #0a4270;
+    border-top: none
+}
+
+div.tabbed-table {
+    padding: 20px 10px;
+    text-align: center;
+    clear: both
+}
+
+table.tabbed-table td {
+    padding: 8px 0;
+    border-bottom: 1px solid #e2e2e2
+}
+
+table.tabbed-table .main {
+    width: 441px;
+    padding-right: 10px;
+    padding-left: 39px
+}
+
+table.tabbed-table tr.positive .main {
+    background: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/plus-74641dfc03bdd3f76844dbeab621b53e3fd08cc438df8169446e5fb875d4ba94.png) no-repeat 8px 12px
+}
+
+table.tabbed-table tr.neutral .main {
+    background: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/neutral-34f9ae44a4174d683d5d4c329469a7bc92c2a029be3b9106ad65c7e13c0ef9cc.png) no-repeat 8px 14px
+}
+
+table.tabbed-table tr.negative .main {
+    background: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/delete-521627109868ed219dd3dde4e3002e928ab99f10612d842ec5a9f866a0cb2fc4.png) no-repeat 8px 14px
+}
+
+.feedback-text {
+    line-height: 1.5
+}
+
+    .feedback-text span {
+        color: #004271;
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: bold;
+        cursor: help
+    }
+
+.feedback-about {
+    margin-top: 4px;
+    font-size: 10px
+}
+
+    .feedback-about a {
+        text-decoration: none
+    }
+
+        .feedback-about a:hover {
+            text-decoration: underline
+        }
+
+table.tabbed-table .meta {
+    width: 180px;
+    padding-left: 10px
+}
+
+.feedback .meta span.role {
+    font-size: 10px;
+    color: #666
+}
+
+.feedback .meta .trust {
+    display: none
+}
+
+.feedback .meta form {
+    float: right;
+    width: 40px
+}
+
+    .feedback .meta form input {
+        cursor: pointer
+    }
+
+table.tabbed-table tr.banned {
+    background: #EFEFEF;
+    color: #A5A5A5
+}
+
+.user-actions p {
+    text-align: right;
+    margin-bottom: 5px
+}
+
+.my-account h1 {
+    margin-top: 15px
+}
+
+.user-profile h1 {
+    margin-bottom: 0.6em
+}
+
+table.listings th h3,
+table.listings th h2.h3 {
+    border-bottom: none;
+    background-image: none;
+    margin: 0;
+    padding: 0
+}
+
+.my-account .subheading {
+    font-size: 1.4em;
+    margin-top: -0.4em
+}
+
+.my-account .page a.edit,
+.my-account .page a.edit:visited {
+    background: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/myaccount-edit-4448e1689d840ac2c7472621e122f17bcefcd2e861cf831923ff61a9be72d770.png) no-repeat 0 45%;
+    font-weight: normal;
+    text-decoration: underline;
+    min-height: 16px;
+    font-size: 0.95em
+}
+
+a.useradmin {
+    float: right
+}
+
+.user-overview {
+    float: left;
+    width: 100%
+}
+
+    .user-overview > div {
+        float: left;
+        width: 850px
+    }
+
+    .user-overview img.avatar {
+        float: left;
+        margin: 10px 15px 15px 0;
+        width: 80px;
+        height: 80px
+    }
+
+    .user-overview h2.username {
+        float: left;
+        width: 100%;
+        margin: -3px 0 6px 0;
+        font-size: 1.3em
+    }
+
+h1 > span.watchers {
+    font-weight: normal;
+    font-size: 14px;
+    color: #666;
+    float: right;
+    margin-top: 10px
+}
+
+.credits span {
+    color: #25772d;
+    padding-top: 4px
+}
+
+form.inbox {
+    position: relative
+}
+
+form.profile {
+    margin-bottom: 20px
+}
+
+    form.profile fieldset {
+        padding-left: 30px
+    }
+
+    form.profile label {
+        width: 160px
+    }
+
+table.success-fees .id,
+table.success-fees .listing {
+    text-align: left
+}
+
+table.success-fees .issued,
+table.success-fees .due,
+table.success-fees .amount,
+table.success-fees .pay {
+    text-align: right
+}
+
+table.recent-bids .title,
+table.recent-listings .title,
+table.pending-bids .title,
+table.pending-offers .title {
+    padding-left: 5px
+}
+
+table.recent-bids thead th,
+table.recent-listings thead th {
+    vertical-align: bottom
+}
+
+table.watchlist .title,
+table.inbox .message,
+table.feedback .title,
+table.recent-bids .title,
+table.recent-listings .title,
+table.pending-bids .title,
+table.pending-offers .title {
+    width: 60%;
+    text-align: left
+}
+
+table.recent-bids .title,
+table.recent-listings .title {
+    width: 50%
+}
+
+table.watchlist .listed,
+table.recent-bids .listed,
+table.recent-bids .bids,
+table.recent-listings .listed,
+table.recent-listings .edit {
+    width: 11%
+}
+
+table.watchlist .confidential .title {
+    background: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/lock-f980de151911245009c3b885d246f6e5f988c86c73bfa841a7811414ec998c31.png) no-repeat 0px 6px;
+    padding-left: 20px
+}
+
+table.watchlist .price,
+table.watchlist .time,
+table.recent-bids .price,
+table.recent-bids .time,
+table.recent-listings .price,
+table.recent-listings .time {
+    width: 13%
+}
+
+table.recent-bids td.highest-bid {
+    font-weight: bold
+}
+
+table.watchlist .select,
+table.inbox .select,
+table.inbox .status {
+    width: 1%;
+    padding: 6px 5px 5px 5px
+}
+
+table.watchlist thead .title,
+table.watchlist tbody .title {
+    padding-left: 4px
+}
+
+table.listings thead th.title a,
+table.listings thead th.title a:visited,
+table.inbox thead th.message a,
+table.inbox thead th.message a:visited,
+table.inbox thead th.sender a,
+table.inbox thead th.sender a:visited {
+    float: left
+}
+
+table.inbox tr.snippet {
+    border-top: hidden
+}
+
+table.inbox td.snippet {
+    color: #585858;
+    padding-bottom: 10px;
+    font-weight: lighter
+}
+
+    table.inbox td.snippet strong {
+        font-weight: 400
+    }
+
+table.recent-bids tbody tr td.bids {
+    border-bottom: 1px solid #e4e4e4
+}
+
+table.recent-listings td.edit a.edit,
+table.recent-listings td.edit a.edit:visited {
+    padding: 0 0 0 21px;
+    width: auto
+}
+
+table.feedbackinvites th a {
+    display: inline !important
+}
+
+table.datarows thead th {
+    border-bottom: 2px solid #e2e2e2;
+    text-align: left;
+    font-weight: bold;
+    font-size: 12px
+}
+
+table.datarows td {
+    border-bottom: 1px solid #e2e2e2;
+    padding: 3px 0
+}
+
+td.download a {
+    background: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/attach-aaffdf160660246c0e8ca69da953cb81b04eb2a2ff7392ae2397c73fca713fbc.png) no-repeat 0 0;
+    padding: 1px 0 1px 20px
+}
+
+a.sortkey {
+    font-weight: bold;
+    padding-right: 12px
+}
+
+    a.sortkey.desc {
+        background: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/sortkey-desc-cb7ac044c15fe1d23383a67ad3c14a9f9dd803f09077c16297e5aece884e04c5.png) no-repeat scroll 90% 50%
+    }
+
+    a.sortkey.asc {
+        background: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/sortkey-asc-4edd80172e2f00e8b942eb6f389e650d5960c648e90e0e7eaebcc08ca9443912.png) no-repeat scroll 90% 50%
+    }
+
+dl.message-details dt {
+    float: left;
+    width: 8em
+}
+
+dl.message-details * {
+    font-weight: bold
+}
+
+dl.message-details dt,
+dl.message-details dd {
+    padding: 0 0 5px 0
+}
+
+h3.verification {
+    float: left;
+    width: 100%;
+    position: relative;
+    background-image: none;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #c3c3c3
+}
+
+    h3.verification span {
+        float: left
+    }
+
+    h3.verification strong {
+        font-size: 0.75em;
+        float: right;
+        margin: 0.34em 0 0 0
+    }
+
+        h3.verification strong.verified {
+            color: #0c530c;
+            background: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/verified-27008c92a7e0c50a872880a9d59932844fab5ad65dc38871500913b9b149c41e.png) no-repeat 0 50%;
+            padding-left: 21px
+        }
+
+        h3.verification strong.unverified {
+            color: #b02c2c;
+            background: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/unverified-5812707c8b5c43516841ac9caaa8f961a340851aff9f1e9485346a72ac22727b.png) no-repeat 0 60%;
+            padding-left: 19px
+        }
+
+.verification-steps {
+    margin: -10px 0 20px 0
+}
+
+    .verification-steps h2.h3 {
+        margin-top: 40px
+    }
+
+.user-profile .page p.back {
+    width: 50%;
+    clear: none;
+    margin: 15px 0 20px 0
+}
+
+.user-profile .page p.back {
+    float: left;
+    text-align: left
+}
+
+table.comments {
+    font-size: 0.9em
+}
+
+#unpaidfees tr.overdue {
+    background: #f0f088
+}
+
+    #unpaidfees tr.overdue.suspended {
+        background: #ffcccc
+    }
+
+.sidebar .blue a.countnotification,
+.sidebar .blue a.countnotification:hover,
+.sidebar .blue a.countnotification:focus,
+.sidebar .blue a.countnotification:active {
+    color: #fff !important;
+    display: inline-block !important;
+    text-align: center !important;
+    text-decoration: none !important
+}
+
+.urgent {
+    color: #BE0000
+}
+
+h1.invoice {
+    float: left
+}
+
+form#calltoaction-paynow {
+    float: right;
+    clear: left;
+    margin: 8px 0px 18px;
+    width: 100%
+}
+
+div.pdf-invoice-link {
+    padding-top: 2px;
+    padding-left: 2px
+}
+
+pre.invoice {
+    clear: both
+}
+
+#recentlistings-seller ul {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    font-size: 90%
+}
+
+.page.stats div.content {
+    width: 940px
+}
+
+form.information.watchedsellers .fieldrow {
+    width: 70%
+}
+
+dl.affiliatedata {
+    width: 20em
+}
+
+    dl.affiliatedata dt,
+    dl.affiliatedata dd {
+        padding: 0.3em 0 .3em;
+        border-bottom: 1px dotted #efefef
+    }
+
+    dl.affiliatedata dt {
+        font-weight: bold;
+        float: left;
+        width: 17em;
+        clear: left
+    }
+
+dl.user-details {
+    width: 340px
+}
+
+    dl.user-details dt {
+        float: left;
+        clear: left;
+        width: 150px;
+        margin-bottom: 3px
+    }
+
+    dl.user-details dd {
+        float: right;
+        clear: right;
+        margin-bottom: 3px
+    }
+
+.clear {
+    clear: both
+}
+
+ul#creatingauctions {
+    padding: 0
+}
+
+    ul#creatingauctions li {
+        list-style: none;
+        padding-left: 20px;
+        background: url(https://d1zazrti94enmy.cloudfront.net/assets/icons/posted-05adfe23490a110885951541b9ccf8c1679b03a6c21b6e92c0097e46045fb10c.png) no-repeat 0 50%;
+        margin: 0 0 6px
+    }
+
+#creatingauctions a.delete {
+    font-size: 10px;
+    text-decoration: none;
+    margin-left: 5px
+}
+
+    #creatingauctions a.delete:hover {
+        color: red;
+        text-decoration: underline
+    }
+
+.page.feedback .column {
+    padding: 25px 35px 20px;
+    width: 790px
+}
+
+.feedback .header {
+    padding-left: 110px;
+    position: relative;
+    min-height: 80px;
+    margin-bottom: 20px
+}
+
+    .feedback .header h1 {
+        font-size: 22px;
+        margin: 0 0 15px;
+        color: #0a4270;
+        line-height: 1
+    }
+
+        .feedback .header h1 span.trust {
+            font-size: 12px;
+            color: #666
+        }
+
+    .feedback .header .transaction-history {
+        margin-top: 4px
+    }
+
+    .feedback .header .brief-feedback.positive {
+        color: #25772d;
+        font-weight: bold
+    }
+
+    .feedback .header img.avatar {
+        position: absolute;
+        top: 0;
+        left: 0
+    }
+
+.bids tr.winning td,
+.bids tr.winning th {
+    background: #e8f6e8
+}
+
+.messages-control {
+    overflow: hidden
+}
+
+    .messages-control .pagination-location {
+        float: left
+    }
+
+    .messages-control .messages-filter {
+        text-align: right
+    }
+
+        .messages-control .messages-filter label {
+            float: none;
+            width: auto
+        }
+
+        .messages-control .messages-filter select {
+            font-size: inherit;
+            max-width: 150px
+        }
+
+table.inbox th a {
+    color: inherit;
+    white-space: nowrap
+}
+
+table.inbox tr.unread * {
+    font-weight: bold
+}
+
+table.inbox tr.deleted * {
+    opacity: 0.7;
+    background: transparent;
+    font-weight: normal;
+    font-style: normal
+}
+
+table.inbox td {
+    padding-top: 7px;
+    padding-bottom: 4px;
+    vertical-align: top
+}
+
+    table.inbox td.status {
+        padding-top: 8px;
+        padding-bottom: 3px
+    }
+
+table.inbox .sender {
+    padding-right: 10px;
+    text-align: left;
+    white-space: nowrap;
+    width: 20%
+}
+
+table.inbox .message {
+    width: 40%
+}
+
+table.inbox .messages,
+table.inbox .unread {
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 10%
+}
+
+table.inbox .received {
+    text-align: right;
+    white-space: nowrap;
+    width: 18%
+}
+
+.page {
+    zoom: 1;
+    box-shadow: 0 5px 20px rgba(217, 217, 217, 0.5);
+    position: relative;
+    min-height: 400px;
+    width: 960px;
+    padding-bottom: 30px;
+    margin: 25px auto 0;
+    background: #fff;
+    border: 1px solid #ebebeb;
+    border-top-color: #eaeaea;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+    .page:before,
+    .page:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden
+    }
+
+    .page:after {
+        clear: both
+    }
+
+.home .page {
+    width: 100%;
+    padding-bottom: 0;
+    margin: 0
+}
+
+    .home .page section {
+        width: 100%
+    }
+
+        .home .page section article {
+            max-width: 990px;
+            margin: 0 auto
+        }
+
+    .home .page .row {
+        margin-top: 0
+    }
+
+.page.padded {
+    padding: 30px
+}
+
+.page.narrow {
+    padding: 10px 134px 30px
+}
+
+.page.paneled {
+    background: none;
+    box-shadow: none;
+    border: 0 none
+}
+
+    .page.paneled .page-panel {
+        border: 1px solid #ebebeb;
+        box-shadow: 0 5px 20px rgba(217, 217, 217, 0.5);
+        background: #fff;
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 20px;
+        padding-bottom: 15px
+    }
+
+.home .page {
+    background: transparent;
+    box-shadow: none;
+    border: none
+}
+
+.page.padded > h1 {
+    margin-top: 0
+}
+
+.column.content {
+    float: left;
+    width: 720px
+}
+
+.column.sidebar + .column.content {
+    margin-left: 20px
+}
+
+.column.sidebar {
+    float: left;
+    width: 196px;
+    margin: 5px 0
+}
+
+    .column.sidebar .sidebarbox {
+        padding: 0 5px
+    }
+
+.sidebar .credits {
+    margin: 0 25px
+}
+
+.page .content .group {
+    zoom: 1
+}
+
+    .page .content .group:before,
+    .page .content .group:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden
+    }
+
+    .page .content .group:after {
+        clear: both
+    }
+
+.content-meta {
+    float: right;
+    width: 280px;
+    margin-right: 35px;
+    margin-bottom: 30px
+}
+
+    .content-meta .sidebarbox {
+        margin-bottom: 30px
+    }
+
+    .content-meta a.countnotification,
+    .content-meta a.countnotification:visited {
+        color: #fff;
+        line-height: 1.25;
+        float: right;
+        margin-top: 3px
+    }
+
+    .content-meta h2 {
+        color: #0a4270;
+        border-bottom: 2px solid #e2e2e2;
+        margin: 20px 0 0;
+        font: normal normal 500 14px/1.8 "Gill Sans", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+        letter-spacing: 0.5px;
+        position: relative
+    }
+
+    .content-meta.admin {
+        width: 200px;
+        float: left;
+        margin: 0 25px 0 15px
+    }
+
+        .content-meta.admin .sidebarbox {
+            border: 1px solid #dde4ef;
+            border-radius: 3px;
+            padding: 0 10px
+        }
+
+.sidebar .content-meta {
+    margin: 0;
+    float: none;
+    width: auto
+}
+
+/*.row {
+    margin: 0 auto;
+    width: 960px;
+    margin-top: 20px
+}*/
+
+    .row:after {
+        visibility: hidden;
+        display: block;
+        clear: both;
+        height: 0;
+        font-size: 0;
+        content: " "
+    }
+
+    .row.pre {
+        margin-bottom: 0;
+        text-align: center
+    }
+
+        .row.pre .btn {
+            font-size: 14px;
+            line-height: 18px
+        }
+
+    .row h1,
+    .row h2,
+    .row h3 {
+        padding: 0 10px
+    }
+
+* html .row {
+    height: 1%
+}
+
+*:first-child + html .row {
+    min-height: 1px
+}
+
+.page .row {
+    width: auto
+}
+
+.panel {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    background: #fff;
+    border: 1px solid #e2e2e2;
+    border-radius: 3px;
+    padding: 20px
+}
+
+.page-row {
+    zoom: 1;
+    clear: both;
+    padding: 30px 0
+}
+
+    .page-row:before,
+    .page-row:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden
+    }
+
+    .page-row:after {
+        clear: both
+    }
+
+    .page-row:first-child,
+    .page-row:first-of-type {
+        padding-top: 0px
+    }
+
+    .page-row:last-child {
+        padding-bottom: 15px
+    }
+
+@media screen and (max-width: 770px) {
+    .page-row {
+        padding: 15px 0
+    }
+}
+
+@media screen and (min-width: 770px) {
+    .page-row.page-bottom {
+        padding-bottom: 20px
+    }
+}
+
+.page-row .page-row {
+    padding-bottom: 0
+}
+
+    .page-row .page-row:first-child {
+        padding-top: 0
+    }
+
+.page-row.border {
+    border-bottom: 1px solid #e2e2e2
+}
+
+.page-row.center {
+    text-align: center
+}
+
+.page-row.condensed {
+    padding: 15px 0
+}
+
+.page-row.padded {
+    padding: 30px
+}
+
+@media screen and (max-width: 770px) {
+    .page-row.padded {
+        padding: 2%
+    }
+}
+
+.page-row.padded.narrow {
+    padding: 30px 60px
+}
+
+@media screen and (max-width: 770px) {
+    .page-row.padded.narrow {
+        padding: 2%
+    }
+}
+
+@media screen and (min-width: 770px) {
+    .page-center {
+        width: 640px;
+        margin: 0 auto
+    }
+
+    .page-left,
+    .page-right {
+        width: 640px;
+        padding-bottom: 0
+    }
+
+    .page-left {
+        float: left
+    }
+
+    .page-right {
+        float: right
+    }
+}
+
+.page-banner {
+    background-color: #f2f8f8;
+    border-bottom: 1px solid #ebebeb
+}
+
+    .page-banner h1 {
+        font: normal normal 400 32px/1 "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+        margin: 0
+    }
+
+    .page-banner p {
+        margin: 5px 0 0 0;
+        font-size: 20px;
+        color: #5a5c5b
+    }
+
+@media screen and (max-width: 770px) {
+    .page-banner {
+        padding: 4%;
+        margin-left: -2%;
+        margin-right: -2%;
+        margin-top: -2%
+    }
+
+        .page-banner h1 {
+            font-size: 26px
+        }
+
+        .page-banner p {
+            font-size: 16px
+        }
+}
+
+.ribbon-wrapper {
+    width: 117px;
+    height: 117px;
+    overflow: hidden;
+    position: absolute;
+    top: -3px;
+    left: -3px
+}
+
+    .ribbon-wrapper .ribbon {
+        text-align: center;
+        text-shadow: rgba(255, 255, 255, 0.5) 0px 1px 0px;
+        -ms-transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        position: relative;
+        padding: 0px;
+        left: -35px;
+        top: 35px;
+        width: 167px;
+        background-color: #c7e5e9;
+        box-shadow: 0px 1px 2px -1px #2e5d77
+    }
+
+        .ribbon-wrapper .ribbon h1 {
+            margin: 0;
+            font-size: 18px;
+            color: #1d8897;
+            font: italic normal 600 18px/1.5 "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif
+        }
+
+        .ribbon-wrapper .ribbon:before,
+        .ribbon-wrapper .ribbon:after {
+            content: "";
+            border-top: 3px solid #a8c5c9;
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+            position: absolute;
+            bottom: -3px
+        }
+
+        .ribbon-wrapper .ribbon:before {
+            left: 0
+        }
+
+        .ribbon-wrapper .ribbon:after {
+            right: 0
+        }
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0
+}
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%
+    }
+
+.align-right {
+    text-align: right
+}
+
+.align-center {
+    text-align: center
 }

@@ -1,0 +1,186 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id="content" class="page ">
+    <div class="column sidebar">
+        <div id="sub-navigation" class="sidebarbox navigation">
+            <h2>
+                My Dashboard
+            </h2>
+
+            <ul>
+                <li><a href="https://flippa.com/users/2258655/dashboard">Dashboard</a></li>
+                <li>
+                    <a href="https://flippa.com/users/2258655/messages">Messages</a>
+
+                </li>
+                <li>
+                    <a href="https://flippa.com/users/2258655/dashboard/invoices">Invoices</a>
+
+                </li>
+
+                <li>
+                    Buying...
+                    <ul>
+                        <li><a href="https://flippa.com/users/2258655/bids">Bids</a></li>
+
+
+                        <li><a href="https://flippa.com/users/2258655/offers">Offers</a></li>
+
+
+                        <li>
+                            <a href="https://flippa.com/users/2258655/dashboard/saved-searches">Saved Searches</a>
+                        </li>
+
+                        <li>
+                            <a href="https://flippa.com/users/2258655/watched-listings">Watched Listings</a>
+                        </li>
+
+                        <li>
+                            <a href="https://flippa.com/users/2258655/watched-categories">Watched Categories</a>
+                        </li>
+
+                        <li>
+                            <a href="https://flippa.com/users/2258655/watched-sellers">Watched Sellers</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Selling...
+                    <ul>
+                        <li>
+                            <a href="https://flippa.com/users/2258655/auctions">Listings</a>
+                        </li>
+                        <li style="white-space:nowrap">
+                            <a href="/users/2258655/domain-catalog">Domain Portfolio</a>
+                        </li>
+                        <li><a href="https://flippa.com/sell">Create a listing</a></li>
+                    </ul>
+                </li>
+                <li>
+                    About Me...
+                    <ul>
+                        <li><a href="https://flippa.com/users/2258655/contact-details/edit">Contact Details</a></li>
+                        <li><a href="https://flippa.com/users/2258655/identity-manager">Identity Verification</a></li>
+                        <li><a href="https://flippa.com/users/2258655/settings/public">Public Profile</a></li>
+                        <li><a href="https://flippa.com/users/2258655/password/edit">Change Password</a></li>
+                        <li><a href="https://flippa.com/users/2258655/settings/preferences">Email Preferences</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <p>You have 0 credits</p>
+        </div>
+    </div>
+
+
+
+    <div class="column content">
+
+        <h1>Email Preferences</h1>
+
+        <div class="note">
+            <p>
+                <strong>Manage watched listing emails</strong>
+            </p>
+            <p>
+                To stop receiving updates on watched listings, manage your
+                <a href="/users/2258655/watched-listings">Watchlist</a>.
+            </p>
+        </div>
+
+        <form action="https://flippa.com/users/2258655/settings/preferences" accept-charset="UTF-8" method="post" class="ng-pristine ng-valid">
+            <input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="put"><input type="hidden" name="authenticity_token" value="ijZNGnlrSKdlIiR+jxIO5jxBwjv7Mrkwa/5w378r75SXxxcFm3gTxaTpRohKYZS3yMHf88/4DUfLiDh9DB2GJQ==">
+            <fieldset>
+                <div class="fieldrow inverted">
+                    <span class="fieldgroup">
+                        <input type="checkbox" name="preferences[flippa-newsletter]" id="preferences_flippa-newsletter" value="1" checked="checked">
+                    </span>
+
+                    <label for="preferences_flippa-newsletter">Subscribe me to the Flippa newsletter.</label>
+                </div>
+
+
+                <div class="fieldrow inverted">
+                    <span class="fieldgroup">
+                        <input type="checkbox" name="preferences[notifypm]" id="preferences_notifypm" value="1" checked="checked">
+                    </span>
+
+                    <label for="preferences_notifypm">Notify me when I'm sent a private message.</label>
+                </div>
+
+
+                <div class="fieldrow inverted">
+                    <span class="fieldgroup">
+                        <input type="checkbox" name="preferences[seller-newbid]" id="preferences_seller-newbid" value="1" checked="checked">
+                    </span>
+
+                    <label for="preferences_seller-newbid">Notify me when a bid or an offer is placed on one of my listings.</label>
+                </div>
+
+
+                <div class="fieldrow inverted">
+                    <span class="fieldgroup">
+                        <input type="checkbox" name="preferences[seller-newcomment]" id="preferences_seller-newcomment" value="1" checked="checked">
+                    </span>
+
+                    <label for="preferences_seller-newcomment">Notify me when a comment is placed on one of my listings.</label>
+                </div>
+
+
+                <div class="fieldrow inverted">
+                    <span class="fieldgroup">
+                        <input type="checkbox" name="preferences[subscriber-newcomment]" id="preferences_subscriber-newcomment" value="1" checked="checked">
+                    </span>
+
+                    <label for="preferences_subscriber-newcomment">Notify me when a comment is placed on a listing I'm watching.</label>
+                </div>
+
+
+                <div class="fieldrow inverted">
+                    <span class="fieldgroup">
+                        <input type="checkbox" name="preferences[buyer-newbid]" id="preferences_buyer-newbid" value="1" checked="checked">
+                    </span>
+
+                    <label for="preferences_buyer-newbid">Notify me when a bid is placed above one of my bids.</label>
+                </div>
+
+
+                <div class="fieldrow inverted">
+                    <span class="fieldgroup">
+                        <input type="checkbox" name="preferences[watched-tags]" id="preferences_watched-tags" value="1" checked="checked">
+                    </span>
+
+                    <label for="preferences_watched-tags">Notify me new listings appear for my watched categories.</label>
+                </div>
+
+
+                <div class="fieldrow inverted">
+                    <span class="fieldgroup">
+                        <input type="checkbox" name="preferences[watched-sellers]" id="preferences_watched-sellers" value="1" checked="checked">
+                    </span>
+
+                    <label for="preferences_watched-sellers">Notify me when a seller I'm watching creates new listings.</label>
+                </div>
+
+
+                <div class="fieldrow inverted">
+                    <span class="fieldgroup">
+                        <input type="checkbox" name="preferences[post-auction-offers]" id="preferences_post-auction-offers" value="1" checked="checked">
+                    </span>
+
+                    <label for="preferences_post-auction-offers">Notify me about post auction negotiations.</label>
+                </div>
+
+            </fieldset>
+
+            <fieldset class="buttons">
+                <input type="submit" name="save" value="Save Changes" class="btn primary">
+            </fieldset>
+        </form>
+    </div>
+
+
+</div>
