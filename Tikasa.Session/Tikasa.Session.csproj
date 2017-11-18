@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FC061393-A650-4B59-80A1-E2040A3014BF}</ProjectGuid>
+    <ProjectGuid>{8921BFE9-FF02-4CD9-BE43-0212BA6DA8B9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tikasa.Business</RootNamespace>
-    <AssemblyName>Tikasa.Business</AssemblyName>
+    <RootNamespace>Tikasa.Session</RootNamespace>
+    <AssemblyName>Tikasa.Session</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,26 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UserBusiness.cs" />
+    <Compile Include="WorkContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Bizkasa\MyFinance.Core\MyFinance.Core.csproj">
-      <Project>{26C6DB72-A895-4297-A638-837CF5A5ED98}</Project>
-      <Name>MyFinance.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Bizkasa\MyFinance.Utils\MyFinance.Utils.csproj">
-      <Project>{454E7439-95F4-427B-B2AA-A78ACBB49807}</Project>
-      <Name>MyFinance.Utils</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Tikasa.Data\Tikasa.Data.csproj">
-      <Project>{EA2EC500-CC95-4328-B396-98D9276810CC}</Project>
-      <Name>Tikasa.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Tikasa.Entities\Tikasa.Entities.csproj">
-      <Project>{CBC15A0F-4306-4D99-B7A1-8CEDFC180D47}</Project>
-      <Name>Tikasa.Entities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Tikasa.Model\Tikasa.Model.csproj">
       <Project>{C27D3651-03A3-47E8-947A-74AD0B00CFB7}</Project>
       <Name>Tikasa.Model</Name>

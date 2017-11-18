@@ -2958,7 +2958,7 @@ form.admin fieldset {
         margin-left: 0.5em
     }
 
-.alert {
+/*.alert {
     background: #d3dde7;
     border: solid 1px #aabdd0;
     border-radius: 3px;
@@ -2969,7 +2969,7 @@ form.admin fieldset {
     zoom: 1;
     padding: 8px 10px;
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.6)
-}
+}*/
 
     .alert:before,
     .alert:after {

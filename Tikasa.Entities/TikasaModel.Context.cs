@@ -28,7 +28,7 @@ namespace Tikasa.Entities
         public virtual DbSet<Bidding> Biddings { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Domain> Domains { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Website> Websites { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

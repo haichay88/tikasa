@@ -46,10 +46,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\Bizkasa\Libs\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\Bizkasa\Libs\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\Bizkasa\Libs\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\..\Bizkasa\Libs\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration">
+      <HintPath>..\..\Bizkasa\Libs\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Mvc">
+      <HintPath>..\..\Bizkasa\Libs\Microsoft.Practices.Unity.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
+      <HintPath>..\..\Bizkasa\Libs\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -103,6 +124,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\..\Bizkasa\Libs\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -142,11 +166,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infractstructure\ExceptionHandler.cs" />
+    <Compile Include="Infractstructure\Utils.cs" />
+    <Compile Include="Ioc\HttpContextLifetimeManager.cs" />
+    <Compile Include="Models\AuthorizeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +184,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\fp.css" />
     <Content Include="Content\fplogin.css" />
+    <Content Include="Content\images\loader.gif" />
     <Content Include="Content\onyx\assets\themify-icons\themify-icons.css" />
     <Content Include="Content\onyx\assets\vegas\vegas.min.css" />
     <Content Include="Content\onyx\custom.css" />
@@ -173,6 +204,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\App\appModule.js" />
+    <Content Include="Scripts\App\user.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -180,6 +214,7 @@
     </Content>
     <Content Include="Content\onyx\assets\themify-icons\fonts\themify.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\global.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -207,10 +242,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutOnyx.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Shared\_TopHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -224,6 +259,36 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Bizkasa\MyFinance.Core\MyFinance.Core.csproj">
+      <Project>{26C6DB72-A895-4297-A638-837CF5A5ED98}</Project>
+      <Name>MyFinance.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Bizkasa\MyFinance.Utils\MyFinance.Utils.csproj">
+      <Project>{454e7439-95f4-427b-b2aa-a78acbb49807}</Project>
+      <Name>MyFinance.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tikasa.Business\Tikasa.Business.csproj">
+      <Project>{FC061393-A650-4B59-80A1-E2040A3014BF}</Project>
+      <Name>Tikasa.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tikasa.Data\Tikasa.Data.csproj">
+      <Project>{EA2EC500-CC95-4328-B396-98D9276810CC}</Project>
+      <Name>Tikasa.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tikasa.Model\Tikasa.Model.csproj">
+      <Project>{C27D3651-03A3-47E8-947A-74AD0B00CFB7}</Project>
+      <Name>Tikasa.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tikasa.Service\Tikasa.Service.csproj">
+      <Project>{9A61EF4E-79BC-4239-99A0-63DDACA35A5E}</Project>
+      <Name>Tikasa.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tikasa.Session\Tikasa.Session.csproj">
+      <Project>{8921BFE9-FF02-4CD9-BE43-0212BA6DA8B9}</Project>
+      <Name>Tikasa.Session</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
