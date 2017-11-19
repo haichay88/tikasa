@@ -14,6 +14,7 @@ namespace Tikasa.Business
     public interface IUserBusiness
     {
         string Register(UserRegisterDTO model);
+        string Login(UserRegisterDTO model);
     }
     public class UserBusiness: BusinessBase, IUserBusiness
     {
@@ -47,7 +48,8 @@ namespace Tikasa.Business
                     Email = model.Email,
                     UserName = model.UserName,
                     CreatedDate = DateTime.Now,
-                    StatusId = (int)UserStatus.New
+                    StatusId = (int)UserStatus.New,
+                    Password=model.Password
                 };
                 userRepository.Add(row);
                 unitOfWork.Commit();
@@ -75,6 +77,47 @@ namespace Tikasa.Business
             }
             
         }
+
+
+        public string Login(UserRegisterDTO model)
+        {
+            try
+            {
+                var userRepository = unitOfWork.Repository<User>();
+                var user = userRepository.GetQueryable().Where(a => ((a.Email == model.UserName || a.UserName == model.UserName) && a.Password==model.Password)
+                && a.StatusId != (int)UserStatus.Deleted).FirstOrDefault() ;
+                if (user==null)
+                {
+                    base.AddError("Đăng nhập không thành công !");
+                    return string.Empty;
+                }
+                var context = new Model.UserContext()
+                {
+                    UserId = user.Id,
+                    Avatar = user.Avatar,
+                    Email = user.Email,
+                    UserName = user.UserName
+                };
+                string token = EncryptDecryptUtility.Encrypt(XmlUtility.Serialize(context), true);
+
+                user.AccessToken = token;
+                user.LastLogin = DateTime.Now;
+                userRepository.Update(user);
+                unitOfWork.Commit();
+
+                return token;
+            }
+            catch (Exception)
+            {
+                base.AddError("Có lỗi trong quá trình đăng ký");
+                return string.Empty;
+            }
+
+        }
         #endregion
+
+
+
+
     }
 }

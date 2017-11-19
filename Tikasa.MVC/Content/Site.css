@@ -11,9 +11,10 @@ body {
     padding-top: 70px;
 }
 
-
+#mainmenu > ul > li > a.btn{
+    color:#fff;
+}
 /*===============================================*/
-
 .user-overview table.user-details {
     float: left;
     width: 400px;

@@ -44,5 +44,22 @@ namespace Tikasa.MVC.Controllers
             return result.ToJsonResult(result.Data);
 
         }
+
+        [HttpPost]
+        public JsonResult Login(UserRegisterDTO model)
+        {
+            model.Password = CommonUtil.CreateMD5(model.Password);
+            var result = _Service.Login(model);
+            if (!result.HasError)
+            {
+                WorkContext.BizKasaContext = XmlUtility.DeSerialize<Model.UserContext>(EncryptDecryptUtility.Decrypt(result.Data, true));
+                HttpCookie ContextCookie = new HttpCookie(WorkContext.SessionTikasaKey, result.Data);
+                ContextCookie.Expires = DateTime.Now.AddDays(30);
+                ContextCookie.Path = "/";
+                Response.Cookies.Add(ContextCookie);
+            }
+            return result.ToJsonResult(result.Data);
+
+        }
     }   
 }

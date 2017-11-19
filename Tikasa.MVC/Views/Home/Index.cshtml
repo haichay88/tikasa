@@ -1,31 +1,46 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<link href="~/Content/index.css" rel="stylesheet" />
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+<div class="Page___page Page___flex">
+    <section class="Hero___hero" style="background-image: url('//d2vcd0zmmc2wdz.cloudfront.net/fe/public/hero-0f345ce.jpg');">
+        <div class="Hero___heroBody">
+            <h1 class="Heading___heading Heading___xsSizeXlg Heading___mdSizeXxlg Heading___lgSizeXxxlg FlippaHome___mainHeading spacing___mgn0">
+               Sàn mua bán website, tên miền
+            </h1>
+            <h2 class="Heading___heading Heading___xsSizeXlg Heading___mdSizeXxlg Heading___lgSizeXxxlg Heading___semiboldWeight FlippaHome___subHeading spacing___mgnTop0">
+                Mua đảm bảo, bán nhanh chóng
+            </h2>
+            <form class="BannerSearch___searchForm">
+                <div class="BannerSearch___searchBar">
+                    <label class="input__label">
+                        <input type="text" placeholder="Bạn muốn tìm gì?" class="input input--lg BannerSearch___searchInput" />
+                    </label>
+                    <button class="Button___md Button___secondary Button___button BannerSearch___submitButton" type="submit">Tìm kiếm</button>
+                </div>
+                <div class="BannerSearch___searchTypes">
+                    <div class="BannerSearch___option" >
+                    <label for="websites-radio" class="radio radio--lg">
+                        <div class="radio__field" >
+                        <input type="radio" id="websites-radio" class="radio__input" name="propertyType" value="websites" checked="">
+                        <span class="radio__check" data-reactid="87"></span>
+                            </div>
+                    </label>
+                    <label class="BannerSearch___radioLabel" for="websites-radio" >website</label>
+                    </div>
+                    <div class="BannerSearch___option">
+                        <label for="domain-radio" class="radio radio--lg" >
+                            <div class="radio__field" >
+                                <input type="radio" id="domain-radio" class="radio__input" name="propertyType" value="domain"  >
+                                <span class="radio__check" ></span>
+                            </div>
+                        </label>
+                        <label class="BannerSearch___radioLabel" for="domain-radio">Tên miền</label>
+                    </div>
+                    <button class="Button___md Button___secondary Button___button BannerSearch___mobileSubmitButton" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+    </section>
 </div>

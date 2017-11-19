@@ -14,6 +14,12 @@ namespace Tikasa.MVC.Controllers
 
             return View();
         }
+        public ActionResult Create()
+        {
+
+
+            return View();
+        }
 
         public ActionResult About()
         {

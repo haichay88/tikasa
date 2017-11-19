@@ -6,7 +6,7 @@
     }
 }
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="breakpoint-all breakpoint-sm breakpoint-md breakpoint-lg breakpoint-xlg">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -54,12 +54,12 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="~/Content/onyx/assets/themify-icons/themify-icons.css" rel="stylesheet" />
     <link href="~/Content/onyx/font-awesome.min.css" type="text/css" rel="stylesheet">
-    <link href="~/Content/onyx/assets/vegas/vegas.min.css" rel="stylesheet" />
+    @*<link href="~/Content/onyx/assets/vegas/vegas.min.css" rel="stylesheet" />*@
     <link href="~/Content/onyx/custom.css" rel="stylesheet" />
-    <link href="~/Content/fp.css" rel="stylesheet" />
+    @*<link href="~/Content/fp.css" rel="stylesheet" />*@
     <link href="~/Content/Site.css" rel="stylesheet" />
    
-    <link rel="bizkasa icon" href="/Content/V2/images/favicon.ico" />
+    @*<link rel="bizkasa icon" href="/Content/V2/images/favicon.ico" />*@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -115,7 +115,7 @@
                 </div>
             </div>
         </footer>
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" ng-controller="UserController">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -129,13 +129,25 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <input type="text" class="form-control form-control-lg" placeholder="Email hoặc tên đăng nhập">
+                                <div class="alert alert-error" role="alert" ng-show="Message!=undefined">
+                                    {{Message}}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control form-control-lg" ng-model="User.UserName" placeholder="Email hoặc tên đăng nhập" required>
+                                <div class="invalid-feedback">
+                                    Bạn cần nhập tên đăng nhập !
+                                </div>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control form-control-lg" placeholder="Mật khẩu">
+                                <input type="password" class="form-control form-control-lg" ng-model="User.Password" placeholder="Mật khẩu" required>
+                                <div class="invalid-feedback">
+                                    Bạn cần nhập tên đăng nhập !
+                                </div>
                             </div>
                             <div class="form-group">
-                                <button type="button" class="btn primary btn-block btn-lg">Đăng nhập</button>
+                                <button type="submit" class="btn primary btn-block btn-lg" ng-click="Login()">Đăng nhập</button>
                             </div>
                             <div class="form-group">
                            <div class="text-center">

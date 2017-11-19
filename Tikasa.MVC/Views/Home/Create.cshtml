@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+<link href="~/Content/index.css" rel="stylesheet" />
+<link href="~/Content/vd.css" rel="stylesheet" />
+
+<div class="VerticalSelection___column">
+    <h1 class="heading VerticalSelection___heading spacing___mgnBottomXs heading--lg">Bạn muốn đăng bán gì?</h1>
+    <form>
+        <div class="grid grid--bleed">
+            <div class="VerticalCardGroup___column grid__col-sm-6">
+                <div class="VerticalCardGroup___card selectable-card">
+                    <i class="icon VerticalCardGroup___icon icon--websites"></i>
+                    <h1 class="heading heading--md heading--bold heading--caps">Websites</h1>
+                    <p class="VerticalCardGroup___description" data-reactid="86">Trang bán hàng, giới thiệu, nội dung, blog, dịch vụ, tất cả những gì bạn có</p>
+                    <label class="radio radio--md selectable-card__radio">
+                        <div class="radio__field">
+                            <input type="radio" class="radio__input" readonly="" name="assetType" value="website" checked="">
+                            <span class="radio__check" data-reactid="90"></span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="VerticalCardGroup___column grid__col-sm-6">
+                <div class="VerticalCardGroup___card selectable-card">
+                    <i class="icon VerticalCardGroup___icon icon--domains"></i>
+                    <h1 class="heading heading--md heading--bold heading--caps">Tên miền</h1><p class="VerticalCardGroup___description">Tên miền mà bạn có .com .net .org .io ...</p>
+                    <label class="radio radio--md selectable-card__radio" data-reactid="96">
+                        <div class="radio__field">
+                            <input type="radio" class="radio__input" readonly="" name="assetType" value="domain">
+                            <span class="radio__check" data-reactid="99"></span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        
+        </div><div class="grid grid--bleed" data-reactid="118"><div class="grid__col-sm-8 grid__col-md-10" data-reactid="119"><div class="VerticalSelection___propertyInputWrapper" data-reactid="120"><div data-reactid="121"><label class="input__label" data-reactid="122"><input class="input input--lg" value="" placeholder="Nhập tên website hoặc tên miền mà bạn muốn bán?" name="url"></label>
+        <div data-redux-field-error="url" data-error-message="Website is required" ></div></div></div></div><div class="grid__col-sm-4 grid__col-md-2" data-reactid="125"><button type="submit" disabled="" class="button button--lg button--secondary" data-reactid="126">Bắt đầu</button></div></div><!-- react-empty: 127 -->
+    </form>
+</div>
+

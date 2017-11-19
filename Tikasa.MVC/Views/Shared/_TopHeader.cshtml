@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-3 col-sm-12 col-xs-12">
                 <div class="logo-holder">
-                    <a href="~/"><img src="~/Content/onyx/images/logo.png" alt="logo"></a>
+                    <a href="~/"><img style="width:158px;" src="~/Content/onyx/images/tikasalogo.png" alt="logo"></a>
                 </div>
 
             </div>
@@ -33,18 +33,21 @@
                         }
                         else
                         {
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
+                            <li class="has-sub">
+                                <span class="submenu-button"></span>
+                                <span class="submenu-button"></span>
+                                <a href="#">@Tikasa.Session.WorkContext.BizKasaContext.UserName</a>
+                                <ul>
+                                    <li><a href="~/User">Bảng điều khiển</a></li>
+                                    <li><a href="#">Features Single</a></li>
+                                    <li><a href="#">Thoát</a></li>
+                                </ul>
                             </li>
+                            
                         }
-
+                        <li>
+                            <a href="~/home/create" class="btn btn-danger"> Đăng bán</a>
+                        </li>
 
                         @*<li>
                                 <a href="@"><span class="ti-user"></span> Đăng ký</a>

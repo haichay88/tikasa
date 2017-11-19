@@ -170,6 +170,7 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\WebsiteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -185,6 +186,7 @@
     <Content Include="Content\fp.css" />
     <Content Include="Content\fplogin.css" />
     <Content Include="Content\images\loader.gif" />
+    <Content Include="Content\index.css" />
     <Content Include="Content\onyx\assets\themify-icons\themify-icons.css" />
     <Content Include="Content\onyx\assets\vegas\vegas.min.css" />
     <Content Include="Content\onyx\custom.css" />
@@ -198,8 +200,10 @@
     <Content Include="Content\onyx\images\main-image.jpg" />
     <Content Include="Content\onyx\images\mockup.png" />
     <Content Include="Content\onyx\images\mockupbiz.png" />
+    <Content Include="Content\onyx\images\tikasalogo.png" />
     <Content Include="Content\onyx\images\toroi bizkasa - after.jpg" />
     <Content Include="Content\onyx\images\toroibizbefor_final.jpg" />
+    <Content Include="Content\vd.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -243,9 +247,11 @@
     <Content Include="Views\Shared\_LayoutOnyx.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shared\_TopHeader.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Website\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
