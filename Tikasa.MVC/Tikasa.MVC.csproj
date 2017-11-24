@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\DomainController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WebsiteController.cs" />
@@ -210,6 +211,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\App\appModule.js" />
+    <Content Include="Scripts\App\website.js" />
+    <Content Include="Scripts\App\home.js" />
     <Content Include="Scripts\App\user.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -248,10 +251,11 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shared\_TopHeader.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Website\Create.cshtml" />
+    <Content Include="Views\Domain\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Website\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

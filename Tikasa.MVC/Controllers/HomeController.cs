@@ -17,7 +17,7 @@ namespace Tikasa.MVC.Controllers
         public ActionResult Create()
         {
 
-
+            ViewBag.userId = Tikasa.Session.WorkContext.BizKasaContext!=null ? Tikasa.Session.WorkContext.BizKasaContext.UserId:0;
             return View();
         }
 

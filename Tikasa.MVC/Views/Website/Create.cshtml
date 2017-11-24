@@ -1,0 +1,281 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+<link href="~/Content/index.css" rel="stylesheet" />
+<link href="~/Content/vd.css" rel="stylesheet" />
+<div class="ListingBuilder___wrapper" ng-controller="WebsiteController">
+    <section class="section section--ash section--border-top section--border-bottom PageHeaderWrapper___section">
+        <div class="PageHeaderWrapper___headerContent">
+            <div class="grid grid--align-center grid--bleed grid--justify-space-between">
+                <div class="grid__col-sm-8"><h1 class="heading heading--lg">vn.com</h1></div>
+                <div class="grid__col-sm-3"><button type="button" class="button button--lg button--ivory">Customer Support</button></div>
+            </div>
+        </div>
+    </section>
+    <div class="ProgressBar___wrapper">
+        <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+            <div class="grid grid--justify-center">
+                <div class="grid__col-xs-12">
+                    <div class="progression-bar">
+                        <div class="progression-bar__step progression-bar__step--active progression-bar__step--complete">
+                            <i class="icon icon--tick progression-bar__step-icon"></i><div class="progression-bar__step-text">
+                                <div><p class="text text--bold text--md text--uppercase text--underline">Basic Details</p></div>
+                            </div>
+                        </div><div class="progression-bar__step progression-bar__step--next">
+                            <i class="icon icon--tick progression-bar__step-icon"></i>
+                            <div class="progression-bar__step-text"><div><p class="text text--bold text--md text--uppercase">More Details</p></div></div>
+                        </div>
+                        <div class="progression-bar__step">
+                            <i class="icon icon--tick progression-bar__step-icon"></i><div class="progression-bar__step-text">
+                                <div><p class="text text--bold text--md text--uppercase">Promote &amp; Pay</p></div>
+                            </div>
+                        </div>
+                        <div class="progression-bar__step">
+                            <i class="icon icon--tick progression-bar__step-icon"></i>
+                            <div class="progression-bar__step-text"><div><p class="text text--bold text--md text--uppercase">How do you get paid?</p></div></div>
+                        </div>
+                        <div class="progression-bar__step">
+                            <i class="icon icon--tick progression-bar__step-icon"></i><div class="progression-bar__step-text">
+                                <div><p class="text text--bold text--md text--uppercase">Verify, Revenue &amp; Expenses</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="FormWrapper___formWrapper">
+        <div class="FormWrapper___form">
+            <div class="grid grid--justify-center">
+                <div class="grid">
+                    <div class="grid">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <h2 class="heading heading--lg">Xác minh sở hữu tên miền</h2><hr class="horizontal-rule">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid" ng-init="Verifycation.IsHtml=true">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <div class="form-group--sm">
+                                    <div>
+                                        <label class="radio radio--lg" ng-click="ChangeVerifycationMethod()">
+                                            <div class="radio__field">
+                                                <input type="radio" class="radio__input" name="paymentMethod" value="html" ng-checked="Verifycation.IsHtml" ng-model="Verifycation.Method">
+                                                <span class="radio__check"></span>
+                                            </div>
+                                            <span class="radio__label">Tải file html</span>
+                                        </label>
+                                        <label class="radio radio--lg" ng-click="ChangeVerifycationMethod()">
+                                            <div class="radio__field">
+                                                <input type="radio" class="radio__input" name="paymentMethod" value="domain" ng-model="Verifycation.Method">
+                                                <span class="radio__check"></span>
+                                            </div>
+                                            <span class="radio__label">Công cụ quản trị tên miền</span>
+                                        </label>
+                                        <div data-redux-field-error="paymentMethod"></div>
+                                    </div>
+                                </div>
+                                <hr class="horizontal-rule">
+                            </div>
+                        </div>
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                            <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <p class="HelperText___text">Chúng tôi cần chắc chắn bạn là chủ sở hữu của tên miền hoặc website. Hãy chọn cách xác minh sở hữu tên miền phù hợp với bạn nhất.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid" ng-show="Verifycation.IsHtml">
+                        <div class="grid__col-md-7 grid__col-lg-6 grid__col--bleed-bottom">
+                            <div class="grid">
+                                <div class="grid__col-auto grid__col--bleed-x grid__col--bleed-top">
+                                    <div>
+                                        <div class="form-group--sm">
+                                            <div>
+                                                <label class="input__label">
+                                                    <span class="input__label-text">Tải file html lên website</span>
+
+                                                </label>
+                                                <div>
+                                                    <p>
+                                                        <b>1.Tải xuống </b>
+                                                        <a href="#" target="_blank">Tệp xác minh này</a>
+                                                    </p>
+                                                    <p>
+                                                        <b>2.Tải lên vào website</b>
+                                                    </p>
+                                                    <p>
+                                                        <b>3.Xác nhận</b>
+                                                        tải lên thành công bằng cách truy cập
+                                                        <a href="#" target="_blank">link</a> trong trình duyệt của bạn
+                                                    </p>
+                                                    <p>
+                                                        <b>4.Nhấp </b>
+                                                        Xác minh dưới đây
+
+                                                    </p>
+                                                    <p>
+                                                        Để được xác minh, không xóa các tập HTML, ngay cả sau khi xác minh thành công.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <input type="button" class="btn btn-danger" value="Xác minh" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid" ng-show="!Verifycation.IsHtml">
+                        <div class="grid__col-md-7 grid__col-lg-6 grid__col--bleed-bottom">
+                            <div class="grid">
+                                <div class="grid__col-auto grid__col--bleed-x grid__col--bleed-top">
+                                    <div>
+                                        <div class="form-group--sm">
+                                            <div>
+
+                                                <label class="input__label">
+                                                    <span class="input__label-text">Thực hiện theo các bước bên dưới để tạo bản ghi DNS (Hệ thống tên miền) để chứng minh với Tikasa rằng bạn sở hữu tên miền này.</span>
+
+                                                </label>
+                                                <div>
+                                                    <p>
+                                                        <b>1.Thêm </b>
+                                                        bản ghi TXT bên dưới vào cấu hình DNS cho
+                                                        <b>abc.com </b>
+                                                    </p>
+                                                    <p>
+                                                        <textarea>tikasa-site-veification:0009ada</textarea>
+                                                    </p>
+                                                    <p>
+                                                        <b>4.Nhấp </b>
+                                                        Xác minh dưới đây
+
+                                                    </p>
+                                                    <p>
+                                                        Khi Chúng tôi tìm thấy bản ghi DNS này, chúng tôi sẽ xác minh bạn là chủ sở hữu miền. (Lưu ý: các thay đổi DNS có thể mất một thời gian. Nếu chúng tôi không tìm thấy bản ghi ngay, chúng tôi sẽ kiểm tra định kỳ).
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <input type="button" class="btn btn-danger" value="Xác minh" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <form>
+                    <div class="grid">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <h2 class="heading heading--lg">Thông tin website</h2><hr class="horizontal-rule">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <div class="form-group--md">
+                                    <div>
+                                        <div class="grid grid--align-start">
+                                            <div class="grid__col-sm-6 grid__col--bleed">
+                                                <div>
+                                                    <div class="dropdown dropdown--lg">
+                                                        <div class="dropdown__label"><span class="dropdown__label-text">Website được public từ khi nào?</span></div>
+                                                        <div class="dropdown__header"><span class="dropdown__header-text">November</span><i class="icon dropdown__icon icon--chevron-down"></i><ul class="dropdown__options dropdown__options--closed"><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-0" readonly="" class="dropdown__option-radio" value="1" name="establishedAt.month"><span class="dropdown__option-text">January</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-1" readonly="" class="dropdown__option-radio" value="2" name="establishedAt.month"><span class="dropdown__option-text">February</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-2" readonly="" class="dropdown__option-radio" value="3" name="establishedAt.month"><span class="dropdown__option-text">March</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-3" readonly="" class="dropdown__option-radio" value="4" name="establishedAt.month"><span class="dropdown__option-text">April</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-4" readonly="" class="dropdown__option-radio" value="5" name="establishedAt.month"><span class="dropdown__option-text">May</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-5" readonly="" class="dropdown__option-radio" value="6" name="establishedAt.month"><span class="dropdown__option-text">June</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-6" readonly="" class="dropdown__option-radio" value="7" name="establishedAt.month"><span class="dropdown__option-text">July</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-7" readonly="" class="dropdown__option-radio" value="8" name="establishedAt.month"><span class="dropdown__option-text">August</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-8" readonly="" class="dropdown__option-radio" value="9" name="establishedAt.month"><span class="dropdown__option-text">September</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-9" readonly="" class="dropdown__option-radio" value="10" name="establishedAt.month"><span class="dropdown__option-text">October</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-10" readonly="" class="dropdown__option-radio" value="11" name="establishedAt.month"><span class="dropdown__option-text">November</span></label></li></ul></div>
+                                                    </div><div data-redux-field-error="establishedAt.month"></div>
+                                                </div>
+                                            </div><div class="grid__col-sm-6 grid__col--bleed"><div class="ListingBuilder___inlineElement"><div><div class="dropdown dropdown--lg"><div class="dropdown__label"><span class="dropdown__label-text">&nbsp;</span></div><div class="dropdown__header"><span class="dropdown__header-text">2017</span><i class="icon dropdown__icon icon--chevron-down"></i><ul class="dropdown__options dropdown__options--closed"><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-0" readonly="" class="dropdown__option-radio" value="2017" name="establishedAt.year"><span class="dropdown__option-text">2017</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-1" readonly="" class="dropdown__option-radio" value="2016" name="establishedAt.year"><span class="dropdown__option-text">2016</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-2" readonly="" class="dropdown__option-radio" value="2015" name="establishedAt.year"><span class="dropdown__option-text">2015</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-3" readonly="" class="dropdown__option-radio" value="2014" name="establishedAt.year"><span class="dropdown__option-text">2014</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-4" readonly="" class="dropdown__option-radio" value="2013" name="establishedAt.year"><span class="dropdown__option-text">2013</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-5" readonly="" class="dropdown__option-radio" value="2012" name="establishedAt.year"><span class="dropdown__option-text">2012</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-6" readonly="" class="dropdown__option-radio" value="2011" name="establishedAt.year"><span class="dropdown__option-text">2011</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-7" readonly="" class="dropdown__option-radio" value="2010" name="establishedAt.year"><span class="dropdown__option-text">2010</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-8" readonly="" class="dropdown__option-radio" value="2009" name="establishedAt.year"><span class="dropdown__option-text">2009</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-9" readonly="" class="dropdown__option-radio" value="2008" name="establishedAt.year"><span class="dropdown__option-text">2008</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-10" readonly="" class="dropdown__option-radio" value="2007" name="establishedAt.year"><span class="dropdown__option-text">2007</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-11" readonly="" class="dropdown__option-radio" value="2006" name="establishedAt.year"><span class="dropdown__option-text">2006</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-12" readonly="" class="dropdown__option-radio" value="2005" name="establishedAt.year"><span class="dropdown__option-text">2005</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-13" readonly="" class="dropdown__option-radio" value="2004" name="establishedAt.year"><span class="dropdown__option-text">2004</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-14" readonly="" class="dropdown__option-radio" value="2003" name="establishedAt.year"><span class="dropdown__option-text">2003</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-15" readonly="" class="dropdown__option-radio" value="2002" name="establishedAt.year"><span class="dropdown__option-text">2002</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-16" readonly="" class="dropdown__option-radio" value="2001" name="establishedAt.year"><span class="dropdown__option-text">2001</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-17" readonly="" class="dropdown__option-radio" value="2000" name="establishedAt.year"><span class="dropdown__option-text">2000</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-18" readonly="" class="dropdown__option-radio" value="1999" name="establishedAt.year"><span class="dropdown__option-text">1999</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-19" readonly="" class="dropdown__option-radio" value="1998" name="establishedAt.year"><span class="dropdown__option-text">1998</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-20" readonly="" class="dropdown__option-radio" value="1997" name="establishedAt.year"><span class="dropdown__option-text">1997</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-21" readonly="" class="dropdown__option-radio" value="1996" name="establishedAt.year"><span class="dropdown__option-text">1996</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-22" readonly="" class="dropdown__option-radio" value="1995" name="establishedAt.year"><span class="dropdown__option-text">1995</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-23" readonly="" class="dropdown__option-radio" value="1994" name="establishedAt.year"><span class="dropdown__option-text">1994</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-24" readonly="" class="dropdown__option-radio" value="1993" name="establishedAt.year"><span class="dropdown__option-text">1993</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-25" readonly="" class="dropdown__option-radio" value="1992" name="establishedAt.year"><span class="dropdown__option-text">1992</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-26" readonly="" class="dropdown__option-radio" value="1991" name="establishedAt.year"><span class="dropdown__option-text">1991</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-27" readonly="" class="dropdown__option-radio" value="1990" name="establishedAt.year"><span class="dropdown__option-text">1990</span></label></li></ul></div></div><div data-redux-field-error="establishedAt.year"></div></div></div></div>
+                                        </div><div data-redux-field-error="establishedAt"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                            <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <p class="HelperText___text">Thời điểm mà website được public cho tất cả người dùng</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <div class="form-group--md">
+                                    <div>
+                                        <div class="dropdown dropdown--lg">
+                                            <div class="dropdown__label"><span class="dropdown__label-text">Website thuộc danh mục nào?</span></div>
+                                            <div class="dropdown__header">
+                                                <span class="dropdown__header-text">Services</span><i class="icon dropdown__icon icon--chevron-down"></i>
+                                                <ul class="dropdown__options dropdown__options--closed"><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-0" readonly="" class="dropdown__option-radio" value="" name="type"><span class="dropdown__option-text">Select a Type</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-1" readonly="" class="dropdown__option-radio" value="content" name="type"><span class="dropdown__option-text">Content</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-2" readonly="" class="dropdown__option-radio" value="ecommerce" name="type"><span class="dropdown__option-text">eCommerce</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-3" readonly="" class="dropdown__option-radio" value="saas" name="type"><span class="dropdown__option-text">SaaS</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-4" readonly="" class="dropdown__option-radio" value="transact-market" name="type"><span class="dropdown__option-text">Transactional / Marketplace</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-5" readonly="" class="dropdown__option-radio" value="services" name="type"><span class="dropdown__option-text">Services</span></label></li></ul>
+                                            </div>
+                                        </div><div data-redux-field-error="type"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                            <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <p class="HelperText___text">Chọn loại danh mục phù hợp với webiste.<br>Ví dụ, nếu website bán hàng, chọn <strong>ecommerce</strong> và chọn <strong>shopify</strong> là danh mục con.<br><br></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <div class="form-group--md">
+                                    <div>
+                                        <div class="multi-select multi-select--lg multi-select--has-label">
+                                            <div class="multi-select__label">
+                                                <span class="multi-select__label-text">Danh mục con</span>
+                                            </div>
+                                            <div class="multi-select__select">
+                                                <div class="multi-select__selected-label">Select sub-types<i class="icon icon--chevron-down multi-select__icon"></i></div>
+                                                <div class="multi-select__list-wrapper multi-select__list-wrapper--closed">
+                                                    <ul class="multi-select__list">
+                                                        <ul class="node-list">
+                                                            <li class="node-list__list-item">
+                                                                <label for="subTypes-digital" class="checkbox checkbox--md">
+                                                                    <div class="checkbox__field">
+                                                                        <input type="checkbox" id="subTypes-digital" class="checkbox__input" value="digital" name="subTypes"><i class="icon checkbox__icon icon--tick"></i>
+                                                                    </div><span class="checkbox__label">Digital</span>
+                                                                </label>
+                                                            </li>
+                                                        </ul>
+                                                        <ul class="node-list"><li class="node-list__list-item"><label for="subTypes-physical" class="checkbox checkbox--md"><div class="checkbox__field"><input type="checkbox" id="subTypes-physical" class="checkbox__input" value="physical" name="subTypes"><i class="icon checkbox__icon icon--tick"></i></div><span class="checkbox__label">Physical</span></label></li></ul>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div><div data-redux-field-error="subTypes" data-error-message="Website Sub-Type is required"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                        <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                        <p class="HelperText___text">Select the sub-categories that best match your website.</p></div></div>
+                    </div><div class="grid"><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                    <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                    <div class="form-group--md">
+                        <div>
+                        <div class="dropdown dropdown--lg"><div class="dropdown__label">
+                            <span class="dropdown__label-text">Website thuộc lĩnh vực nào?</span></div>
+                            <div class="dropdown__header"><span class="dropdown__header-text">Select an Industry</span><i class="icon dropdown__icon icon--chevron-down"></i><ul class="dropdown__options dropdown__options--closed"><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-0" readonly="" class="dropdown__option-radio" value="" name="niche"><span class="dropdown__option-text">Select an Industry</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-1" readonly="" class="dropdown__option-radio" value="automotive" name="niche"><span class="dropdown__option-text">Automotive</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-2" readonly="" class="dropdown__option-radio" value="business" name="niche"><span class="dropdown__option-text">Business</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-3" readonly="" class="dropdown__option-radio" value="design-and-style" name="niche"><span class="dropdown__option-text">Design and Style</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-4" readonly="" class="dropdown__option-radio" value="education" name="niche"><span class="dropdown__option-text">Education</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-5" readonly="" class="dropdown__option-radio" value="electronics" name="niche"><span class="dropdown__option-text">Electronics</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-6" readonly="" class="dropdown__option-radio" value="entertainment" name="niche"><span class="dropdown__option-text">Entertainment</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-7" readonly="" class="dropdown__option-radio" value="lifestyle" name="niche"><span class="dropdown__option-text">Lifestyle</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-8" readonly="" class="dropdown__option-radio" value="food-and-drink" name="niche"><span class="dropdown__option-text">Food and Drink</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-9" readonly="" class="dropdown__option-radio" value="general-knowledge" name="niche"><span class="dropdown__option-text">General Knowledge</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-10" readonly="" class="dropdown__option-radio" value="health-and-beauty" name="niche"><span class="dropdown__option-text">Health and Beauty</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-11" readonly="" class="dropdown__option-radio" value="hobbies-and-games" name="niche"><span class="dropdown__option-text">Hobbies and Games</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-12" readonly="" class="dropdown__option-radio" value="home-and-garden" name="niche"><span class="dropdown__option-text">Home and Garden</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-13" readonly="" class="dropdown__option-radio" value="internet" name="niche"><span class="dropdown__option-text">Internet</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-14" readonly="" class="dropdown__option-radio" value="sports-and-outdoor" name="niche"><span class="dropdown__option-text">Sports and Outdoor</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-15" readonly="" class="dropdown__option-radio" value="travel" name="niche"><span class="dropdown__option-text">Travel</span></label></li></ul></div></div><div data-redux-field-error="niche"></div></div></div></div></div><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5"><div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"><p class="HelperText___text">A specified segment of the market. Classify your website's industry so it appears in relevant search results and daily emails to buyers.</p></div></div></div><div class="grid"><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7"><div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"><div class="grid grid--bleed"><div class="grid__col-md-6"><div class="form-group--md"><div><label class="checkbox checkbox--lg"><div class="checkbox__field"><input type="checkbox" class="checkbox__input" name="uniqueContent" value="true"><i class="icon checkbox__icon icon--tick"></i></div><span class="checkbox__label">Is your content unique?</span></label><div data-redux-field-error="uniqueContent"></div></div></div></div><div class="grid__col-md-6"><div class="form-group--md"><div><label class="checkbox checkbox--lg"><div class="checkbox__field"><input type="checkbox" class="checkbox__input" name="uniqueDesign" value="true"><i class="icon checkbox__icon icon--tick"></i></div><span class="checkbox__label">Is your design unique?</span></label><div data-redux-field-error="uniqueDesign"></div></div></div></div></div></div></div><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5"><div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"><p class="HelperText___text">Does the website contain information that is unique to your site. Is the design custom for your website? (e.g. Information and design is exclusive to your website only)</p></div></div></div><div class="grid"><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7"><div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"><h2 class="heading heading--lg">Traffic</h2><hr class="horizontal-rule"></div></div></div><div class="grid"><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7"><div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"><div class="form-group--md"><p class="text text--semibold text--block text--lg">Does your website receive traffic?</p><div><label class="radio radio--md"><div class="radio__field"><input type="radio" class="radio__input" name="hasTraffic" value="true"><span class="radio__check"></span></div><span class="radio__label">Yes</span></label><label class="radio radio--md"><div class="radio__field"><input type="radio" class="radio__input" name="hasTraffic" value="false"><span class="radio__check"></span></div><span class="radio__label">No</span></label><div data-redux-field-error="hasTraffic"></div></div></div></div></div><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5"><div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"><p class="HelperText___text">Showcase the traffic your site receives by connecting Google Analytics to your listing. We will fetch up to 12 months worth of data. We do not store your login credentials.</p></div></div></div><div class="grid"><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7"><div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"><div class="form-group--md"><p class="text text--semibold text--block text--lg">Google Analytics</p><div class="ListingBuilder___labeledElementWrapper"><button type="button" class="button button--md">Verify Google Analytics</button></div><div class="VerificationState___wrapper"></div></div></div></div><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5"><div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"><p class="HelperText___text">Sites with verified Google Analytics are shown to receive <strong>1.5x more bids!</strong></p></div></div></div><div class="grid"><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7"><div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"><h2 class="heading heading--lg">Revenue</h2><hr class="horizontal-rule"></div></div></div><div class="grid"><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7"><div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"><div class="form-group--md"><p class="text text--semibold text--block text--lg">Does your website generate revenue?</p><div><label class="radio radio--md"><div class="radio__field"><input type="radio" class="radio__input" name="hasRevenue" value="true"><span class="radio__check"></span></div><span class="radio__label">Yes</span></label><label class="radio radio--md"><div class="radio__field"><input type="radio" class="radio__input" name="hasRevenue" value="false"><span class="radio__check"></span></div><span class="radio__label">No</span></label><div data-redux-field-error="hasRevenue"></div></div></div></div></div></div><div><div><div class="grid"><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7"><div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"><div class="grid grid--align-top"><div class="grid__col-sm-6 grid__col--bleed"><div class="form-group--md"><div><label class="prefixed-input__label"><span class="prefixed-input__label-text">Average Monthly Revenue</span><div class="prefixed-input prefixed-input--lg"><span class="prefixed-input__prefix">$</span><label class="input__label"><input type="number" class="input prefixed-input__input" value="0" name="averageMonthlyRevenue"></label></div></label><div data-redux-field-error="averageMonthlyRevenue"></div></div></div></div><div class="grid__col-sm-6 grid__col--bleed"><div class="ListingBuilder___inlineElement"><div class="form-group--md"><div><label class="prefixed-input__label"><span class="prefixed-input__label-text">Average Monthly Expenses</span><div class="prefixed-input prefixed-input--lg"><span class="prefixed-input__prefix">$</span><label class="input__label"><input type="number" class="input prefixed-input__input" value="0" name="averageMonthlyExpenses"></label></div></label><div data-redux-field-error="averageMonthlyExpenses"></div></div></div></div></div></div></div></div><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5"><div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"><p class="HelperText___text">Please enter your website's average monthly revenue and expenses for the last 12 months in USD.<br><br>In the Verify, Revenue &amp; Cost step you will be required to provide a monthly breakdown over the last 12 months.</p></div></div></div><div class="grid"><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7"><div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"><div class="form-group--md"><div><div class="multi-select multi-select--lg multi-select--has-label"><div class="multi-select__label"><span class="multi-select__label-text">Which monetization methods are used?</span></div><div class="multi-select__select"><div class="multi-select__selected-label">Select methods<i class="icon icon--chevron-down multi-select__icon"></i></div><div class="multi-select__list-wrapper multi-select__list-wrapper--closed"><ul class="multi-select__list"><ul class="node-list"><li class="node-list__list-item"><label for="monetizationMethods-ad-sales" class="checkbox checkbox--md"><div class="checkbox__field"><input type="checkbox" id="monetizationMethods-ad-sales" class="checkbox__input" value="ad-sales" name="monetizationMethods"><i class="icon checkbox__icon icon--tick"></i></div><span class="checkbox__label">Ad Sales</span></label></li></ul><ul class="node-list"><li class="node-list__list-item"><label for="monetizationMethods-adsense" class="checkbox checkbox--md"><div class="checkbox__field"><input type="checkbox" id="monetizationMethods-adsense" class="checkbox__input" value="adsense" name="monetizationMethods"><i class="icon checkbox__icon icon--tick"></i></div><span class="checkbox__label">AdSense</span></label></li></ul><ul class="node-list"><li class="node-list__list-item"><label for="monetizationMethods-amazon" class="checkbox checkbox--md"><div class="checkbox__field"><input type="checkbox" id="monetizationMethods-amazon" class="checkbox__input" value="amazon" name="monetizationMethods"><i class="icon checkbox__icon icon--tick"></i></div><span class="checkbox__label">Amazon</span></label></li></ul><ul class="node-list"><li class="node-list__list-item"><label for="monetizationMethods-clickbank" class="checkbox checkbox--md"><div class="checkbox__field"><input type="checkbox" id="monetizationMethods-clickbank" class="checkbox__input" value="clickbank" name="monetizationMethods"><i class="icon checkbox__icon icon--tick"></i></div><span class="checkbox__label">Clickbank</span></label></li></ul><ul class="node-list"><li class="node-list__list-item"><label for="monetizationMethods-dropship" class="checkbox checkbox--md"><div class="checkbox__field"><input type="checkbox" id="monetizationMethods-dropship" class="checkbox__input" value="dropship" name="monetizationMethods"><i class="icon checkbox__icon icon--tick"></i></div><span class="checkbox__label">DropShip</span></label></li></ul><ul class="node-list"><li class="node-list__list-item"><label for="monetizationMethods-ecommerce" class="checkbox checkbox--md"><div class="checkbox__field"><input type="checkbox" id="monetizationMethods-ecommerce" class="checkbox__input" value="ecommerce" name="monetizationMethods"><i class="icon checkbox__icon icon--tick"></i></div><span class="checkbox__label">eCommerce</span></label></li></ul><ul class="node-list"><li class="node-list__list-item"><label for="monetizationMethods-subscription" class="checkbox checkbox--md"><div class="checkbox__field"><input type="checkbox" id="monetizationMethods-subscription" class="checkbox__input" value="subscription" name="monetizationMethods"><i class="icon checkbox__icon icon--tick"></i></div><span class="checkbox__label">Subscription</span></label></li></ul></ul></div></div></div><div data-redux-field-error="monetizationMethods"></div></div></div></div></div><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5"><div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"><p class="HelperText___text">Select any monetisation methods used to generate revenue through your website.</p></div></div></div></div><div></div></div><div class="grid"><div class="grid__col-sm-3"><button type="submit" class="button button--lg button--website button--block">Next</button></div></div><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7"><div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"></div></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/Scripts/App/website.js"></script>
+
+}
+

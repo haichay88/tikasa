@@ -5,7 +5,7 @@
 <link href="~/Content/index.css" rel="stylesheet" />
 <link href="~/Content/vd.css" rel="stylesheet" />
 
-<div class="VerticalSelection___column">
+<div class="VerticalSelection___column" ng-controller="HomeController">
     <h1 class="heading VerticalSelection___heading spacing___mgnBottomXs heading--lg">Bạn muốn đăng bán gì?</h1>
     <form>
         <div class="grid grid--bleed">
@@ -13,30 +13,101 @@
                 <div class="VerticalCardGroup___card selectable-card">
                     <i class="icon VerticalCardGroup___icon icon--websites"></i>
                     <h1 class="heading heading--md heading--bold heading--caps">Websites</h1>
-                    <p class="VerticalCardGroup___description" data-reactid="86">Trang bán hàng, giới thiệu, nội dung, blog, dịch vụ, tất cả những gì bạn có</p>
+                    <p class="VerticalCardGroup___description">Trang bán hàng, giới thiệu, nội dung, blog, dịch vụ, tất cả những gì bạn có</p>
                     <label class="radio radio--md selectable-card__radio">
                         <div class="radio__field">
-                            <input type="radio" class="radio__input" readonly="" name="assetType" value="website" checked="">
-                            <span class="radio__check" data-reactid="90"></span>
+                            <input type="radio" class="radio__input"   name="assetType" value="website"  ng-checked="Sell.IsWebsite=true" >
+                            <span class="radio__check"></span>
                         </div>
                     </label>
-                </div>
+                </div> 
             </div>
             <div class="VerticalCardGroup___column grid__col-sm-6">
                 <div class="VerticalCardGroup___card selectable-card">
                     <i class="icon VerticalCardGroup___icon icon--domains"></i>
-                    <h1 class="heading heading--md heading--bold heading--caps">Tên miền</h1><p class="VerticalCardGroup___description">Tên miền mà bạn có .com .net .org .io ...</p>
-                    <label class="radio radio--md selectable-card__radio" data-reactid="96">
+                    <h1 class="heading heading--md heading--bold heading--caps">Tên miền</h1><p class="VerticalCardGroup___description">Tên miền mà bạn sở hữu .com .net .org .io ...</p>
+                    <label class="radio radio--md selectable-card__radio">
                         <div class="radio__field">
-                            <input type="radio" class="radio__input" readonly="" name="assetType" value="domain">
-                            <span class="radio__check" data-reactid="99"></span>
+                            <input type="radio" class="radio__input" name="assetType" value="domain"   ng-checked="Sell.IsWebsite=false">
+                            <span class="radio__check"></span>
                         </div>
                     </label>
                 </div>
             </div>
+
+        </div><div class="grid grid--bleed">
+            <div class="grid__col-sm-8 grid__col-md-10">
+                <div class="VerticalSelection___propertyInputWrapper">
+                    <div>
+                        <label class="input__label">
+                            <input class="input input--lg" value="" placeholder="Nhập tên website hoặc tên miền mà bạn muốn bán?" name="url" ng-model="Sell.Domain">
+                        </label>
+                        <div data-redux-field-error="url" data-error-message="Website is required">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid__col-sm-4 grid__col-md-2" >
+        <button type="submit" class="button button--lg button--secondary" ng-click="Create()">Bắt đầu</button></div>
+        </div><!-- react-empty: 127 -->
         
-        </div><div class="grid grid--bleed" data-reactid="118"><div class="grid__col-sm-8 grid__col-md-10" data-reactid="119"><div class="VerticalSelection___propertyInputWrapper" data-reactid="120"><div data-reactid="121"><label class="input__label" data-reactid="122"><input class="input input--lg" value="" placeholder="Nhập tên website hoặc tên miền mà bạn muốn bán?" name="url"></label>
-        <div data-redux-field-error="url" data-error-message="Website is required" ></div></div></div></div><div class="grid__col-sm-4 grid__col-md-2" data-reactid="125"><button type="submit" disabled="" class="button button--lg button--secondary" data-reactid="126">Bắt đầu</button></div></div><!-- react-empty: 127 -->
+        <input type="hidden" value="@ViewBag.userId" id="userId" />
     </form>
+
+
+    <div class="modal fade" id="loginBeforeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h5 class="modal-title" id="exampleModalLabel">Đăng nhập</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <div class="alert alert-error" role="alert" ng-show="Message!=undefined">
+                                {{Message}}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <input type="text" class="form-control form-control-lg" ng-model="User.UserName" placeholder="Email hoặc tên đăng nhập" required>
+                            <div class="invalid-feedback">
+                                Bạn cần nhập tên đăng nhập !
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control-lg" ng-model="User.Password" placeholder="Mật khẩu" required>
+                            <div class="invalid-feedback">
+                                Bạn cần nhập tên đăng nhập !
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn primary btn-block btn-lg" ng-click="LoginToContinue()">Đăng nhập</button>
+                        </div>
+                        <div class="form-group">
+                            <div class="text-center">
+                                <a href="#registerModal" data-toggle="modal" class=" btn-link">Đăng Ký</a>|<a href="" class="  btn-link">Quên mật khẩu ?</a>
+
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                @*<div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Send message</button>
+                    </div>*@
+            </div>
+        </div>
+    </div>
 </div>
 
+@section Scripts {
+<script src="~/Scripts/App/home.js"></script>
+
+    }

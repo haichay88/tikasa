@@ -6,13 +6,14 @@ using System.Web.Mvc;
 
 namespace Tikasa.MVC.Controllers
 {
-    public class WebsiteController : Controller
+    public class DomainController : Controller
     {
-        // GET: Website
+        // GET: Domain
         public ActionResult Index()
         {
             return View();
         }
+
         public ActionResult Create()
         {
             return View();
