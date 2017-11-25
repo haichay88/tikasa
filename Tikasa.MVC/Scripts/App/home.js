@@ -11,6 +11,15 @@
         });
         return request;
     };
+    this.WebsiteCreate = function (model) {
+        var request = $http({
+            method: "post",
+            url: "/Website/Create",
+            data: model,
+            contentType: "application/json; charset=UTF-8",
+        });
+        return request;
+    };
 
 });
 
@@ -21,25 +30,19 @@ app.controller("HomeController", function ($scope, HomeService) {
         
     }
     $scope.LoginToContinue = function () {
-        debugger
         if (!$scope.User) return;
         if (!$scope.User.UserName) {
-            // toastr.error("Bạn chưaa nhập tên khách sạn !");
             return;
         }
         if (!$scope.User.Password) {
-            //toastr.error("Bạn chưa nhập số phòng hoặc số tầng của khách sạn !");
             return;
         }
         CommonUtils.showWait(true);
         var promiseGet = HomeService.Login($scope.User);
         promiseGet.then(function (pl) {
             if (!pl.data.IsError) {
-                if ($scope.Sell.IsWebsite)
-                    window.location.href = '/Website/Create';
-                else
-                    window.location.href = '/Domain/Create';
-
+                debugger
+                $scope.WebsiteCreate();
             }
             $scope.Message = pl.data.Message;
             CommonUtils.showWait(false);
@@ -47,25 +50,42 @@ app.controller("HomeController", function ($scope, HomeService) {
             function (errorPl) {
 
             });
-
-
     };
 
-    $scope.ChangeVerifycationMethod = function () {
-        debugger
-       var a= $scope.Verifycation.Method;
+    $scope.WebsiteCreate = function () {
+        if (!$scope.Sell.Domain) return;
+        $scope.Website = {
+            Name: $scope.Sell.Domain
+        };
+      
+        CommonUtils.showWait(true);
+        var promiseGet = HomeService.WebsiteCreate($scope.Website);
+        promiseGet.then(function (pl) {
+            if (!pl.data.IsError) {
+                window.location.href = '/Website/Detail/' + pl.data.Data;
+            }
+            $scope.Message = pl.data.Message;
+            CommonUtils.showWait(false);
+        },
+            function (errorPl) {
+
+            });
+    };
+
+    $scope.ChangeTypeSellMethod = function (val) {
+        if (val == 'website')
+            $scope.Sell.IsWebsite = true;
+        else
+            $scope.Sell.IsWebsite = false;
     };
 
     $scope.Create = function () {
-        debugger
         var userid = $("#userId").val();
         if (userid <= 0) {
             $("#loginBeforeModal").modal("show");
+            return;
         } else {
-            if ($scope.Sell.IsWebsite)
-                window.location.href = '/Website/Create';
-            else
-                window.location.href = '/Domain/Create';
+            $scope.WebsiteCreate();
         }
         
 

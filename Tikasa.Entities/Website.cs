@@ -21,9 +21,11 @@ namespace Tikasa.Entities
         public int PlatformId { get; set; }
         public int SiteAge { get; set; }
         public string Note { get; set; }
-        public int SiteTypeId { get; set; }
+        public Nullable<int> TypeOfWebsiteId { get; set; }
+        public Nullable<int> TypeOfCategoryId { get; set; }
         public Nullable<decimal> NetProfit { get; set; }
         public int StatusId { get; set; }
+        public bool IsCertificated { get; set; }
         public string Summary { get; set; }
         public Nullable<int> GoliveMonth { get; set; }
         public Nullable<int> GoliveYear { get; set; }
@@ -32,6 +34,8 @@ namespace Tikasa.Entities
         public System.DateTime CreatedDate { get; set; }
         public System.DateTime ExpiredDate { get; set; }
     
+        public virtual Category Category { get; set; }
+        public virtual TypeOfWebsite TypeOfWebsite { get; set; }
         public virtual User User { get; set; }
     }
 }

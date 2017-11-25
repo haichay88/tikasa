@@ -51,7 +51,7 @@ namespace Tikasa.MVC.App_Start
             #endregion
             #region Business
             container.RegisterType<IUserBusiness, UserBusiness>();
-           
+            container.RegisterType<IWebsiteBusiness, WebsiteBusiness>();
 
             #endregion
 

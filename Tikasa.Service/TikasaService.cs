@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tikasa.Service
 {
-   public interface ITikasaService:IUserService
+   public interface ITikasaService:IUserService, IWebsiteService
     {
     }
 

@@ -52,6 +52,9 @@
     <Compile Include="Bidding.cs">
       <DependentUpon>TikasaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>TikasaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Comment.cs">
       <DependentUpon>TikasaModel.tt</DependentUpon>
     </Compile>
@@ -73,6 +76,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TikasaModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="TypeOfWebsite.cs">
+      <DependentUpon>TikasaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
       <DependentUpon>TikasaModel.tt</DependentUpon>

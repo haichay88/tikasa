@@ -16,6 +16,14 @@
           <Property Name="PriceBid" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="Id" />
@@ -40,6 +48,14 @@
           <Property Name="Note" Type="nvarchar(max)" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="ExpiredDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeOfWebsite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -72,9 +88,11 @@
           <Property Name="PlatformId" Type="int" Nullable="false" />
           <Property Name="SiteAge" Type="int" Nullable="false" />
           <Property Name="Note" Type="nvarchar(max)" />
-          <Property Name="SiteTypeId" Type="int" Nullable="false" />
+          <Property Name="TypeOfWebsiteId" Type="int" />
+          <Property Name="TypeOfCategoryId" Type="int" />
           <Property Name="NetProfit" Type="decimal" Precision="18" Scale="0" />
           <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="IsCertificated" Type="bit" Nullable="false" />
           <Property Name="Summary" Type="nvarchar" MaxLength="500" />
           <Property Name="GoliveMonth" Type="int" />
           <Property Name="GoliveYear" Type="int" />
@@ -119,6 +137,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Website_Categories">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="Website" Type="Self.Website" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Website">
+              <PropertyRef Name="TypeOfCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Website_TypeOfWebsite">
+          <End Role="TypeOfWebsite" Type="Self.TypeOfWebsite" Multiplicity="0..1" />
+          <End Role="Website" Type="Self.Website" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfWebsite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Website">
+              <PropertyRef Name="TypeOfWebsiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Website_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Website" Type="Self.Website" Multiplicity="*" />
@@ -133,8 +175,10 @@
         </Association>
         <EntityContainer Name="tikasaModelStoreContainer">
           <EntitySet Name="Bidding" EntityType="Self.Bidding" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Domain" EntityType="Self.Domain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeOfWebsite" EntityType="Self.TypeOfWebsite" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Website" EntityType="Self.Website" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Bidding_User" Association="Self.FK_Bidding_User">
@@ -148,6 +192,14 @@
           <AssociationSet Name="FK_Domain_User" Association="Self.FK_Domain_User">
             <End Role="User" EntitySet="User" />
             <End Role="Domain" EntitySet="Domain" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Website_Categories" Association="Self.FK_Website_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Website" EntitySet="Website" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Website_TypeOfWebsite" Association="Self.FK_Website_TypeOfWebsite">
+            <End Role="TypeOfWebsite" EntitySet="TypeOfWebsite" />
+            <End Role="Website" EntitySet="Website" />
           </AssociationSet>
           <AssociationSet Name="FK_Website_User" Association="Self.FK_Website_User">
             <End Role="User" EntitySet="User" />
@@ -197,34 +249,10 @@
           <Property Name="ExpiredDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="User" Relationship="tikasaModel.FK_Domain_User" FromRole="Domain" ToRole="User" />
         </EntityType>
-        <EntityType Name="Website">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PlatformId" Type="Int32" Nullable="false" />
-          <Property Name="SiteAge" Type="Int32" Nullable="false" />
-          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SiteTypeId" Type="Int32" Nullable="false" />
-          <Property Name="NetProfit" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="StatusId" Type="Int32" Nullable="false" />
-          <Property Name="Summary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="GoliveMonth" Type="Int32" />
-          <Property Name="GoliveYear" Type="Int32" />
-          <Property Name="MinimumPrice" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="BuyItNowPrice" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ExpiredDate" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="User" Relationship="tikasaModel.FK_Website_User" FromRole="Website" ToRole="User" />
-        </EntityType>
         <EntityContainer Name="tikasaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Biddings" EntityType="Self.Bidding" />
           <EntitySet Name="Comments" EntityType="Self.Comment" />
           <EntitySet Name="Domains" EntityType="Self.Domain" />
-          <EntitySet Name="Websites" EntityType="Self.Website" />
           <EntitySet Name="Users" EntityType="tikasaModel.User" />
           <AssociationSet Name="FK_Bidding_User" Association="tikasaModel.FK_Bidding_User">
             <End Role="User" EntitySet="Users" />
@@ -237,6 +265,17 @@
           <AssociationSet Name="FK_Domain_User" Association="tikasaModel.FK_Domain_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Domain" EntitySet="Domains" />
+          </AssociationSet>
+          <EntitySet Name="Categories" EntityType="tikasaModel.Category" />
+          <EntitySet Name="TypeOfWebsites" EntityType="tikasaModel.TypeOfWebsite" />
+          <EntitySet Name="Websites" EntityType="tikasaModel.Website" />
+          <AssociationSet Name="FK_Website_Categories" Association="tikasaModel.FK_Website_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Website" EntitySet="Websites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Website_TypeOfWebsite" Association="tikasaModel.FK_Website_TypeOfWebsite">
+            <End Role="TypeOfWebsite" EntitySet="TypeOfWebsites" />
+            <End Role="Website" EntitySet="Websites" />
           </AssociationSet>
           <AssociationSet Name="FK_Website_User" Association="tikasaModel.FK_Website_User">
             <End Role="User" EntitySet="Users" />
@@ -303,6 +342,75 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Websites" Relationship="tikasaModel.FK_Website_Categories" FromRole="Category" ToRole="Website" />
+        </EntityType>
+        <EntityType Name="TypeOfWebsite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Websites" Relationship="tikasaModel.FK_Website_TypeOfWebsite" FromRole="TypeOfWebsite" ToRole="Website" />
+        </EntityType>
+        <EntityType Name="Website">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PlatformId" Type="Int32" Nullable="false" />
+          <Property Name="SiteAge" Type="Int32" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TypeOfWebsiteId" Type="Int32" />
+          <Property Name="TypeOfCategoryId" Type="Int32" />
+          <Property Name="NetProfit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="IsCertificated" Type="Boolean" Nullable="false" />
+          <Property Name="Summary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="GoliveMonth" Type="Int32" />
+          <Property Name="GoliveYear" Type="Int32" />
+          <Property Name="MinimumPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="BuyItNowPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExpiredDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Category" Relationship="tikasaModel.FK_Website_Categories" FromRole="Website" ToRole="Category" />
+          <NavigationProperty Name="TypeOfWebsite" Relationship="tikasaModel.FK_Website_TypeOfWebsite" FromRole="Website" ToRole="TypeOfWebsite" />
+          <NavigationProperty Name="User" Relationship="tikasaModel.FK_Website_User" FromRole="Website" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Website_Categories">
+          <End Type="tikasaModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="tikasaModel.Website" Role="Website" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Website">
+              <PropertyRef Name="TypeOfCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Website_TypeOfWebsite">
+          <End Type="tikasaModel.TypeOfWebsite" Role="TypeOfWebsite" Multiplicity="0..1" />
+          <End Type="tikasaModel.Website" Role="Website" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfWebsite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Website">
+              <PropertyRef Name="TypeOfWebsiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Website_User">
           <End Type="tikasaModel.User" Role="User" Multiplicity="1" />
           <End Type="tikasaModel.Website" Role="Website" Multiplicity="*" />
@@ -315,7 +423,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -360,29 +468,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Websites">
-            <EntityTypeMapping TypeName="tikasaModel.Website">
-              <MappingFragment StoreEntitySet="Website">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
-                <ScalarProperty Name="SiteAge" ColumnName="SiteAge" />
-                <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="SiteTypeId" ColumnName="SiteTypeId" />
-                <ScalarProperty Name="NetProfit" ColumnName="NetProfit" />
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-                <ScalarProperty Name="Summary" ColumnName="Summary" />
-                <ScalarProperty Name="GoliveMonth" ColumnName="GoliveMonth" />
-                <ScalarProperty Name="GoliveYear" ColumnName="GoliveYear" />
-                <ScalarProperty Name="MinimumPrice" ColumnName="MinimumPrice" />
-                <ScalarProperty Name="BuyItNowPrice" ColumnName="BuyItNowPrice" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="tikasaModel.User">
               <MappingFragment StoreEntitySet="User">
@@ -400,6 +485,49 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="tikasaModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOfWebsites">
+            <EntityTypeMapping TypeName="tikasaModel.TypeOfWebsite">
+              <MappingFragment StoreEntitySet="TypeOfWebsite">
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Websites">
+            <EntityTypeMapping TypeName="tikasaModel.Website">
+              <MappingFragment StoreEntitySet="Website">
+                <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="BuyItNowPrice" ColumnName="BuyItNowPrice" />
+                <ScalarProperty Name="MinimumPrice" ColumnName="MinimumPrice" />
+                <ScalarProperty Name="GoliveYear" ColumnName="GoliveYear" />
+                <ScalarProperty Name="GoliveMonth" ColumnName="GoliveMonth" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="IsCertificated" ColumnName="IsCertificated" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="NetProfit" ColumnName="NetProfit" />
+                <ScalarProperty Name="TypeOfCategoryId" ColumnName="TypeOfCategoryId" />
+                <ScalarProperty Name="TypeOfWebsiteId" ColumnName="TypeOfWebsiteId" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="SiteAge" ColumnName="SiteAge" />
+                <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

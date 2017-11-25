@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="UserBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebsiteBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Bizkasa\MyFinance.Core\MyFinance.Core.csproj">
@@ -63,6 +64,10 @@
     <ProjectReference Include="..\Tikasa.Model\Tikasa.Model.csproj">
       <Project>{C27D3651-03A3-47E8-947A-74AD0B00CFB7}</Project>
       <Name>Tikasa.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tikasa.Session\Tikasa.Session.csproj">
+      <Project>{8921BFE9-FF02-4CD9-BE43-0212BA6DA8B9}</Project>
+      <Name>Tikasa.Session</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

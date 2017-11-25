@@ -1,18 +1,65 @@
 ﻿
+.wrap-content{
+    margin-top:70px;
+}
 /*customize         -    ---------------------------------------------*/
-#loginModal .modal-dialog{
-    width:450px;
+#loginModal .modal-dialog {
+    width: 450px;
 }
 #registerModal .modal-dialog {
     width: 450px;
 }
 body {
     font-family: "Source Sans Pro", sans-serif;
-    padding-top: 70px;
 }
 
 #mainmenu > ul > li > a.btn{
     color:#fff;
+}
+.alert:before,
+.alert:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden
+}
+
+.alert:after {
+    clear: both
+}
+
+.alert a {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: underline
+}
+
+    .alert a:hover {
+        text-decoration: none
+    }
+
+.alert .btn {
+    color: #fff;
+    font-weight: 300;
+    text-shadow: none
+}
+
+.alert-info {
+    background-color: #d3dde7;
+    border-color: #aabdd0;
+    color: #2f5e8d
+}
+
+.alert-error {
+    background-color: #e7cecd;
+    border-color: #d1a29e;
+    color: #8f1b13
+}
+
+.alert-success {
+    background-color: #d1e2d2;
+    border-color: #a6c7a9;
+    color: #25772d
 }
 /*===============================================*/
 .user-overview table.user-details {

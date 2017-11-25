@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Tikasa.Session;
 
 namespace Tikasa.MVC.Controllers
 {
@@ -26,6 +27,23 @@ namespace Tikasa.MVC.Controllers
             ViewBag.Message = "Your application description page.";
 
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+
+            HttpContext.Session.Clear();
+
+            HttpCookie myCookie = new HttpCookie(WorkContext.SessionTikasaKey);
+            myCookie.Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies.Add(myCookie);
+
+            //SendoSession.Current.Dispose();
+
+            WorkContext.BizKasaContext = null;
+            
+            return RedirectToAction("Index");
+          
         }
 
         public ActionResult Contact()

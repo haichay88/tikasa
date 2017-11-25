@@ -8,15 +8,15 @@
 <div class="VerticalSelection___column" ng-controller="HomeController">
     <h1 class="heading VerticalSelection___heading spacing___mgnBottomXs heading--lg">Bạn muốn đăng bán gì?</h1>
     <form>
-        <div class="grid grid--bleed">
+        <div class="grid grid--bleed" ng-init="Sell.IsWebsite=true">
             <div class="VerticalCardGroup___column grid__col-sm-6">
                 <div class="VerticalCardGroup___card selectable-card">
                     <i class="icon VerticalCardGroup___icon icon--websites"></i>
                     <h1 class="heading heading--md heading--bold heading--caps">Websites</h1>
                     <p class="VerticalCardGroup___description">Trang bán hàng, giới thiệu, nội dung, blog, dịch vụ, tất cả những gì bạn có</p>
-                    <label class="radio radio--md selectable-card__radio">
+                    <label class="radio radio--md selectable-card__radio" ng-click="ChangeTypeSellMethod('website')">
                         <div class="radio__field">
-                            <input type="radio" class="radio__input"   name="assetType" value="website"  ng-checked="Sell.IsWebsite=true" >
+                            <input type="radio" class="radio__input"   name="assetType" value="website"  ng-checked="Sell.IsWebsite" >
                             <span class="radio__check"></span>
                         </div>
                     </label>
@@ -26,16 +26,17 @@
                 <div class="VerticalCardGroup___card selectable-card">
                     <i class="icon VerticalCardGroup___icon icon--domains"></i>
                     <h1 class="heading heading--md heading--bold heading--caps">Tên miền</h1><p class="VerticalCardGroup___description">Tên miền mà bạn sở hữu .com .net .org .io ...</p>
-                    <label class="radio radio--md selectable-card__radio">
+                    <label class="radio radio--md selectable-card__radio" ng-click="ChangeTypeSellMethod('domain')">
                         <div class="radio__field">
-                            <input type="radio" class="radio__input" name="assetType" value="domain"   ng-checked="Sell.IsWebsite=false">
+                            <input type="radio" class="radio__input" name="assetType" value="domain">
                             <span class="radio__check"></span>
                         </div>
                     </label>
                 </div>
             </div>
 
-        </div><div class="grid grid--bleed">
+        </div>
+        <div class="grid grid--bleed">
             <div class="grid__col-sm-8 grid__col-md-10">
                 <div class="VerticalSelection___propertyInputWrapper">
                     <div>
@@ -98,10 +99,7 @@
                         </div>
                     </form>
                 </div>
-                @*<div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Send message</button>
-                    </div>*@
+              
             </div>
         </div>
     </div>
