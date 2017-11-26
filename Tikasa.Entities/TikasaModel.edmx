@@ -35,6 +35,14 @@
           <Property Name="Comment" Type="nvarchar" MaxLength="1000" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="DefaultValue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Domain">
           <Key>
             <PropertyRef Name="Id" />
@@ -90,14 +98,22 @@
           <Property Name="Note" Type="nvarchar(max)" />
           <Property Name="TypeOfWebsiteId" Type="int" />
           <Property Name="TypeOfCategoryId" Type="int" />
+          <Property Name="Step" Type="int" Nullable="false" />
           <Property Name="NetProfit" Type="decimal" Precision="18" Scale="0" />
           <Property Name="StatusId" Type="int" Nullable="false" />
           <Property Name="IsCertificated" Type="bit" Nullable="false" />
+          <Property Name="IsAuction" Type="bit" Nullable="false" />
+          <Property Name="HasTraffic" Type="bit" Nullable="false" />
+          <Property Name="HasRevenue" Type="bit" Nullable="false" />
           <Property Name="Summary" Type="nvarchar" MaxLength="500" />
           <Property Name="GoliveMonth" Type="int" />
           <Property Name="GoliveYear" Type="int" />
           <Property Name="MinimumPrice" Type="decimal" Precision="18" Scale="0" />
           <Property Name="BuyItNowPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="StartingPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Reserve" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="AvgRevenue" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="AvgExpense" Type="decimal" Precision="18" Scale="0" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="ExpiredDate" Type="datetime" Nullable="false" />
         </EntityType>
@@ -177,6 +193,7 @@
           <EntitySet Name="Bidding" EntityType="Self.Bidding" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DefaultValue" EntityType="Self.DefaultValue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Domain" EntityType="Self.Domain" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeOfWebsite" EntityType="Self.TypeOfWebsite" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -281,6 +298,7 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Website" EntitySet="Websites" />
           </AssociationSet>
+          <EntitySet Name="DefaultValues" EntityType="tikasaModel.DefaultValue" />
           </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -376,16 +394,24 @@
           <Property Name="NetProfit" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="StatusId" Type="Int32" Nullable="false" />
           <Property Name="IsCertificated" Type="Boolean" Nullable="false" />
+          <Property Name="IsAuction" Type="Boolean" Nullable="false" />
+          <Property Name="HasTraffic" Type="Boolean" Nullable="false" />
+          <Property Name="HasRevenue" Type="Boolean" Nullable="false" />
           <Property Name="Summary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="GoliveMonth" Type="Int32" />
           <Property Name="GoliveYear" Type="Int32" />
           <Property Name="MinimumPrice" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="BuyItNowPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="StartingPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Reserve" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="AvgRevenue" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="AvgExpense" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ExpiredDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Category" Relationship="tikasaModel.FK_Website_Categories" FromRole="Website" ToRole="Category" />
           <NavigationProperty Name="TypeOfWebsite" Relationship="tikasaModel.FK_Website_TypeOfWebsite" FromRole="Website" ToRole="TypeOfWebsite" />
           <NavigationProperty Name="User" Relationship="tikasaModel.FK_Website_User" FromRole="Website" ToRole="User" />
+          <Property Name="Step" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_Website_Categories">
           <End Type="tikasaModel.Category" Role="Category" Multiplicity="0..1" />
@@ -423,6 +449,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="DefaultValue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -510,13 +544,21 @@
           <EntitySetMapping Name="Websites">
             <EntityTypeMapping TypeName="tikasaModel.Website">
               <MappingFragment StoreEntitySet="Website">
+                <ScalarProperty Name="Step" ColumnName="Step" />
                 <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="AvgExpense" ColumnName="AvgExpense" />
+                <ScalarProperty Name="AvgRevenue" ColumnName="AvgRevenue" />
+                <ScalarProperty Name="Reserve" ColumnName="Reserve" />
+                <ScalarProperty Name="StartingPrice" ColumnName="StartingPrice" />
                 <ScalarProperty Name="BuyItNowPrice" ColumnName="BuyItNowPrice" />
                 <ScalarProperty Name="MinimumPrice" ColumnName="MinimumPrice" />
                 <ScalarProperty Name="GoliveYear" ColumnName="GoliveYear" />
                 <ScalarProperty Name="GoliveMonth" ColumnName="GoliveMonth" />
                 <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="HasRevenue" ColumnName="HasRevenue" />
+                <ScalarProperty Name="HasTraffic" ColumnName="HasTraffic" />
+                <ScalarProperty Name="IsAuction" ColumnName="IsAuction" />
                 <ScalarProperty Name="IsCertificated" ColumnName="IsCertificated" />
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="NetProfit" ColumnName="NetProfit" />
@@ -528,6 +570,15 @@
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DefaultValues">
+            <EntityTypeMapping TypeName="tikasaModel.DefaultValue">
+              <MappingFragment StoreEntitySet="DefaultValue">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

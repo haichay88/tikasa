@@ -58,6 +58,9 @@
     <Compile Include="Comment.cs">
       <DependentUpon>TikasaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DefaultValue.cs">
+      <DependentUpon>TikasaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Domain.cs">
       <DependentUpon>TikasaModel.tt</DependentUpon>
     </Compile>

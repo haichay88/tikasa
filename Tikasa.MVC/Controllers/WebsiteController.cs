@@ -21,7 +21,8 @@ namespace Tikasa.MVC.Controllers
 
         }
         #endregion
-        // GET: Website
+
+        #region Action
         public ActionResult Index()
         {
             return View();
@@ -35,10 +36,56 @@ namespace Tikasa.MVC.Controllers
             ViewBag.WebsiteId = Id;
             return View();
         }
+        public ActionResult Edit(int Id)
+        {
+            ViewBag.WebsiteId = Id;
+            return View();
+        }
+        public ActionResult List()
+        {
+            return View();
+        }
+
+        #endregion
+        // GET: Website
+
+
+        #region Ajax
+
+
         [HttpPost]
         public JsonResult Create(WebsiteDTO model)
         {
             var result = _Service.WebsiteCreate(model);
+            return result.ToJsonResult(result.Data);
+        }
+
+        [HttpPost]
+        public JsonResult UpdateBaseInfo(WebsiteDTO model)
+        {
+            var result = _Service.UpdateBaseInfo(model);
+            return result.ToJsonResult(result.Data);
+        }
+
+        [HttpPost]
+        public JsonResult UpdateMoreInfo(WebsiteDTO model)
+        {
+            var result = _Service.UpdateMoreInfo(model);
+            return result.ToJsonResult(result.Data);
+        }
+
+
+        [HttpPost]
+        public JsonResult GetWebsites(SearchModel model)
+        {
+            var result = _Service.GetWebsites(model);
+            return result.ToJsonResult(result.Data);
+        }
+
+        [HttpPost]
+        public JsonResult PublicWebsite(WebsiteDTO model)
+        {
+            var result = _Service.PublicWebsite(model);
             return result.ToJsonResult(result.Data);
         }
 
@@ -60,5 +107,6 @@ namespace Tikasa.MVC.Controllers
             var result = _Service.GetTypeOfWebsite();
             return result.ToJsonResult(result.Data);
         }
+        #endregion
     }
 }

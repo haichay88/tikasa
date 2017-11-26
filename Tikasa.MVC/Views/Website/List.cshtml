@@ -1,0 +1,199 @@
+﻿
+@{
+    ViewBag.Title = "List";
+}
+<link href="~/Content/index.css" rel="stylesheet" />
+<link href="~/Content/vd.css" rel="stylesheet" />
+<div class="Page___page Page___flex" ng-controller="WebsiteController">
+    <div class="">
+        <div class="Section___section Section___type_d">
+            <div class="AdvancedSearchFilters___toggleWrapper">
+                <span class="FilterToggle___filterToggle">
+                    Filter<span class="FilterToggle___filterToggleIcon">
+                        <span style="width:20px;height:20px;max-width:20px;max-height:20px" class="Icon___icon">
+                            <svg style="width: 20px; max-width: 20px; min-width: 20px; height: 20px;" fill="#7F8DA0" stroke="#333" class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><g stroke-width="2" stroke-linecap="square" stroke-miterlimit="10"><path d="M8 26V2M8 46v-6M2 32h12v8H2z"></path><path data-color="color-2" d="M24 6V2M24 46V20M18 12h12v8H18z"></path><path d="M40 26V2M40 46v-6M34 32h12v8H34z"></path></g></svg>
+                        </span>
+                    </span>
+                </span>
+            </div>
+            <div class="AdvancedSearchFilters___formWrapper">
+                <div class="SectionBody___sectionBody SectionBody___type_b">
+                    <div class="AdvancedSearchFilters___formSectionWrapper">
+                        <form>
+                            <div class="AdvancedSearchFilters___formRow">
+                                <div class="AdvancedSearchFilters___formField AdvancedSearchFilters___keywordFilter">
+                                    <label class="AdvancedSearchFilters___inputFieldLabel">
+                                        Từ khóa
+                                        <div class="tooltip"><span class="tooltip__question-mark">?</span></div>
+                                    </label><div>
+                                        <label class="input__label">
+                                            <input class="input input--md" value="" placeholder="Nhập từ khóa" name="query">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="AdvancedSearchFilters___formField AdvancedSearchFilters___bigScreenSubmitButtonWrapper AdvancedSearchFilters___submitButtonWrapper">
+                                    <button class="Button___sm Button___primary Button___button Button___block" type="submit" disabled="">Tìm kiếm</button>
+                                </div>
+
+                            </div>
+
+                            <div class="AdvancedSearchFilters___formRow">
+                                <div class="AdvancedSearchFilters___formField AdvancedSearchFilters___submitButtonWrapper"><button class="Button___sm Button___primary Button___button Button___block" type="submit" disabled="">Search</button></div>
+                                <div class="AdvancedSearchFilters___formField AdvancedSearchFilters___smallScreenSaveSearchWrapper"><button type="button" class="button button--block button--md"><span style="width:15px;height:15px;max-width:15px;max-height:15px" class="Icon___icon SaveSearch___icon"><svg style="width: 15px; max-width: 15px; min-width: 15px; height: 15px;" fill="#7F8DA0" stroke="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 32"><path d="M17.154 3.366l3.236 9.652h10.478l-8.478 5.965 3.24 9.65-8.476-5.965-8.475 5.966 3.236-9.65-8.473-5.967h10.472l3.24-9.65zm0-2.366c-1.057 0-1.997.66-2.322 1.635l-2.69 8.015h-8.7c-1.057 0-1.997.66-2.322 1.636-.328.974.03 2.04.886 2.645l7.04 4.957-2.69 8.016c-.328.974.03 2.043.886 2.645.43.302.934.452 1.436.452.505 0 1.01-.15 1.436-.452l7.04-4.956 7.04 4.956c.426.302.93.452 1.436.452.502 0 1.007-.15 1.436-.452.855-.603 1.214-1.67.886-2.645l-2.69-8.016 7.042-4.954c.855-.602 1.215-1.67.886-2.645-.328-.975-1.265-1.636-2.322-1.636h-8.702l-2.69-8.016C19.148 1.66 18.21 1 17.154 1z"></path></svg></span>Save Search</button></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="spacing___padBottom0 Section___section Section___type_a Section___padding">
+        <div class="">
+            <div>
+                <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Section___section Section___type_a Section___padding">
+        <div class="SectionBody___sectionBody SectionBody___type_b">
+            <div id="searchBody" class="spacing___padBottomSm">
+                <div>
+                    <div class="ContextBar___contextBarWrapper">
+                        <div class="ContextBar___details">
+                            <h2 class="Heading___heading Heading___xsSizeMd Heading___semiboldWeight spacing___mgn0">
+                                <span>Showing <!-- -->1<!-- -->-<!-- -->2<!-- --> of <!-- -->2<!-- --> results</span>&nbsp;
+                            </h2>
+                        </div>
+                        <div class="ContextBar___filters">
+                            <div class="ContextBar___sorts">
+                                <form class="SortSearchFilters___inlineForm">
+                                    <div class="SortSearchFilters___inlineFormField SortSearchFilters___inlineForm"><label class="SortSearchFilters___selectLabel" for="sort_alias">Sort by:</label><div class="SortSearchFilters___inlineFormField SortSearchFilters___inlineForm"><div class="dropdown dropdown--md"><div class="dropdown__header"><span class="dropdown__header-text">Most Relevant</span><i class="icon dropdown__icon icon--chevron-down"></i><ul class="dropdown__options dropdown__options--closed"><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-0" readonly="" class="dropdown__option-radio" value="" name="sort_alias" checked=""><span class="dropdown__option-text">Most Relevant</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-1" readonly="" class="dropdown__option-radio" value="most_recent" name="sort_alias"><span class="dropdown__option-text">Most Recent</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-2" readonly="" class="dropdown__option-radio" value="lowest_price" name="sort_alias"><span class="dropdown__option-text">Lowest Price</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-3" readonly="" class="dropdown__option-radio" value="highest_price" name="sort_alias"><span class="dropdown__option-text">Highest Price</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-4" readonly="" class="dropdown__option-radio" value="ending_soonest" name="sort_alias"><span class="dropdown__option-text">Ending Soonest</span></label></li><li><label class="dropdown__option-label"><input type="radio" id="dropdown__option-input-5" readonly="" class="dropdown__option-radio" value="most_active" name="sort_alias"><span class="dropdown__option-text">Most Active</span></label></li></ul></div></div></div></div>
+                                </form>
+                            </div><div class="ContextBar___status"><form class="StatusFilter___inlineForm"><div class="StatusFilter___inlineFormField StatusFilter___inlineForm"><label class="StatusFilter___multiSelectLabel">Status:</label><div class="StatusFilter___inlineFormField StatusFilter___inlineForm StatusFilter___statusWrapper"><div class="MultiSelect___selectWrapper"><div class="MultiSelect___select FormFields___formField MultiSelect___sm FormFields___sm">All<span style="width:15px;height:15px;max-width:15px;max-height:15px" class="Icon___icon MultiSelect___dropDownIcon"><svg style="width: 15px; max-width: 15px; min-width: 15px; height: 15px;" fill="none" stroke="#7F8DA0" class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M4 14l20 20 20-20"></path></svg></span></div><div class="MultiSelect___listWrapper MultiSelect___closed"><ul class="MultiSelect___list Node___list"><li class="Node___secondaryListItem Node___listItem"><label class="Checkbox___label Node___label"><div class="Checkbox___checkbox FormFields___formField Checkbox___hasChildren"><span style="width:16px;height:16px;max-width:16px;max-height:16px" class="Icon___icon"><svg style="width: 16px; max-width: 16px; min-width: 16px; height: 16px;" fill="none" stroke="" class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path stroke-width="4" stroke-linecap="square" stroke-miterlimit="10" d="M12 24l8 8 16-16"></path></svg></span><input type="checkbox" id="open" name="status" value="open" stroke="#fff" class="Checkbox___field helpers___visuallyHidden"></div><span class="Node___text">Open</span></label></li><li class="Node___secondaryListItem Node___listItem"><label class="Checkbox___label Node___label"><div class="Checkbox___checkbox FormFields___formField Checkbox___hasChildren"><span style="width:16px;height:16px;max-width:16px;max-height:16px" class="Icon___icon"><svg style="width: 16px; max-width: 16px; min-width: 16px; height: 16px;" fill="none" stroke="" class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path stroke-width="4" stroke-linecap="square" stroke-miterlimit="10" d="M12 24l8 8 16-16"></path></svg></span><input type="checkbox" id="won" name="status" value="won" stroke="#fff" class="Checkbox___field helpers___visuallyHidden"></div><span class="Node___text">Won</span></label></li><li class="Node___secondaryListItem Node___listItem"><label class="Checkbox___label Node___label"><div class="Checkbox___checkbox FormFields___formField Checkbox___hasChildren"><span style="width:16px;height:16px;max-width:16px;max-height:16px" class="Icon___icon"><svg style="width: 16px; max-width: 16px; min-width: 16px; height: 16px;" fill="none" stroke="" class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path stroke-width="4" stroke-linecap="square" stroke-miterlimit="10" d="M12 24l8 8 16-16"></path></svg></span><input type="checkbox" id="completed" name="status" value="completed" stroke="#fff" class="Checkbox___field helpers___visuallyHidden"></div><span class="Node___text">Unsold</span></label></li></ul></div></div></div></div></form></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="spacing___padBottomMd" ng-init="GetWebsites()">
+                    <div>
+                        <span class="ListingColumnHeaders___headers ListingColumnHeaders___website">
+                            <ul class="ListingColumnHeaders___items">
+                                <li class="ListingColumnHeaders___type">Website</li>
+                                <li class="ListingColumnHeaders___bids">Lượt đấu</li>
+                                <li class="ListingColumnHeaders___timeRemaining">Thời hạn</li>
+                                <li class="ListingColumnHeaders___buyItNow">Giá mua ngay</li>
+                                <li class="ListingColumnHeaders___price">Giá hiện tại</li>
+                            </ul>
+                        </span>
+                        <ul class="ListingResults___listingResults">
+                            <li class="ListingResults___listingResult" ng-repeat="item in Websites">
+                                <div class="ListingResults___highlightRow">
+                                    <span class="ListingResults___listingWrapper">
+                                        <a class="ListingResults___listingResultLink" href="~/Website/Detail/{{item.Id}}">
+                                            <div class="ListingTile___tileWrapper">
+                                                <img src="https://d2jafhvbn4akdi.cloudfront.net/thumbnail_fd8ce273-f022-4eea-8cd8-917b4a00b941.png" class="ListingTile___tile">
+                                            </div><span class="ListingResults___infoColumn ListingResults___website">
+                                                <span class="ListingResults___listingResultRow">
+                                                    <span class="ListingResults___listingName ">{{item.Name}}</span><span class="ListingResults___bidCount ListingResults___rowElement"><span>—</span></span>
+                                                    <span class="ListingResults___timeRemaining ListingResults___rowElement">
+                                                        <span class="RelativeTime___urgent">
+                                                            <time title="2017-11-27 05:12" datetime="2017-11-27T05:12:09+07:00">14 hours left</time>
+                                                        </span>
+                                                    </span>
+                                                    <span class="ListingResults___buyItNow ListingResults___rowElement">$1,500</span>
+                                                </span>
+                                                <span>
+                                                    <span class="ListingResults___monetizationMethods">&nbsp;</span>
+                                                </span>
+                                                <span>
+                                                    <span class="ListingResults___profitAndPageviews">Net Profit: — | Pageviews: 968 p/mo</span>
+                                                </span>
+                                                <span><span class="ListingResults___tagline">Sport clothes and accessories online store. </span></span>
+                                            </span>
+                                            <span class="ListingResults___ctaColumn">
+                                                <span class="ListingResults___ctaPrice ListingResults___currentPrice">$150</span>
+                                                <span class="ListingResults___buttonsWrapper">
+                                                    <span class="ListingResults___watchButtonWrapper spacing___pad0 spacing___mgnLeftXxs">
+                                                        <span>
+                                                            <button class="WatchButton___watchButton WatchButton___eyeTheme">
+                                                                <span style="width:19px;height:14px;max-width:19px;max-height:14px" class="Icon___icon">
+                                                                </span>
+                                                            </button>
+                                                        </span>
+                                                    </span><span class="ListingResults___bidButtonWrapper spacing___pad0 spacing___mgnLeftXxs"><span class="BidButton___bidButtonWrapper"><button class="Button___xs Button___button Button___block BidButton___ctaButton" type="button">Bid Now</button></span></span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </span>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <div class="Search___pageNavigation">
+                        <div class="Pagination___pagination Search___pagination">
+                            <a class="Pagination___pageLink Pagination___activeLink " href="/websites/all?page=1">1</a>
+                            <a class="Pagination___pageLink  " href="/websites/all?page=2">2</a>
+                            <a class="Pagination___pageLink  " href="/websites/all?page=3">3</a>
+                            <a class="Pagination___pageLink  " href="/websites/all?page=4">4</a>
+                            <a class="Pagination___pageLink  " href="/websites/all?page=5">5</a>
+                            <a class="Pagination___pageLink  " href="/websites/all?page=6">6</a>
+                            <a class="Pagination___pageLink  " href="/websites/all?page=7">7</a>
+                            <a class="Pagination___pageLink  " href="/websites/all?page=8">8</a>
+                            <a class="Pagination___pageLink  " href="/websites/all?page=9">9</a>
+                            <a class="Pagination___pageLink  " href="/websites/all?page=10">10</a>
+                            <a class="Pagination___pageLink  Pagination___nextLink Pagination___prevLink" href="/websites/all?page=2">
+                                <span>
+                                    NEXT<span class="Icon___icon Pagination___arrow" style="width: 10px; height: 10px; max-width: 10px; max-height: 10px;">
+                                        <svg style="width: 10px; max-width: 10px; min-width: 10px; height: 10px;" fill="none" stroke="#7F8DA0" class="nc-icon outline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                                            <path stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M14 4l20 20-20 20"></path>
+                                        </svg>
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
+                        <form class="ItemsPerPage___itemsPerPage">
+                            <div>
+                                <label class="ItemsPerPage___selectLabel" for="per_page">Items per page:</label>
+                                <div class="ItemsPerPage___inlineFormField">
+                                    <div class="dropdown dropdown--md">
+                                        <div class="dropdown__header">
+                                            <span class="dropdown__header-text">50</span><i class="icon dropdown__icon icon--chevron-down"></i>
+                                            <ul class="dropdown__options dropdown__options--closed">
+                                                <li>
+                                                    <label class="dropdown__option-label">
+                                                        <input type="radio" id="dropdown__option-input-0" readonly="" class="dropdown__option-radio" value="50" name="per_page">
+                                                        <span class="dropdown__option-text">50</span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label class="dropdown__option-label">
+                                                        <input type="radio" id="dropdown__option-input-1" readonly="" class="dropdown__option-radio" value="100" name="per_page"><span class="dropdown__option-text">100</span>
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <label class="dropdown__option-label">
+                                                        <input type="radio" id="dropdown__option-input-2" readonly="" class="dropdown__option-radio" value="250" name="per_page"><span class="dropdown__option-text">250</span>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+   
+    <script src="~/Scripts/App/website.js"></script>
+    
+}

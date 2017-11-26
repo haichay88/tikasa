@@ -1,6 +1,4 @@
 ﻿app.service("WebsiteService", function ($http) {
-  
-
 
     this.GetWebsite = function (val) {
         var request = $http({
@@ -29,12 +27,52 @@
         });
         return request;
     };
+    this.UpdateBaseInfo = function (model) {
+        var request = $http({
+            method: "POST",
+            url: "/Website/UpdateBaseInfo",
+            contentType: "application/json; charset=UTF-8",
+            data: model
+        });
+        return request;
+    };
+    this.UpdateMoreInfo = function (model) {
+        var request = $http({
+            method: "POST",
+            url: "/Website/UpdateMoreInfo",
+            contentType: "application/json; charset=UTF-8",
+            data: model
+        });
+        return request;
+    };
+
+    this.GetWebsites = function (model) {
+        var request = $http({
+            method: "POST",
+            url: "/Website/GetWebsites",
+            contentType: "application/json; charset=UTF-8",
+            data: model
+        });
+        return request;
+    };
+
+    this.PublicWebsite = function (model) {
+        var request = $http({
+            method: "POST",
+            url: "/Website/PublicWebsite",
+            contentType: "application/json; charset=UTF-8",
+            data: model
+        });
+        return request;
+    };
 });
 
 app.controller("WebsiteController", function ($scope, WebsiteService) {
     $scope.Message = undefined;
     $scope.Sell = {
         IsWebsite: true,
+        hasTraffic: true,
+        hasRevenue: true
         
     }
     $scope.InitMonth = function () {
@@ -53,13 +91,75 @@ app.controller("WebsiteController", function ($scope, WebsiteService) {
             $scope.Years.push({ Key: data, Value:data});
         }
     };
-   
-    $scope.ChangeVerifycationMethod = function () {
-        if ($scope.Verifycation.Method != "html")
-            $scope.Verifycation.IsHtml = false;
-        else {
-            $scope.Verifycation.IsHtml = true;
-        }
+    var validationField = function () {
+        if (!$scope.Website.TypeOfCategoryId) return false;
+        if (!$scope.Website.TypeOfWebsiteId) return false;
+        if (!$scope.Website.GoliveMonth) return false;
+        if (!$scope.Website.GoliveYear) return false;
+    };
+
+
+
+    $scope.UpdateBaseInfo = function () {
+      
+        CommonUtils.showWait(true);
+        $scope.Website.Step = 2;
+        var promiseGet = WebsiteService.UpdateBaseInfo($scope.Website);
+        promiseGet.then(function (pl) {
+            if (!pl.data.IsError) {
+            }
+            $scope.Message = pl.data.Message;
+            CommonUtils.showWait(false);
+        },
+            function (errorPl) {
+
+            });
+    };
+    $scope.UpdateMoreInfo = function () {
+
+        CommonUtils.showWait(true);
+        $scope.Website.Step =3;
+        var promiseGet = WebsiteService.UpdateMoreInfo($scope.Website);
+        promiseGet.then(function (pl) {
+            if (!pl.data.IsError) {
+            }
+            $scope.Message = pl.data.Message;
+            CommonUtils.showWait(false);
+        },
+            function (errorPl) {
+
+            });
+    };
+
+    $scope.PublicWebsite = function () {
+
+        CommonUtils.showWait(true);
+        $scope.Website.Step = 3;
+        var promiseGet = WebsiteService.PublicWebsite($scope.Website);
+        promiseGet.then(function (pl) {
+            if (!pl.data.IsError) {
+            }
+            CommonUtils.showWait(false);
+        },
+            function (errorPl) {
+
+            });
+    };
+
+    $scope.GetWebsites = function () {
+
+        CommonUtils.showWait(true);
+        var promiseGet = WebsiteService.GetWebsites($scope.Filter);
+        promiseGet.then(function (pl) {
+            if (!pl.data.IsError) {
+                $scope.Websites = pl.data.Data.Data;
+            }
+       
+            CommonUtils.showWait(false);
+        },
+            function (errorPl) {
+
+            });
     };
 
     $scope.GetWebsite = function () {
@@ -70,6 +170,7 @@ app.controller("WebsiteController", function ($scope, WebsiteService) {
         promiseGet.then(function (pl) {
             if (!pl.data.IsError) {
                 $scope.Website = pl.data.Data;
+                $scope.cssStep();
             }
             $scope.Message = pl.data.Message;
             CommonUtils.showWait(false);
@@ -123,5 +224,72 @@ app.controller("WebsiteController", function ($scope, WebsiteService) {
         else
             $scope.SubCategories = [];
     };
+    $scope.changeReview = function (val) {
+        if ($scope.Website.IsCertificated) {
+            if (val==0)
+                $scope.Website.Step = 1;
+            else
+                $scope.Website.Step = val;
+        } else {
+            $scope.Website.Step = 0;
+        }   
+        $scope.cssStep();
+        
+    };
+
+    $scope.cssStep = function (val) {
+        $scope.ClassStep = {
+            Step0: undefined,
+            Step1: undefined,
+            Step2: undefined,
+            Step3: undefined,
+        }
+        if ($scope.Website.Step == 0) {
+            $scope.ClassStep.Step0 = "progression-bar__step progression-bar__step--next";
+            $scope.ClassStep.Step1 = "progression-bar__step";
+            $scope.ClassStep.Step2 = "progression-bar__step";
+            $scope.ClassStep.Step3 = "progression-bar__step";
+        }
+        if ($scope.Website.Step == 1) {
+            $scope.ClassStep.Step0 = "progression-bar__step progression-bar__step--active progression-bar__step--complete";
+            $scope.ClassStep.Step1 = "progression-bar__step progression-bar__step--next";
+            $scope.ClassStep.Step2 = "progression-bar__step";
+            $scope.ClassStep.Step3 = "progression-bar__step";
+        }
+
+        if ($scope.Website.Step == 2) {
+            $scope.ClassStep.Step0 = "progression-bar__step progression-bar__step--active progression-bar__step--complete";
+            $scope.ClassStep.Step1 = "progression-bar__step progression-bar__step--active progression-bar__step--complete";
+            $scope.ClassStep.Step2 = "progression-bar__step progression-bar__step--next";
+            $scope.ClassStep.Step3 = "progression-bar__step";
+        }
+        if ($scope.Website.Step == 3) {
+            $scope.ClassStep.Step0 = "progression-bar__step progression-bar__step--active progression-bar__step--complete";
+            $scope.ClassStep.Step1 = "progression-bar__step progression-bar__step--active progression-bar__step--complete";
+            $scope.ClassStep.Step2 = "progression-bar__step progression-bar__step--active progression-bar__step--complete";
+            $scope.ClassStep.Step3 = "progression-bar__step progression-bar__step--active progression-bar__step--complete";
+        }
+
+
+    };
 
 });
+app.directive('ckEditor', [function () {
+    return {
+        require: '?ngModel',
+        link: function ($scope, elm, attr, ngModel) {
+
+            var ck = CKEDITOR.replace(elm[0]);
+
+            ck.on('pasteState', function () {
+                $scope.$apply(function () {
+                    ngModel.$setViewValue(ck.getData());
+                });
+            });
+
+            ngModel.$render = function (value) {
+                ck.setData(ngModel.$modelValue);
+            };
+        }
+    };
+}]);

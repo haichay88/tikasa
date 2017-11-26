@@ -1,0 +1,964 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+<link href="~/Content/index.css" rel="stylesheet" />
+<link href="~/Content/vd.css" rel="stylesheet" />
+<div class="ListingBuilder___wrapper" ng-controller="WebsiteController" ng-init="GetWebsite()">
+    <input type="hidden" value="@ViewBag.WebsiteId" id="WebsiteId" />
+    <section class="section section--ash section--border-top section--border-bottom PageHeaderWrapper___section">
+        <div class="PageHeaderWrapper___headerContent">
+            <div class="grid grid--align-center grid--bleed grid--justify-space-between">
+                <div class="grid__col-sm-8"><h1 class="heading heading--lg">{{Website.Name}}</h1></div>
+                <div class="grid__col-sm-3"><button type="button" class="button button--lg button--ivory">Customer Support</button></div>
+            </div>
+        </div>
+    </section>
+    <div class="ProgressBar___wrapper">
+        <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+            <div class="grid grid--justify-center">
+                <div class="grid__col-xs-12">
+                    <div class="progression-bar">
+                        <div ng-class="ClassStep.Step0">
+                            <i class="icon icon--tick progression-bar__step-icon"></i>
+                            <div class="progression-bar__step-text">
+                                <div><p class="text text--bold text--md text--uppercase text--underline" ng-click="changeReview(0)">Xác thực</p></div>
+                            </div>
+                        </div>
+                        <div ng-class="ClassStep.Step1">
+                            <i class="icon icon--tick progression-bar__step-icon"></i>
+                            <div class="progression-bar__step-text"><div><p class="text text--bold text--md text--uppercase" ng-click="changeReview(1)">Cài đặt giá</p></div></div>
+                        </div>
+                        <div ng-class="ClassStep.Step2">
+                            <i class="icon icon--tick progression-bar__step-icon"></i>
+                            <div class="progression-bar__step-text">
+                                <div><p class="text text--bold text--md text--uppercase" ng-click="changeReview(2)">Thông tin chi tiết</p></div>
+                            </div>
+                        </div>
+                        <div ng-class="ClassStep.Step3">
+                            <i class="icon icon--tick progression-bar__step-icon"></i>
+                            <div class="progression-bar__step-text"><div><p class="text text--bold text--md text--uppercase" ng-click="changeReview(3)">Đăng bán</p></div></div>
+                        </div>
+                        @*<div class="progression-bar__step">
+                                <i class="icon icon--tick progression-bar__step-icon"></i><div class="progression-bar__step-text">
+                                    <div><p class="text text--bold text--md text--uppercase">Verify, Revenue &amp; Expenses</p></div>
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="FormWrapper___formWrapper">
+        <div class="FormWrapper___form">
+            <div class="grid grid--justify-center">
+                <div class="grid" ng-show="Website.Step==0">
+                    <div class="grid">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <h2 class="heading heading--lg">Xác minh sở hữu tên miền</h2><hr class="horizontal-rule">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid" ng-init="Verifycation.IsHtml=true">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <div class="form-group--sm">
+                                    <div>
+                                        <label class="radio radio--lg" ng-click="Verifycation.IsHtml=true">
+                                            <div class="radio__field">
+                                                <input type="radio" class="radio__input" name="paymentMethod" value="html" ng-checked="Verifycation.IsHtml">
+                                                <span class="radio__check"></span>
+                                            </div>
+                                            <span class="radio__label">Tải file html</span>
+                                        </label>
+                                        <label class="radio radio--lg" ng-click="Verifycation.IsHtml=false">
+                                            <div class="radio__field">
+                                                <input type="radio" class="radio__input" name="paymentMethod" value="domain">
+                                                <span class="radio__check"></span>
+                                            </div>
+                                            <span class="radio__label">Công cụ quản trị tên miền</span>
+                                        </label>
+                                        <div data-redux-field-error="paymentMethod"></div>
+                                    </div>
+                                </div>
+                                <hr class="horizontal-rule">
+                            </div>
+                        </div>
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                            <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <p class="HelperText___text">Chúng tôi cần chắc chắn bạn là chủ sở hữu của tên miền hoặc website. Hãy chọn cách xác minh sở hữu tên miền phù hợp với bạn nhất.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid" ng-show="Verifycation.IsHtml">
+                        <div class="grid__col-md-7 grid__col-lg-6 grid__col--bleed-bottom">
+                            <div class="grid">
+                                <div class="grid__col-auto grid__col--bleed-x grid__col--bleed-top">
+                                    <div>
+                                        <div class="form-group--sm">
+                                            <div>
+                                                <label class="input__label">
+                                                    <span class="input__label-text">Tải file html lên website</span>
+
+                                                </label>
+                                                <div>
+                                                    <p>
+                                                        <b>1.Tải xuống </b>
+                                                        <a href="#" target="_blank">Tệp xác minh này</a>
+                                                    </p>
+                                                    <p>
+                                                        <b>2.Tải lên vào website</b>
+                                                    </p>
+                                                    <p>
+                                                        <b>3.Xác nhận</b>
+                                                        tải lên thành công bằng cách truy cập
+                                                        <a href="#" target="_blank">link</a> trong trình duyệt của bạn
+                                                    </p>
+                                                    <p>
+                                                        <b>4.Nhấp </b>
+                                                        Xác minh dưới đây
+
+                                                    </p>
+                                                    <p>
+                                                        Để được xác minh, không xóa các tập HTML, ngay cả sau khi xác minh thành công.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <input type="button" class="btn btn-danger" value="Xác minh" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid" ng-show="!Verifycation.IsHtml">
+                        <div class="grid__col-md-7 grid__col-lg-6 grid__col--bleed-bottom">
+                            <div class="grid">
+                                <div class="grid__col-auto grid__col--bleed-x grid__col--bleed-top">
+                                    <div>
+                                        <div class="form-group--sm">
+                                            <div>
+
+                                                <label class="input__label">
+                                                    <span class="input__label-text">Thực hiện theo các bước bên dưới để tạo bản ghi DNS (Hệ thống tên miền) để chứng minh với Tikasa rằng bạn sở hữu tên miền này.</span>
+
+                                                </label>
+                                                <div>
+                                                    <p>
+                                                        <b>1.Thêm </b>
+                                                        bản ghi TXT bên dưới vào cấu hình DNS cho
+                                                        <b>abc.com </b>
+                                                    </p>
+                                                    <p>
+                                                        <textarea>tikasa-site-veification:0009ada</textarea>
+                                                    </p>
+                                                    <p>
+                                                        <b>4.Nhấp </b>
+                                                        Xác minh dưới đây
+
+                                                    </p>
+                                                    <p>
+                                                        Khi Chúng tôi tìm thấy bản ghi DNS này, chúng tôi sẽ xác minh bạn là chủ sở hữu miền. (Lưu ý: các thay đổi DNS có thể mất một thời gian. Nếu chúng tôi không tìm thấy bản ghi ngay, chúng tôi sẽ kiểm tra định kỳ).
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <input type="button" class="btn btn-danger" value="Xác minh" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form ng-show="Website.Step == 1">
+                    <div class="grid">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <h2 class="heading heading--lg">Thông tin website</h2><hr class="horizontal-rule">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <div class="form-group--md">
+                                    <div>
+                                        <div class="grid grid--align-start">
+                                            <div class="grid__col-sm-6 grid__col--bleed" ng-init="InitMonth()">
+                                                <div class="dropdown dropdown--lg">
+                                                    <div class="dropdown__label"><span class="dropdown__label-text">Website được public từ khi nào?</span></div>
+                                                    <div class="">
+                                                        <select class="form-control dropdown dropdown__header" ng-options="row.Key as row.Value for row in Months" ng-model="Website.GoliveMonth">
+                                                            <option value=""> Chọn tháng </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="grid__col-sm-6 grid__col--bleed" ng-init="InitYear()">
+                                                <div class="ListingBuilder___inlineElement">
+                                                    <div>
+                                                        <div class="dropdown dropdown--lg">
+                                                            <div class="dropdown__label">
+                                                                <span class="dropdown__label-text">&nbsp;</span>
+                                                            </div>
+                                                            <div>
+                                                                <select class="form-control dropdown dropdown__header" ng-options="row.Key as row.Value for row in Years" ng-model="Website.GoliveYear">
+                                                                    <option value=""> Chọn năm </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                            <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <p class="HelperText___text">Thời điểm mà website được public cho tất cả người dùng</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid" ng-init="GetTypeOfWebsite()">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <div class="form-group--md">
+                                    <div>
+                                        <div class="dropdown dropdown--lg">
+                                            <div class="dropdown__label"><span class="dropdown__label-text">Website thuộc loại nào?</span></div>
+                                            <div>
+                                                <select class="form-control dropdown dropdown__header" ng-change="changeTypeOfWebsite()" ng-options="row.Id as row.Name for row in TypeOfWebsites" ng-model="Website.TypeOfWebsiteId">
+                                                    <option value=""> Chọn một loại </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                            <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <p class="HelperText___text">Chọn loại danh mục phù hợp với webiste.<br>Ví dụ, nếu website bán hàng, chọn <strong>Content</strong> và chọn <strong>blog</strong> là danh mục con.<br><br></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid" ng-show="SubTypeOfWebsites.length>0">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <div class="form-group--md">
+                                    <div class="dropdown dropdown--lg">
+                                        <div class="multi-select multi-select--lg multi-select--has-label">
+                                            <div class="multi-select__label">
+                                                <span class="multi-select__label-text">Danh mục con</span>
+                                            </div>
+                                            <div>
+                                                <select class="form-control dropdown dropdown__header" ng-options="row.Id as row.Name for row in SubTypeOfWebsites" ng-model="Website.SubTypeOfWebsiteId">
+                                                    <option value=""> Chọn một loại </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                            <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <p class="HelperText___text">Chọn một cụ thể một thể loại phù hợp với nội dung của website.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid" ng-init="GetCategories()">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <div class="form-group--md">
+                                    <div>
+                                        <div class="dropdown dropdown--lg">
+                                            <div class="dropdown__label">
+                                                <span class="dropdown__label-text">Website thuộc lĩnh vực nào?</span>
+                                            </div>
+                                            <div>
+                                                <select class="form-control dropdown dropdown__header" ng-change="changeTypeOfCatefgory()" ng-options="row.Id as row.Name for row in Categories" ng-model="Website.TypeOfCategoryId">
+                                                    <option value=""> Chọn một lĩnh vực </option>
+                                                </select>
+                                            </div>
+                                        </div><div data-redux-field-error="niche"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                            <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <p class="HelperText___text">Chọn lĩnh vực phù hợp với nội dung của website đăng bán, để người mua có thể dễ dàng tìm kiếm website của bạn</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid" ng-show="SubCategories.length>0">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <div class="form-group--md">
+                                    <div class="dropdown dropdown--lg">
+                                        <div class="multi-select multi-select--lg multi-select--has-label">
+                                            <div class="multi-select__label">
+                                                <span class="multi-select__label-text">Chọn lĩnh vực con</span>
+                                            </div>
+                                            <div>
+                                                <select class="form-control dropdown dropdown__header" ng-options="row.Id as row.Name for row in SubCategories" ng-model="Website.SubTypeOfCategoryId">
+                                                    <option value=""> Chọn lĩnh vực </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                            <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <p class="HelperText___text">Chọn một cụ thể một lĩnh vực để phục vụ cho việc tìm kiếm sau này của người mua</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="grid">
+                            <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                                <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                    <div class="grid grid--bleed">
+                                        <div class="grid__col-md-6">
+                                            <div class="form-group--md">
+                                                <div>
+                                                    <label class="checkbox checkbox--lg">
+                                                        <div class="checkbox__field"><input type="checkbox" class="checkbox__input" name="uniqueContent" value="true">
+                                                        <i class="icon checkbox__icon icon--tick"></i></div><span class="checkbox__label">Is your content unique?</span>
+                                                    </label><div data-redux-field-error="uniqueContent"></div>
+                                                </div>
+                                            </div>
+                                        </div><div class="grid__col-md-6"><div class="form-group--md"><div><label class="checkbox checkbox--lg"><div class="checkbox__field"><input type="checkbox" class="checkbox__input" name="uniqueDesign" value="true"><i class="icon checkbox__icon icon--tick"></i></div><span class="checkbox__label">Is your design unique?</span></label><div data-redux-field-error="uniqueDesign"></div></div></div></div>
+                                    </div>
+                                </div>
+                            </div><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5"><div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"><p class="HelperText___text">Does the website contain information that is unique to your site. Is the design custom for your website? (e.g. Information and design is exclusive to your website only)</p></div></div>
+                        </div>*@
+                    <div class="grid">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <h2 class="heading heading--lg">Traffic</h2><hr class="horizontal-rule">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <div class="form-group--md">
+                                    <p class="text text--semibold text--block text--lg">Website có thông kê lượng truy cập?</p>
+                                    <div>
+                                        <label class="radio radio--md" ng-click="Website.HasTraffic=true">
+                                            <div class="radio__field">
+                                                <input type="radio" class="radio__input" name="hasTraffic" value="true" ng-checked="Website.HasTraffic">
+                                                <span class="radio__check"></span>
+                                            </div><span class="radio__label">Yes</span>
+                                        </label>
+                                        <label class="radio radio--md" ng-click="Website.HasTraffic=false">
+                                            <div class="radio__field">
+                                                <input type="radio" class="radio__input" name="hasTraffic" value="false" ng-checked="!Website.HasTraffic">
+                                                <span class="radio__check"></span>
+                                            </div><span class="radio__label">No</span>
+                                        </label>
+                                        <div data-redux-field-error="hasTraffic"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                            <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <p class="HelperText___text">Sử dụng Google Analytics để lấy thông tin traffic, nhằm mục đích cung cấp cho người mua, Khi website có thông tin này sẽ tăng cao độ tin cậy của website</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid" ng-show="Website.HasTraffic">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <div class="form-group--md">
+                                    <p class="text text--semibold text--block text--lg">Google Analytics</p>
+                                    <div class="ListingBuilder___labeledElementWrapper">
+                                        <button type="button" class="button button--md" id="auth-button">Verify Google Analytics</button>
+                                    </div><div class="VerificationState___wrapper"></div>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                                <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                    <p class="HelperText___text">Sites with verified Google Analytics are shown to receive <strong>1.5x more bids!</strong></p>
+                                </div>
+                            </div>*@
+                    </div>
+                    <div class="grid">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <h2 class="heading heading--lg">Doanh thu</h2><hr class="horizontal-rule">
+                            </div>
+                        </div>
+                    </div><div class="grid">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <div class="form-group--md">
+                                    <p class="text text--semibold text--block text--lg">Website của bạn đã tạo ra doanh thu?</p><div>
+                                        <label class="radio radio--md" ng-click="Website.HasRevenue=true">
+                                            <div class="radio__field">
+                                                <input type="radio" class="radio__input" name="hasRevenue" value="true" ng-checked="Website.HasRevenue">
+                                                <span class="radio__check"></span>
+                                            </div><span class="radio__label">Yes</span>
+                                        </label>
+                                        <label class="radio radio--md" ng-click="Website.HasRevenue=false">
+                                            <div class="radio__field">
+                                                <input type="radio" class="radio__input" name="hasRevenue" value="false" ng-checked="!Website.HasRevenue"><span class="radio__check"></span>
+                                            </div>
+                                            <span class="radio__label">No</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div ng-show="Website.HasRevenue">
+                        <div>
+                            <div class="grid">
+                                <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                                    <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                        <div class="grid grid--align-top">
+                                            <div class="grid__col-sm-6 grid__col--bleed">
+                                                <div class="form-group--md">
+                                                    <div>
+                                                        <label class="prefixed-input__label">
+                                                            <span class="prefixed-input__label-text">Doanh thu hàng tháng</span>
+                                                            <div class="prefixed-input prefixed-input--lg">
+                                                                <span class="prefixed-input__prefix">$</span><label class="input__label">
+                                                                    <input type="number" class="input prefixed-input__input" value="0" name="averageMonthlyRevenue" ng-model="Website.AvgRevenue">
+                                                                </label>
+                                                            </div>
+                                                        </label><div data-redux-field-error="averageMonthlyRevenue"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="grid__col-sm-6 grid__col--bleed">
+                                                <div class="ListingBuilder___inlineElement">
+                                                    <div class="form-group--md">
+                                                        <div>
+                                                            <label class="prefixed-input__label">
+                                                                <span class="prefixed-input__label-text">Chi phí hàng tháng</span>
+                                                                <div class="prefixed-input prefixed-input--lg">
+                                                                    <span class="prefixed-input__prefix">$</span><label class="input__label">
+                                                                        <input type="number" class="input prefixed-input__input" value="0" name="averageMonthlyExpenses" ng-model="Website.AvgExpense">
+                                                                    </label>
+                                                                </div>
+                                                            </label>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                                    <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                        <p class="HelperText___text">Nhập doanh thu và chi phí trung bình hàng tháng (USD).<br></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div>
+                            <div class="grid">
+                                <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                                    <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                        <div class="form-group--md">
+                                            <p class="text text--semibold text--block text--lg">Google Adsense</p>
+                                            <div class="ListingBuilder___labeledElementWrapper">
+                                                <button type="button" class="button button--md">Verify Google Adsense</button>
+                                            </div>
+                                            <div class="VerificationState___wrapper"></div>
+                                        </div>
+                                    </div>
+                                </div><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                                    <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                        <p class="HelperText___text"> Khi website có thông tin thu nhập từ Google Adsense, sẽ tăng khả năng mua lên gấp 3 lần các website khác,<br> Chúng tôi sẽ không lưu giữ thông tin đăng nhập.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="grid__col-sm-3">
+                            <button type="submit" class="button button--lg button--website button--block" ng-click="UpdateBaseInfo()">Tiếp tục</button>
+                        </div>
+                    </div>
+                    <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                        <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"></div>
+                    </div>
+                </form>
+
+                <form ng-show="Website.Step == 2">
+                    <div class="grid">
+                        <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                            <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                <h2 class="heading heading--lg">Mô tả chi tiết website</h2>
+                                <hr class="horizontal-rule">
+                            </div>
+                        </div>
+                    </div><div>
+                        <div class="grid">
+                            <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                                <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                    <div class="form-group--md">
+                                        <div>
+                                            <label class="input__label">
+                                                <span class="input__label-text">Tiêu đề</span>
+                                                <input class="input input--lg" value=" manage hotels online  website" name="tagline" ng-model="Website.Title">
+                                            </label>
+                                            <div data-redux-field-error="tagline"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                                <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                    <p class="HelperText___text">
+                                        Nhập tiêu đề cho bản tin rao bán website này trên hệ thống Tikasa.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                                <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                    <div class="form-group--md">
+                                        <div>
+                                            <label class="textarea__label">
+                                                <span class="textarea__label-text">Mô tả ngắn</span>
+                                                <textarea name="summary" class="textarea ListingBuilder___textarea textarea--lg" ng-model="Website.Summary"></textarea>
+                                            </label>
+                                            <p class="text text--lg text--color-soot">150 kí tự</p>
+                                            <div data-redux-field-error="summary"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                                <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                    <p class="HelperText___text">Mô tả ngắn gọn về nội dung của website.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                                <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                    <div class="form-group--md">
+                                        <div>
+                                            <div>
+                                                <div class="wysiwyg__label">
+                                                    <span class="wysiwyg__label-text">Mô tả </span>
+                                                </div>
+                                                <div class="wysiwyg">
+                                                    <textarea data-ck-editor ng-model="Website.Note"></textarea>
+                                                </div>
+                                            </div><div data-redux-field-error="description"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                                <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                    <p class="HelperText___text">Để người mua có nhiều thông tin nắm bắt về website của bạn hơn, bạn nên mô tả chi tiết nội dung <br>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid">
+                            <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                                <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                    <h2 class="heading heading--lg">Phương thức bán ?</h2>
+                                    <hr class="horizontal-rule">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid">
+                            <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                                <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                    <div class="form-group--md">
+                                        <div>
+                                            <label class="radio radio--lg" ng-click="Website.IsAuction=true">
+                                                <div class="radio__field">
+                                                    <input type="radio" class="radio__input" name="saleMethod" value="auction" ng-checked="Website.IsAuction">
+                                                    <span class="radio__check"></span>
+                                                </div><span class="radio__label">Đấu giá</span>
+                                            </label>
+                                            <label class="radio radio--lg" ng-click="Website.IsAuction=false">
+                                                <div class="radio__field">
+                                                    <input type="radio" class="radio__input" name="saleMethod" value="classified" ng-checked="!Website.IsAuction">
+                                                    <span class="radio__check"></span>
+                                                </div><span class="radio__label">Bán trực tiếp</span>
+                                            </label>
+                                            <div data-redux-field-error="saleMethod"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                                <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                    <p class="HelperText___text">Chọn hình thức mà bạn muốn bán</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-hide="!Website.IsAuction">
+
+                            <div class="grid">
+                                <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                                    <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                        <h2 class="heading heading--lg">Cài đặt giá mà bạn muốn bán</h2><hr class="horizontal-rule">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid">
+                                <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                                    <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                        <div class="form-group--sm">
+                                            <div class="grid grid--align-top">
+                                                <div class="grid__col-sm-6 grid__col--bleed">
+                                                    <div>
+                                                        <label class="prefixed-input__label">
+                                                            <span class="prefixed-input__label-text">Giá khởi điểm</span>
+                                                            <div class="prefixed-input prefixed-input--lg ">
+                                                                <span class="prefixed-input__prefix">$</span>
+                                                                <label class="input__label">
+                                                                    <input type="number" class="input prefixed-input__input" value="" name="startingPrice" ng-model="Website.StartingPrice">
+                                                                </label>
+                                                            </div>
+                                                        </label>
+                                                        <div data-redux-field-error="startingPrice" data-error-message="Starting Price is required">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="grid__col-sm-6 grid__col--bleed">
+                                                    <div class="ListingBuilder___inlineElement">
+                                                        <div>
+                                                            <label class="prefixed-input__label">
+                                                                <span class="prefixed-input__label-text">Giá tối thiểu</span>
+                                                                <div class="prefixed-input prefixed-input--lg">
+                                                                    <span class="prefixed-input__prefix">$</span><label class="input__label">
+                                                                        <input type="number" class="input prefixed-input__input" value="" name="reservePrice" ng-model="Website.Reserve">
+                                                                    </label>
+                                                                </div>
+                                                            </label><div data-redux-field-error="reservePrice"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                                    <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                        <p class="HelperText___text"><strong> Giá khởi điểm</strong> là giá nhỏ nhất mà người mua có thể đặt .<br><strong>Giá tối thiếu</strong> là giá nhỏ nhất mà người bán chấp nhận<br></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid">
+                                <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                                    <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                        <div class="form-group--sm">
+                                            <div class="grid grid--align-top">
+                                                <div class="grid__col-sm-6 grid__col--bleed">
+                                                    <div>
+                                                        <label class="prefixed-input__label">
+                                                            <span class="prefixed-input__label-text">Giá mua ngay (không bắt buộc)</span>
+                                                            <div class="prefixed-input prefixed-input--lg">
+                                                                <span class="prefixed-input__prefix">$</span><label class="input__label">
+                                                                    <input type="number" class="input prefixed-input__input" name="buyItNowPrice" ng-model="Website.BuyItNowPrice">
+                                                                </label>
+                                                            </div>
+                                                        </label>
+                                                        <div data-redux-field-error="buyItNowPrice"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                                    <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                        <p class="HelperText___text"><strong>Giá mua ngay</strong> là giá mà người mua muốn mua ngay lập tức, bạn phải chấp nhận bán khi người mua đặt giá này</p>
+                                    </div>
+                                </div>
+                            </div><div class="grid">
+                                <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                                    <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                        <div class="form-group--md">
+                                            <div>
+                                                <label class="checkbox checkbox--lg">
+                                                    <div class="checkbox__field">
+                                                        <input type="checkbox" class="checkbox__input" name="showReserve" value="true">
+                                                        <i class="icon checkbox__icon icon--tick"></i>
+                                                    </div><span class="checkbox__label">Hiển thị giá tối thiểu</span>
+                                                </label><div data-redux-field-error="showReserve"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                                    <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                        <p class="HelperText___text">Giá tối thiểu sẽ được hiển thị trong danh sách đấu giá.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-hide="Website.IsAuction">
+
+                            <div class="grid">
+                                <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                                    <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                        <h2 class="heading heading--lg">Cài đặt giá mà bạn muốn bán?</h2><hr class="horizontal-rule">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid">
+                                <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                                    <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                        <div class="form-group--sm">
+                                            <div class="grid grid--align-top">
+                                                <div class="grid__col-sm-6 grid__col--bleed">
+                                                    <div>
+                                                        <label class="prefixed-input__label">
+                                                            <span class="prefixed-input__label-text">Giá khởi điểm</span>
+                                                            <div class="prefixed-input prefixed-input--lg">
+                                                                <span class="prefixed-input__prefix">$</span>
+                                                                <label class="input__label">
+                                                                    <input type="number" class="input prefixed-input__input" name="minimumOffer" ng-model="Website.MinimumPrice">
+                                                                </label>
+                                                            </div>
+                                                        </label>
+                                                        <div data-redux-field-error="minimumOffer"></div>
+                                                    </div>
+                                                </div><div class="grid__col-sm-6 grid__col--bleed">
+                                                    <div class="ListingBuilder___inlineElement">
+                                                        <div>
+                                                            <label class="prefixed-input__label">
+                                                                <span class="prefixed-input__label-text">Giá mua ngay(không bắt buộc)</span>
+                                                                <div class="prefixed-input prefixed-input--lg">
+                                                                    <span class="prefixed-input__prefix">$</span>
+                                                                    <label class="input__label"><input type="number" class="input prefixed-input__input" value="" name="buyItNowPrice" ng-model="Website.BuyItNowPrice"></label>
+                                                                </div>
+                                                            </label>
+                                                            <div data-redux-field-error="buyItNowPrice"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-5">
+                                    <div class="break-point break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large">
+                                        <p class="HelperText___text"><strong> Giá khởi điểm</strong> là giá nhỏ nhất mà người mua có thể đặt<br><br><strong>Giá mua ngay</strong> là giá mà người mua muốn mua ngay lập tức, bạn phải chấp nhận bán khi người mua đặt giá này</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="grid__col-sm-3">
+                            <button type="submit" class="button button--lg button--website button--block" ng-click="UpdateMoreInfo()">Lưu nháp</button>
+                        </div>
+                        <div class="grid__col-sm-3">
+                            <button type="submit" class="button button--lg button--primary button--block " ng-click="PublicWebsite()">Đăng bán</button>
+                        </div>
+                    </div>
+                    <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                        <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"></div>
+                    </div>
+                </form>
+
+                <div class="grid" ng-show="Website.Step==3">
+                    <div class="grid">
+                        <div class="grid__col-12 grid__col--bleed-y">
+                            <div class="flash flash--success">
+                                <div class="flash__overflow">
+                                    <p class="text text--lg text--semibold text--padding-md">Đăng bán thành công! </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="grid__col-sm-3">
+                            <button type="submit" class="button button--lg button--website button--block" ng-click="UpdateMoreInfo()">Xem tin đăng</button>
+                        </div>
+                        <div class="grid__col-sm-3">
+                            <button type="submit" class="button button--lg button--primary button--block ">Về trang chủ</button>
+                        </div>
+                    </div>
+                    <div class="grid__col-lg-6 grid__col--bleed-y grid__col-md-7">
+                        <div class="break-point break-point--show-on-base break-point--show-on-small break-point--show-on-medium break-point--show-on-large break-point--show-on-extra-large"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @*<script>
+
+            // Replace with your client ID from the developer console.
+            var CLIENT_ID = '417254395222-98f1k06rrg29uo7kp09jhrmi04fsqs0f.apps.googleusercontent.com';
+
+            // Set authorized scope.
+            var SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
+
+
+            function authorize(event) {
+                // Handles the authorization flow.
+                // `immediate` should be false when invoked from the button click.
+                var useImmdiate = event ? false : true;
+                var authData = {
+                    client_id: CLIENT_ID,
+                    scope: SCOPES,
+                    immediate: useImmdiate
+                };
+
+                gapi.auth.authorize(authData, function (response) {
+                    var authButton = document.getElementById('auth-button');
+                    if (response.error) {
+                        authButton.hidden = false;
+                    }
+                    else {
+                        authButton.hidden = true;
+                        queryAccounts();
+                    }
+                });
+            }
+
+
+            function queryAccounts() {
+                // Load the Google Analytics client library.
+                gapi.client.load('analytics', 'v3').then(function () {
+
+                    // Get a list of all Google Analytics accounts for this user
+                    gapi.client.analytics.management.accounts.list().then(handleAccounts);
+                });
+            }
+
+
+            function handleAccounts(response) {
+                // Handles the response from the accounts list method.
+                if (response.result.items && response.result.items.length) {
+                    // Get the first Google Analytics account.
+                    var firstAccountId = response.result.items[0].id;
+
+                    // Query for properties.
+                    queryProperties(firstAccountId);
+                } else {
+                    console.log('No accounts found for this user.');
+                }
+            }
+
+
+            function queryProperties(accountId) {
+                // Get a list of all the properties for the account.
+                gapi.client.analytics.management.webproperties.list(
+                    { 'accountId': accountId })
+                    .then(handleProperties)
+                    .then(null, function (err) {
+                        // Log any errors.
+                        console.log(err);
+                    });
+            }
+
+
+            function handleProperties(response) {
+                // Handles the response from the webproperties list method.
+                if (response.result.items && response.result.items.length) {
+
+                    // Get the first Google Analytics account
+                    var firstAccountId = response.result.items[0].accountId;
+
+                    // Get the first property ID
+                    var firstPropertyId = response.result.items[0].id;
+
+                    // Query for Views (Profiles).
+                    queryProfiles(firstAccountId, firstPropertyId);
+                } else {
+                    console.log('No properties found for this user.');
+                }
+            }
+
+
+            function queryProfiles(accountId, propertyId) {
+                // Get a list of all Views (Profiles) for the first property
+                // of the first Account.
+                gapi.client.analytics.management.profiles.list({
+                    'accountId': accountId,
+                    'webPropertyId': propertyId
+                })
+                    .then(handleProfiles)
+                    .then(null, function (err) {
+                        // Log any errors.
+                        console.log(err);
+                    });
+            }
+
+
+            function handleProfiles(response) {
+                // Handles the response from the profiles list method.
+                if (response.result.items && response.result.items.length) {
+                    // Get the first View (Profile) ID.
+                    var firstProfileId = response.result.items[0].id;
+
+                    // Query the Core Reporting API.
+                    queryCoreReportingApi(firstProfileId);
+                } else {
+                    console.log('No views (profiles) found for this user.');
+                }
+            }
+
+
+            function queryCoreReportingApi(profileId) {
+                // Query the Core Reporting API for the number sessions for
+                // the past seven days.
+                gapi.client.analytics.data.ga.get({
+                    'ids': 'ga:' + profileId,
+                    'start-date': '7daysAgo',
+                    'end-date': 'today',
+                    'metrics': 'ga:sessions'
+                })
+                    .then(function (response) {
+                        var formattedJson = JSON.stringify(response.result, null, 2);
+                        document.getElementById('query-output').value = formattedJson;
+                    })
+                    .then(null, function (err) {
+                        // Log any errors.
+                        console.log(err);
+                    });
+            }
+
+            // Add an event listener to the 'auth-button'.
+            document.getElementById('auth-button').addEventListener('click', authorize);
+        </script>*@
+
+    @*<script src="https://apis.google.com/js/client.js?onload=authorize"></script>*@
+    <script src="~/Scripts/App/website.js"></script>
+    <script src="~/Plugin/ckeditor/ckeditor.js"></script>
+}
+
+
+
+
+
