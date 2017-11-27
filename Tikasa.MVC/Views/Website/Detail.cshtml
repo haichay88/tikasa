@@ -3,7 +3,10 @@
 }
 <link href="~/Content/fpa.css" rel="stylesheet" />
 
-<div class="Section ">
+<div class="Section " ng-controller="WebsiteController" ng-init="ShowDetail()">
+    <input type="hidden" value="@ViewBag.WebsiteId" id="WebsiteId" />
+    <input type="hidden" value="{{Website.GAPropertyId}}" id="GAPropertyId" />
+    <input type="hidden" value="{{Website.GAAccountId}}" id="GAAccountId" />
     <div class="Section-body Section-body--flexDesktop Section-body--wide">
         <div class="Listing-body">
 
@@ -13,8 +16,8 @@
                 <div class="Panel-section ListingHero-property">
 
                     <h1 class="ListingHero-propertyIdentifierListingHero-propertyIdentifier--website">
-                        <a href="https://www.commoncorelessonplantemplate.net/" target="_blank" class="ListingHero-propertyIdentifierLink">
-                            CommonCoreLessonPlanTemplate.net<i class="ListingHero-propertyIdentifierLinkIcon"></i>
+                        <a href="http://{{Website.Name}}/" target="_blank" class="ListingHero-propertyIdentifierLink">
+                            {{Website.Name}}<i class="ListingHero-propertyIdentifierLinkIcon"></i>
                         </a>
                     </h1>
 
@@ -35,12 +38,9 @@
 
                 <div class="Panel-section ListingHero-footer">
                     <div class="ListingHero-supplementaryLabels">
-                        <span class="ListingHero-supplementaryLabel
-        ListingHero-supplementaryLabel--premium
-      ">
+                        <span class="ListingHero-supplementaryLabel ListingHero-supplementaryLabel--premium">
 
-                            <i class="ListingHero-supplementaryLabelIcon
-          ListingHero-supplementaryLabelIcon--premium"></i>
+                            <i class="ListingHero-supplementaryLabelIcon ListingHero-supplementaryLabelIcon--premium"></i>
                             Premium
                             Public Auction
 
@@ -146,7 +146,7 @@
                     </li>
 
 
-                    <li><a href="#listing-sellers-notes">Seller's Notes</a></li>
+                    <li><a href="#listing-sellers-notes">Mô tả </a></li>
 
                     <li>
                         <a href="#listing-attachments">
@@ -172,11 +172,11 @@
                 <div class="Panel-section Panel-section--withEdit">
 
                     <h4 class="Listing-listingTitle">
-                        3 y/o Autopilot making $87 p/mo on 3,242 PageViews &amp; Unique Visits 1,256 Uniques
+                       {{Website.Title}}
                     </h4>
 
                     <p class="Listing-listingSummary">
-                        Currently making $85-$100 per month (Adsense) -Made $320 per month when regularly updated -Under-Optimized - Not updated in 18 Months - Built 2014
+                        {{Website.Summary}}
                     </p>
 
                 </div>
@@ -274,11 +274,7 @@
 
                             </h4>
                             <div class="Snapshots">
-                                <div class="
-    Snapshot
-    Snapshot--withGraph
-
-  ">
+                                <div class="Snapshot Snapshot--withGraph">
                                     <span class="Snapshot-inspect" title="Green figures mean this information has been <strong>verified</strong> through Google Analytics. This figure is a 3 month average based on the data provided." rel="tooltip">
                                         <div class="Snapshot-label">
                                             Page Views
@@ -922,154 +918,9 @@
                 <div class="Panel Panel--minimal">
                     <a class="FixedNav-jumpPoint" id="listing-sellers-notes"></a>
                     <div class="Panel-section">
-                        <h4 class="Panel-sectionTitle">Seller's Notes</h4>
-                        <div class="Listing-siteDescription">
-                            <p>CCPLT is a website I purchased over 3 years ago and have done very little with. It has &nbsp;consistently provided me with monthly income and at its peak produced $320 per week. <br> <br> Video Walkthrough: <a href="https://www.useloom.com/share/581fbc921281415a9a99ff38526e63bd" target="_blank" rel="nofollow external">https://www.useloom.com/share/581fbc921281415a9a99ff38526e63bd</a></p>
-                            <p>This website has been one of my favourite buys mainly because I have literally done nothing to in in over 18 months.&nbsp;</p>
-                            <p>It provides Common Core Lesson Plan Templates to teachers and users in the United States. &nbsp;These templates are free of charge and the income is made through adsense.&nbsp;</p>
-                            <p>It brings in revenue day in day out and is very easy to upkeep.&nbsp;</p>
-                            <p>Content is really easy to get and readily avaliable. I purchased a few articles for under $10 getting teachers to write the lesson plans.&nbsp;</p>
-                            <p>I have full keyword research and competitor research to get you a head start in building the website back up to the $300 a month mark.<strong><br> <br> What is included in the sale?</strong></p>
-                            <p>All website files and data on https://www.commoncorelessonplantemplate.net/</p>
-                            <p><strong>What is required to keep the business operational?</strong></p>
-                            <p>Literally, just hosting. Full autopilot. Sit back and enjoy the income or make an effort to actually post an article. Either way this website will bring in regular income.<br> <br> That said, with a few strategic backlinks, some fresh content, a lead magnet and email capture this website could be generating $1000 + a month easy.&nbsp;</p>
-                            <p><strong>Why are you selling the business?</strong></p>
-                            <p>I run a digital marketing agency and just don't have the time to give this website the love it needs. It was awesome for the stage I was at when I bought it. Now its time to bid it farewell.&nbsp;</p>
-                            <p><strong>How does the business generate revenue?</strong></p>
-                            <p>Adsense. You. Literally. Do. Nothing. :)</p>
-                            <p><strong>Where does the traffic come from?</strong></p>
-                            <p>This website generates around 1000-2000 &nbsp;uniques &nbsp;a month. For how much the traffic is the website really generates a considerable amount of money.</p>
-                            <p>Most of the keywords are related to " free lesson plan templates" "free common core lesson plan templates"</p>
-                            <p><strong>Are there any expenses for the business? If so, what are they?</strong></p>
-                            <p>Just hosting. Nice quality host will cost you $6 a month.</p>
-                            <p><strong>What marketing initiatives have been used for this business?</strong></p>
-                            <p>All traffic is through organic SEO. High quality traffic that converts well in adsense</p>
-                            <p><strong>How can the future owner improve the business?</strong></p>
-                            <p>I would recommend focusing on 2 things:</p>
-                            <p>1. <strong>Adsense:&nbsp;</strong></p>
-                            <p>When this site was updated with new content regularly, it was bringing in a great income through Adsense. &nbsp;</p>
-                            <p>Per month when I actually posted a few articles we hit $320 usd.&nbsp;</p>
-                            <p>I believe if you just add a few articles you could quickly start climbing the rankings again.&nbsp;</p>
-                            <p>2. <strong>Sponsored Posts:</strong></p>
-                            <p>Since the site is an aged domain with great domain authority, there is also good potential to sell Sponsored posts to SEO agencies. &nbsp;I was approached through the contact form on the site, but never followed up. With a little proactive work, you could get paid for regular content on your site through sponsored posts.&nbsp;</p>
-                            <p>I would also recommend approaching businesses in the team building niche to sell sponsored posts/links or banner ads.&nbsp;</p>
-                            <p><strong>Where is the site hosted and will this need to change after purchase?</strong></p>
-                            <p>The website is on high quality hosting with with fastcomet. Happy to transfer the website free of charge to the new hosting account with the sale.&nbsp;</p>
-                            <p><strong>Are you willing to provide live revenue verification?</strong></p>
-                            <p>Yes, upon request from serious buyers and/or Flippa marketplace integrity.</p>
-                            <p><strong>Are there any geographical limitations to the potential buyer of the business?</strong></p>
-                            <p>No, there are no geographic limitations.</p>
-                            <p><strong>Do you use, or have you experimented with, social media marketing?</strong></p>
-                            <p>No, I have not.</p>
-                            <p><strong>Have you done any Search Engine Optimization?</strong></p>
-                            <p>Yes my only strategy has been SEO.&nbsp;</p>
-                            <p><strong>Have you granted Google Analytics access to the</strong> <strong>google-analytics@flippa.com</strong> <strong>email?</strong></p>
-                            <p>Yes, I have.</p>
-                            <p><strong>What are the primary traffic sources of the site? (Choose the top 2)</strong></p>
-                            <p>Organic</p>
-                            <p><strong>Has the site ever received any search engine penalties (manual or algorithmic)?</strong></p>
-                            <p>No, to my knowledge my site has never received any search engine penalties.</p>
-                            <p>There was a gradual decrease in traffic mid 2016 because the website was not being updated and my competition started outranking me.&nbsp;</p>
-                            <p>In June 2017 the website analytics show a drop in traffic. This was because of a cloudflare problem with the SSL cert. <br> <br> The website was basically down for most of the month and I did not realise it. (probably cause I check it once a month really..) We fixed the problem on June 22nd.</p>
-                            <p>I have always had google search console on it and there have been no manual penalty messages been sent to me.</p>
-                            <p><strong>SELLER INTERVIEW</strong></p>
-                            <p><strong>How is your business monetized?</strong></p>
-                            <p>Advertising</p>
-                            <p><strong>Please describe your business model in 1 to 5 sentences</strong></p>
-                            <p>CCPLT provides Common Core Lesson Plan Templates to teachers and users in the United States. &nbsp;These templates are free of charge and the income is made through Adsense.&nbsp;<br> <br> It brings in revenue day in day out and is very easy to upkeep. By easy I mean I have not touched it for 18 months...&nbsp;<br> <br> Content is really easy to get and readily available. I purchased a few articles for under $10 getting teachers to write the lesson plans.</p>
-                            <p><strong>Are you the original owner of the business?</strong></p>
-                            <p>Yes</p>
-                            <p><strong>Which platform does the website use?</strong></p>
-                            <p>Wordpress</p>
-                            <p><strong>Where is the site hosted and will this need to change after purchase?</strong></p>
-                            <p>The website is on high quality hosting with fastcomet. ($10 a month) Happy to transfer the website free of charge to the new hosting account with the sale.</p>
-                            <p><strong>Why are you selling the business?</strong></p>
-                            <p>I run a digital marketing agency and just don't have the time to give this website the love it needs. It was awesome for the stage I was at when I bought it. Now its time to bid it farewell.&nbsp;</p>
-                            <p><strong>Can the website’s revenue be accurately tracked back to the website, i.e. do payment descriptions/details include the website’s name or reference to the website’s products?</strong></p>
-                            <p>Yes, revenue can be accurately tracked back to the business.</p>
-                            <p><strong>Is the website’s revenue kept separate from other business and personal accounts?</strong></p>
-                            <p>Yes, completely separate.</p>
-                            <p><strong>If necessary, do you have tax returns available to support your revenue claims?</strong></p>
-                            <p>No, I do not have tax returns available at this time.</p>
-                            <p><strong>Are you willing to provide live revenue verification?</strong></p>
-                            <p>Yes, upon request from serious buyers and/or Flippa marketplace integrity.</p>
-                            <p><strong>What are the main expenses of the business? Please list any recurring expenses that account for more than 1% of overall revenue</strong></p>
-                            <p>Hosting. Which is $10 a month if you don't have an existing hosting account.</p>
-                            <p><strong>Please list all domain names you are including in the sale</strong></p>
-                            <p><a href="https://www.commoncorelessonplantemplate.net/" target="_blank" rel="nofollow external">https://www.commoncorelessonplantemplate.net/</a></p>
-                            <p><strong>Are you including any social media accounts in the sale?</strong></p>
-                            <p>No</p>
-                            <p><strong>Are there any email lists included in the sale?</strong></p>
-                            <p>No</p>
-                            <p><strong>Is there any intellectual property included in the sale (patents, trademarks, etc.)?</strong></p>
-                            <p>No</p>
-                            <p><strong>Are you including other assets in the sale that you think we should know about?</strong></p>
-                            <p>No</p>
-                            <p><strong>Are you selling the assets of the business (asset sale) or the company (stock sale)?</strong></p>
-                            <p>Not sure.</p>
-                            <p><strong>What are the primary traffic sources of the site? (Choose the top 2)</strong></p>
-                            <ul>
-                                <li>Organic</li>
-                                <li>Referral</li>
-                            </ul>
-                            <p><strong>Why do you think the site's top traffic sources are the the ones you chose above?</strong></p>
-                            <p>Due to looking at Google Analytics</p>
-                            <p><strong>Do you use, or have you experimented with, social media marketing?</strong></p>
-                            <p>Yes, I have in the past but not currently.</p>
-                            <p><strong>Have you done any Search Engine Optimization?</strong></p>
-                            <p>Yes, I have done substantial SEO.</p>
-                            <p><strong>Please provide a brief overview of the SEO you have performed on this site</strong></p>
-                            <ul>
-                                <li>Keyword research and competitor research.&nbsp;</li>
-                                <li>On page optimisation&nbsp;</li>
-                                <li>2nd tier Web 2.0 building&nbsp;</li>
-                                <li>No grey hat work.</li>
-                            </ul>
-                            <p><strong>Has the site ever received any search engine penalties (manual or algorithmic)?</strong></p>
-                            <p>No, to my knowledge my site has never received any search engine penalties.</p>
-                            <p><strong>Do you or have you ever purchased traffic?</strong></p>
-                            <p>No, I have never purchased traffic.</p>
-                            <p><strong>Do you use, or have you experimented with direct / display advertising?</strong></p>
-                            <p>No, I have not.</p>
-                            <p><strong>Have you experimented with any other sales / marketing initiatives?</strong></p>
-                            <p>Yes</p>
-                            <p><strong>Please provide a brief description of these additional sales / marketing initiatives</strong></p>
-                            <p>I run a digital marketing agency and understand website sales and online marketing quiet well.</p>
-                            <p><strong>Do you have employees or contracts with freelancers?</strong></p>
-                            <p>No</p>
-                            <p><strong>How is the content of your website produced? Provide a step-by-step breakdown</strong></p>
-                            <p>I got content from upwork. After trying to find the writers it seems they are no longer responsive. It would be very easy to find writers for this website. Any Common Core teacher would be able to create plans.</p>
-                            <p><strong>Task 1 -&nbsp;</strong>Website Owner<br><strong>Description -&nbsp;</strong>Overseeing the website<br><strong>Who -&nbsp;</strong>Owner<br><strong>Hours per week -&nbsp;</strong>0<br><strong>How may people perform this task? -&nbsp;</strong>1</p>
-                            <p><strong>Does the owner need specific skillsets in order to successfully operate the site?</strong></p>
-                            <p>None at all. Buy it and do nothing if you would like. It would still bring in revenue.&nbsp;<br> <br> It could easily be brought back to life with a bit of content.</p>
-                            <p><strong>Do you and/or any employees or freelancers provide customer support?</strong></p>
-                            <p>No</p>
-                            <p><strong>Please identify and briefly describe your main competitors (1-3 is fine)</strong></p>
-                            <ul>
-                                <li><a href="http://www.teacherplanet.com/" target="_blank" rel="nofollow external">http://www.teacherplanet.com/</a>&nbsp;Large resource for all teachers (one of our biggest referrers as well)&nbsp;</li>
-                                <li><a href="http://www.class-templates.com/Provides" target="_blank" rel="nofollow external">http://www.class-templates.com/Provides</a>&nbsp;free templates&nbsp;</li>
-                                <li><a href="http://www.k12reader.com/" target="_blank" rel="nofollow external">http://www.k12reader.com/</a>&nbsp;Free templates&nbsp;</li>
-                            </ul>
-                            <p><strong>What makes your website better than its competition?</strong></p>
-                            <p>This website is more niche than all others. Most provide templates for all types of lessons.&nbsp;<br> <br> We provide it for only common core lessons. Hence why the SEO can outrank these large DA websites.</p>
-                            <p><strong>Which ad networks does the website utilize?</strong></p>
-                            <p>AdSense</p>
-                            <p><strong>Are all ad networks transferable to the new owner?</strong></p>
-                            <p>Yes</p>
-                            <p><strong>Does your website utilize direct advertising?</strong></p>
-                            <p>No</p>
-                            <p><strong>Please provide a brief overview of each related site that you own below</strong></p>
-                            <p>Only&nbsp;<a href="https://www.commoncorelessonplantemplate.net/" target="_blank" rel="nofollow external">https://www.commoncorelessonplantemplate.net/</a>&nbsp;is for sale</p>
-                            <p><strong>Are you willing to sign a 3-year non-compete contract in the industry that the website operates in?</strong></p>
-                            <p>No, I am not.</p>
-                            <p><strong>If you answered "No" to the question above, please describe why.</strong></p>
-                            <p>I don't think this is applicable to this website. I have other websites in the education niche but are not directed at this niche.</p>
-                            <p><strong>Will you provide 1-3 months of post-sale support &amp; training, in order to ensure that the buyer is able to fully take over the business and its operations?</strong></p>
-                            <p>Yes</p>
-                            <p><strong>What are the primary growth opportunities for the business going forward?</strong></p>
-                            <p>DONT BE LAZY LIKE ME!&nbsp;<br> <br> I would recommend focusing on 2 things:&nbsp;<br> <br> <strong>1. AdSense:&nbsp;</strong><br> <br> When this site was updated with new content regularly, it was bringing in a great income through Adsense. &nbsp;&nbsp;<br> <br> Per month when I actually posted a few articles we hit $320 usd.&nbsp;<br> <br> I believe if you just add a few articles you could quickly start climbing the rankings again.&nbsp;<br> <br> <strong>2. Sponsored Posts:&nbsp;</strong><br> <br> Since the site is an aged domain with great domain authority, there is also good potential to sell Sponsored posts to SEO agencies. &nbsp;I was approached through the contact form on the site, but never followed up. With a little proactive work, you could get paid for regular content on your site through sponsored posts.&nbsp;<br> <br> I would also recommend approaching businesses in the team building niche to sell sponsored posts/links or banner ads.</p>
-                            <p><strong>Are there any geographical limitations to the potential buyer of the business?</strong></p>
-                            <p>No, there are no geographic limitations.</p>
+                        <h4 class="Panel-sectionTitle">Mô tả</h4>
+                        <div class="Listing-siteDescription" ng-bind-html="Website.Note" >
+                       
                         </div>
                     </div>
                 </div>
@@ -1481,11 +1332,7 @@
                                 </a>
                             </div>
 
-                            <div title="7 days, 16 hours, 54 minutes, 24 seconds left" class="
-          ListingStatus-auctionTime
-          ListingStatus-auctionTime--bidBox
-          Text--right
-          Text--wsImportant">
+                            <div title="7 days, 16 hours, 54 minutes, 24 seconds left" class="ListingStatus-auctionTime ListingStatus-auctionTime--bidBox Text--right Text--wsImportant">
 
                                 <i class="ListingStatus-auctionTimeIcon"></i>
                                 8 days left
@@ -1805,8 +1652,48 @@
 
 </div>
 @section Scripts {
-    
+    <script>
+        (function (w, d, s, g, js, fs) {
+            g = w.gapi || (w.gapi = {}); g.analytics = { q: [], ready: function (f) { this.q.push(f); } };
+            js = d.createElement(s); fs = d.getElementsByTagName(s)[0];
+            js.src = 'https://apis.google.com/js/platform.js';
+            fs.parentNode.insertBefore(js, fs); js.onload = function () { g.load('analytics'); };
+        }(window, document, 'script'));
+</script>
+<script>
+    $(document).ready(function () {
+
+    });
+    // Replace with your client ID from the developer console.
+    var CLIENT_ID = '417254395222-98f1k06rrg29uo7kp09jhrmi04fsqs0f.apps.googleusercontent.com';
+
+    // Set authorized scope.
+    var SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
+
+    gapi.analytics.ready(function () {
+
+        /**
+         * Authorize the user immediately if the user has already granted access.
+         * If no access has been created, render an authorize button inside the
+         * element with the ID "embed-api-auth-container".
+         */
+        gapi.analytics.auth.authorize({
+            container: 'embed-api-auth-container',
+            clientid: CLIENT_ID
+        });
+
+
+        /**
+         * Create a ViewSelector for the first view to be rendered inside of an
+         * element with the id "view-selector-1-container".
+         */
+       
+       
+
+    });
+</script>
+
+
     <script src="~/Scripts/App/website.js"></script>
     
 }
-

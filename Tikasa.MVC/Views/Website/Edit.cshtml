@@ -815,7 +815,7 @@
     </div>
 </div>
 @section Scripts {
-    @*<script>
+    <script>
 
             // Replace with your client ID from the developer console.
             var CLIENT_ID = '417254395222-98f1k06rrg29uo7kp09jhrmi04fsqs0f.apps.googleusercontent.com';
@@ -833,7 +833,6 @@
                     scope: SCOPES,
                     immediate: useImmdiate
                 };
-
                 gapi.auth.authorize(authData, function (response) {
                     var authButton = document.getElementById('auth-button');
                     if (response.error) {
@@ -892,7 +891,7 @@
 
                     // Get the first property ID
                     var firstPropertyId = response.result.items[0].id;
-
+                    debugger
                     // Query for Views (Profiles).
                     queryProfiles(firstAccountId, firstPropertyId);
                 } else {
@@ -904,6 +903,7 @@
             function queryProfiles(accountId, propertyId) {
                 // Get a list of all Views (Profiles) for the first property
                 // of the first Account.
+               
                 gapi.client.analytics.management.profiles.list({
                     'accountId': accountId,
                     'webPropertyId': propertyId
@@ -921,7 +921,7 @@
                 if (response.result.items && response.result.items.length) {
                     // Get the first View (Profile) ID.
                     var firstProfileId = response.result.items[0].id;
-
+                    
                     // Query the Core Reporting API.
                     queryCoreReportingApi(firstProfileId);
                 } else {
@@ -933,6 +933,7 @@
             function queryCoreReportingApi(profileId) {
                 // Query the Core Reporting API for the number sessions for
                 // the past seven days.
+                debugger
                 gapi.client.analytics.data.ga.get({
                     'ids': 'ga:' + profileId,
                     'start-date': '7daysAgo',
@@ -941,6 +942,7 @@
                 })
                     .then(function (response) {
                         var formattedJson = JSON.stringify(response.result, null, 2);
+                        debugger
                         document.getElementById('query-output').value = formattedJson;
                     })
                     .then(null, function (err) {
@@ -951,9 +953,9 @@
 
             // Add an event listener to the 'auth-button'.
             document.getElementById('auth-button').addEventListener('click', authorize);
-        </script>*@
+        </script>
 
-    @*<script src="https://apis.google.com/js/client.js?onload=authorize"></script>*@
+    <script src="https://apis.google.com/js/client.js?onload=authorize"></script>
     <script src="~/Scripts/App/website.js"></script>
     <script src="~/Plugin/ckeditor/ckeditor.js"></script>
 }

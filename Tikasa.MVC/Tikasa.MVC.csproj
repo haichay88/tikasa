@@ -529,6 +529,7 @@
     <Content Include="Plugin\plupload\plupload.html5.js" />
     <Content Include="Plugin\plupload\plupload.js" />
     <Content Include="Plugin\plupload\plupload.silverlight.js" />
+    <Content Include="Scripts\angular-sanitize.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\App\appModule.js" />
     <Content Include="Scripts\App\website.js" />

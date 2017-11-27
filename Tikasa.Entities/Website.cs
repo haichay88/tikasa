@@ -23,6 +23,7 @@ namespace Tikasa.Entities
         public string Note { get; set; }
         public Nullable<int> TypeOfWebsiteId { get; set; }
         public Nullable<int> TypeOfCategoryId { get; set; }
+        public int Step { get; set; }
         public Nullable<decimal> NetProfit { get; set; }
         public int StatusId { get; set; }
         public bool IsCertificated { get; set; }
@@ -38,9 +39,10 @@ namespace Tikasa.Entities
         public Nullable<decimal> Reserve { get; set; }
         public Nullable<decimal> AvgRevenue { get; set; }
         public Nullable<decimal> AvgExpense { get; set; }
+        public string GAAccountId { get; set; }
+        public string GAPropertyId { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public System.DateTime ExpiredDate { get; set; }
-        public int Step { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual TypeOfWebsite TypeOfWebsite { get; set; }

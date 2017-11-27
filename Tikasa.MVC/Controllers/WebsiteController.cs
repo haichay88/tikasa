@@ -89,10 +89,10 @@ namespace Tikasa.MVC.Controllers
             return result.ToJsonResult(result.Data);
         }
 
-        [HttpGet]
-        public JsonResult GetWebsite(int Id)
+        [HttpPost]
+        public JsonResult GetWebsite(SearchModel model)
         {
-            var result = _Service.GetWebsite(Id);
+            var result = _Service.GetWebsite(model);
             return result.ToJsonResult(result.Data);
         }
         [HttpGet]

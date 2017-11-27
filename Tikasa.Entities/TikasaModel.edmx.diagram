@@ -14,11 +14,11 @@
         <AssociationConnector Association="tikasaModel.FK_Domain_User" />
         <EntityTypeShape EntityType="tikasaModel.Category" Width="1.5" PointX="3.75" PointY="14.125" />
         <EntityTypeShape EntityType="tikasaModel.TypeOfWebsite" Width="1.5" PointX="3.75" PointY="11.5" />
-        <EntityTypeShape EntityType="tikasaModel.Website" Width="1.5" PointX="6" PointY="7.875" />
+        <EntityTypeShape EntityType="tikasaModel.DefaultValue" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="tikasaModel.Website" Width="1.5" PointX="6" PointY="7.5" />
         <AssociationConnector Association="tikasaModel.FK_Website_Categories" />
         <AssociationConnector Association="tikasaModel.FK_Website_TypeOfWebsite" />
         <AssociationConnector Association="tikasaModel.FK_Website_User" />
-        <EntityTypeShape EntityType="tikasaModel.DefaultValue" Width="1.5" PointX="5.375" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

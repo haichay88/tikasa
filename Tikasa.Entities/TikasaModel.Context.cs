@@ -31,7 +31,7 @@ namespace Tikasa.Entities
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<TypeOfWebsite> TypeOfWebsites { get; set; }
-        public virtual DbSet<Website> Websites { get; set; }
         public virtual DbSet<DefaultValue> DefaultValues { get; set; }
+        public virtual DbSet<Website> Websites { get; set; }
     }
 }

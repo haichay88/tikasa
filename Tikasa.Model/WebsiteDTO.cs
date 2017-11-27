@@ -24,6 +24,8 @@ namespace Tikasa.Model
         public Nullable<int> TypeOfCategoryId { get; set; }
         public Nullable<decimal> NetProfit { get; set; }
         public int StatusId { get; set; }
+        public string GAAccountId { get; set; }
+        public string GAPropertyId { get; set; }
         public string Summary { get; set; }
         public Nullable<int> GoliveMonth { get; set; }
         public Nullable<int> GoliveYear { get; set; }

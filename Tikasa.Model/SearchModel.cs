@@ -11,6 +11,8 @@ namespace Tikasa.Model
         public SearchModel() {
             this.Page = new PagingModel();
         }
+        public int Id { get; set; }
+        public int UserId { get; set; }
         public string Keyword { get; set; }
         public PagingModel Page { get; set; }
 

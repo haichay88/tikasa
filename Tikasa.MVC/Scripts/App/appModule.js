@@ -1,6 +1,6 @@
 ﻿var app;
 (function () {
-    app = angular.module("FontEndModule", []);
+    app = angular.module("FontEndModule", ['ngSanitize']);
     app.directive('ngReallyClick', ['$modal',
     function ($modal) {
         var ModalInstanceCtrl = function ($scope, $modalInstance) {

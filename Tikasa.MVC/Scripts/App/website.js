@@ -1,11 +1,11 @@
 ﻿app.service("WebsiteService", function ($http) {
 
-    this.GetWebsite = function (val) {
+    this.GetWebsite = function (model) {
         var request = $http({
-            method: "GET",
-            url: "/Website/GetWebsite/" + val,
+            method: "POST",
+            url: "/Website/GetWebsite",
             contentType: "application/json; charset=UTF-8",
-           
+            data: model
         });
         return request;
     };
@@ -165,8 +165,11 @@ app.controller("WebsiteController", function ($scope, WebsiteService) {
     $scope.GetWebsite = function () {
         var webisteId = $("#WebsiteId").val();
         if (!webisteId) return;
+        var model = {
+            Id:webisteId
+        };
         CommonUtils.showWait(true);
-        var promiseGet = WebsiteService.GetWebsite(webisteId);
+        var promiseGet = WebsiteService.GetWebsite(model);
         promiseGet.then(function (pl) {
             if (!pl.data.IsError) {
                 $scope.Website = pl.data.Data;
@@ -179,6 +182,122 @@ app.controller("WebsiteController", function ($scope, WebsiteService) {
 
             });
     };
+
+
+    $scope.ShowDetail = function () {
+        var webisteId = $("#WebsiteId").val();
+        if (!webisteId) return;
+        var model = {
+            Id: webisteId
+        };
+        CommonUtils.showWait(true);
+        var promiseGet = WebsiteService.GetWebsite(model);
+        promiseGet.then(function (pl) {
+            if (!pl.data.IsError) {
+                $scope.Website = pl.data.Data;
+                authorize();
+            }
+            $scope.Message = pl.data.Message;
+            CommonUtils.showWait(false);
+        },
+            function (errorPl) {
+
+            });
+    };
+
+    $scope.GetGA = function (val) {
+       
+
+    };
+    function authorize(event) {
+        debugger
+        // Handles the authorization flow.
+        // `immediate` should be false when invoked from the button click.
+        var useImmdiate = event ? false : true;
+        var authData = {
+            client_id: CLIENT_ID,
+            scope: SCOPES,
+            immediate: useImmdiate
+        };
+        var report = new gapi.analytics.report.Data({
+            query: {
+                ids: 'ga:XXXX',
+                metrics: 'ga:sessions',
+                dimensions: 'ga:city'
+            }
+        });
+
+
+        //gapi.auth.authorize(authData, function (response) {
+        //    //var authButton = document.getElementById('auth-button');
+        //    if (response.error) {
+        //        // authButton.hidden = false;
+        //    }
+        //    else {
+        //        debugger
+              
+        //        queryProfiles($scope.Website.GAAccountId, $scope.Website.GAProfileId);
+
+        //    }
+        //});
+    }
+
+
+    function queryProfiles(accountId, propertyId) {
+        // Get a list of all Views (Profiles) for the first property
+        // of the first Account.
+
+        gapi.client.analytics.management.profiles.list({
+            'accountId': accountId,
+            'webPropertyId': propertyId
+        })
+            .then(handleProfiles)
+            .then(null, function (err) {
+                // Log any errors.
+                console.log(err);
+            });
+    }
+
+    function handleProfiles(response) {
+        // Handles the response from the profiles list method.
+        if (response.result.items && response.result.items.length) {
+            // Get the first View (Profile) ID.
+            var firstProfileId = response.result.items[0].id;
+
+            // Query the Core Reporting API.
+            queryCoreReportingApi(firstProfileId);
+        } else {
+            console.log('No views (profiles) found for this user.');
+        }
+    }
+
+    function queryCoreReportingApi(profileId) {
+        debugger
+        // Query the Core Reporting API for the number sessions for
+        // the past seven days.
+        gapi.client.analytics.data.ga.get({
+            'ids': 'ga:' + profileId,
+            'start-date': '30daysAgo',
+            'end-date': 'today',
+            'metrics': 'ga:users,ga:pageviews'
+        })
+            .then(function (response) {
+                debugger
+                $scope.GA = {
+                    Visits: response.result.rows[0][0],
+                    pageviews: response.result.rows[0][1]
+                }
+              
+            })
+            .then(null, function (err) {
+                // Log any errors.
+                console.log(err);
+            });
+    }
+
+
+
+
 
     $scope.GetCategories = function () {
         CommonUtils.showWait(true);
@@ -238,6 +357,7 @@ app.controller("WebsiteController", function ($scope, WebsiteService) {
     };
 
     $scope.cssStep = function (val) {
+        if (!$scope.Website) return;
         $scope.ClassStep = {
             Step0: undefined,
             Step1: undefined,

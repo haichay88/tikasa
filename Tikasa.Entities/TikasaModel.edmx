@@ -114,6 +114,8 @@
           <Property Name="Reserve" Type="decimal" Precision="18" Scale="0" />
           <Property Name="AvgRevenue" Type="decimal" Precision="18" Scale="0" />
           <Property Name="AvgExpense" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="GAAccountId" Type="nvarchar" MaxLength="100" />
+          <Property Name="GAPropertyId" Type="nvarchar" MaxLength="100" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="ExpiredDate" Type="datetime" Nullable="false" />
         </EntityType>
@@ -285,6 +287,7 @@
           </AssociationSet>
           <EntitySet Name="Categories" EntityType="tikasaModel.Category" />
           <EntitySet Name="TypeOfWebsites" EntityType="tikasaModel.TypeOfWebsite" />
+          <EntitySet Name="DefaultValues" EntityType="tikasaModel.DefaultValue" />
           <EntitySet Name="Websites" EntityType="tikasaModel.Website" />
           <AssociationSet Name="FK_Website_Categories" Association="tikasaModel.FK_Website_Categories">
             <End Role="Category" EntitySet="Categories" />
@@ -298,7 +301,6 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Website" EntitySet="Websites" />
           </AssociationSet>
-          <EntitySet Name="DefaultValues" EntityType="tikasaModel.DefaultValue" />
           </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -378,6 +380,14 @@
           <Property Name="ParentId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Websites" Relationship="tikasaModel.FK_Website_TypeOfWebsite" FromRole="TypeOfWebsite" ToRole="Website" />
         </EntityType>
+        <EntityType Name="DefaultValue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Website">
           <Key>
             <PropertyRef Name="Id" />
@@ -391,6 +401,7 @@
           <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TypeOfWebsiteId" Type="Int32" />
           <Property Name="TypeOfCategoryId" Type="Int32" />
+          <Property Name="Step" Type="Int32" Nullable="false" />
           <Property Name="NetProfit" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="StatusId" Type="Int32" Nullable="false" />
           <Property Name="IsCertificated" Type="Boolean" Nullable="false" />
@@ -406,12 +417,13 @@
           <Property Name="Reserve" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="AvgRevenue" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="AvgExpense" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="GAAccountId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GAPropertyId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ExpiredDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Category" Relationship="tikasaModel.FK_Website_Categories" FromRole="Website" ToRole="Category" />
           <NavigationProperty Name="TypeOfWebsite" Relationship="tikasaModel.FK_Website_TypeOfWebsite" FromRole="Website" ToRole="TypeOfWebsite" />
           <NavigationProperty Name="User" Relationship="tikasaModel.FK_Website_User" FromRole="Website" ToRole="User" />
-          <Property Name="Step" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_Website_Categories">
           <End Type="tikasaModel.Category" Role="Category" Multiplicity="0..1" />
@@ -449,14 +461,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="DefaultValue">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -541,12 +545,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="DefaultValues">
+            <EntityTypeMapping TypeName="tikasaModel.DefaultValue">
+              <MappingFragment StoreEntitySet="DefaultValue">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Websites">
             <EntityTypeMapping TypeName="tikasaModel.Website">
               <MappingFragment StoreEntitySet="Website">
-                <ScalarProperty Name="Step" ColumnName="Step" />
                 <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="GAPropertyId" ColumnName="GAPropertyId" />
+                <ScalarProperty Name="GAAccountId" ColumnName="GAAccountId" />
                 <ScalarProperty Name="AvgExpense" ColumnName="AvgExpense" />
                 <ScalarProperty Name="AvgRevenue" ColumnName="AvgRevenue" />
                 <ScalarProperty Name="Reserve" ColumnName="Reserve" />
@@ -562,6 +576,7 @@
                 <ScalarProperty Name="IsCertificated" ColumnName="IsCertificated" />
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="NetProfit" ColumnName="NetProfit" />
+                <ScalarProperty Name="Step" ColumnName="Step" />
                 <ScalarProperty Name="TypeOfCategoryId" ColumnName="TypeOfCategoryId" />
                 <ScalarProperty Name="TypeOfWebsiteId" ColumnName="TypeOfWebsiteId" />
                 <ScalarProperty Name="Note" ColumnName="Note" />
@@ -570,15 +585,6 @@
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DefaultValues">
-            <EntityTypeMapping TypeName="tikasaModel.DefaultValue">
-              <MappingFragment StoreEntitySet="DefaultValue">
-                <ScalarProperty Name="Value" ColumnName="Value" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

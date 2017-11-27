@@ -17,7 +17,7 @@ namespace Tikasa.Business
         int UpdateBaseInfo(WebsiteDTO model);
         int UpdateMoreInfo(WebsiteDTO model);
         int PublicWebsite(WebsiteDTO model);
-        WebsiteDTO GetWebsite(int Id);
+        WebsiteDTO GetWebsite(SearchModel model);
         List<CategoryDTO> GetCategories();
         List<CategoryDTO> GetTypeOfWebsite();
         ListResult<WebsiteDTO> GetWebsites(SearchModel model);
@@ -76,6 +76,8 @@ namespace Tikasa.Business
                 var websiteRepository = unitOfWork.Repository<Website>();
                 var website = websiteRepository.Get(a => a.Id == model.Id);
                 website.HasRevenue = model.HasRevenue;
+                website.GAAccountId = model.GAAccountId;
+                website.GAPropertyId = model.GAPropertyId;
                 website.HasTraffic = model.HasTraffic;
                 website.AvgExpense = model.AvgExpense;
                 website.AvgRevenue = model.AvgRevenue;
@@ -190,11 +192,12 @@ namespace Tikasa.Business
             return result;
         }
 
-        public WebsiteDTO GetWebsite(int Id)
+        public WebsiteDTO GetWebsite(SearchModel model)
         {
-            var websiteRepository = unitOfWork.Repository<Website>();
-            var website = websiteRepository.GetQueryable().Where(a => a.Id == Id && a.UserId == WorkContext.BizKasaContext.UserId)
-                .Select(a => new WebsiteDTO()
+            var websiteRepository = unitOfWork.Repository<Website>().GetQueryable().Where(a => a.Id == model.Id);
+            if (model.UserId > 0)
+                websiteRepository = websiteRepository.Where(a => a.UserId == model.UserId);
+            var website = websiteRepository.Select(a => new WebsiteDTO()
                 {
                     Id = a.Id,
                     Step = a.Step,
@@ -202,6 +205,8 @@ namespace Tikasa.Business
                     SiteAge = a.SiteAge,
                     PlatformId = a.PlatformId,
                     CreatedDate = a.CreatedDate,
+                    GAPropertyId=a.GAPropertyId,
+                    GAAccountId=a.GAAccountId,
                     TypeOfWebsiteId = a.TypeOfWebsiteId.HasValue ? a.TypeOfWebsiteId.Value : 0,
                     StatusId = a.StatusId,
                     IsCertificated = a.IsCertificated,

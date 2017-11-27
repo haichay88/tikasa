@@ -10,7 +10,7 @@ namespace Tikasa.Service
     public interface IWebsiteService
     {
         Response<int> WebsiteCreate(WebsiteDTO model);
-        Response<WebsiteDTO> GetWebsite(int Id);
+        Response<WebsiteDTO> GetWebsite(SearchModel model);
         Response<List<CategoryDTO>> GetTypeOfWebsite();
         Response<List<CategoryDTO>> GetCategories();
         Response<int> UpdateBaseInfo(WebsiteDTO model);
@@ -80,12 +80,12 @@ namespace Tikasa.Service
 
             return BusinessProcess.Current.ToResponse(result);
         }
-        public Response<WebsiteDTO> GetWebsite(int Id)
+        public Response<WebsiteDTO> GetWebsite(SearchModel model)
         {
             WebsiteDTO result = null;
             BusinessProcess.Current.Process(p =>
             {
-                result = IoC.Get<IWebsiteBusiness>().GetWebsite(Id);
+                result = IoC.Get<IWebsiteBusiness>().GetWebsite(model);
             });
 
             return BusinessProcess.Current.ToResponse(result);
