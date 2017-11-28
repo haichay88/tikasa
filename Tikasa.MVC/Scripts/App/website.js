@@ -183,7 +183,10 @@ app.controller("WebsiteController", function ($scope, WebsiteService) {
             });
     };
 
-
+    $scope.GA = {
+        Visits: 0,
+        Pageviews:0
+    };
     $scope.ShowDetail = function () {
         var webisteId = $("#WebsiteId").val();
         if (!webisteId) return;
@@ -197,7 +200,6 @@ app.controller("WebsiteController", function ($scope, WebsiteService) {
                 $scope.Website = pl.data.Data;
                 authorize();
             }
-            $scope.Message = pl.data.Message;
             CommonUtils.showWait(false);
         },
             function (errorPl) {
@@ -205,12 +207,8 @@ app.controller("WebsiteController", function ($scope, WebsiteService) {
             });
     };
 
-    $scope.GetGA = function (val) {
-       
-
-    };
+   
     function authorize(event) {
-        debugger
         // Handles the authorization flow.
         // `immediate` should be false when invoked from the button click.
         var useImmdiate = event ? false : true;
@@ -219,30 +217,38 @@ app.controller("WebsiteController", function ($scope, WebsiteService) {
             scope: SCOPES,
             immediate: useImmdiate
         };
-        var report = new gapi.analytics.report.Data({
-            query: {
-                ids: 'ga:XXXX',
-                metrics: 'ga:sessions',
-                dimensions: 'ga:city'
+      
+
+        gapi.auth.authorize(authData, function (response) {
+            //var authButton = document.getElementById('auth-button');
+            if (response.error) {
+                // authButton.hidden = false;
+            }
+            else {
+                queryAccounts();
             }
         });
+    };
+    function queryAccounts() {
+        // Load the Google Analytics client library.
+        gapi.client.load('analytics', 'v3').then(function () {
 
+            // Get a list of all Google Analytics accounts for this user
+            gapi.client.analytics.management.accounts.list().then(handleAccounts);
+        });
+    };
+    function handleAccounts(response) {
+        // Handles the response from the accounts list method.
+        if (response.result.items && response.result.items.length) {
+            // Get the first Google Analytics account.
+            var firstAccountId = response.result.items[0].id;
 
-        //gapi.auth.authorize(authData, function (response) {
-        //    //var authButton = document.getElementById('auth-button');
-        //    if (response.error) {
-        //        // authButton.hidden = false;
-        //    }
-        //    else {
-        //        debugger
-              
-        //        queryProfiles($scope.Website.GAAccountId, $scope.Website.GAProfileId);
-
-        //    }
-        //});
-    }
-
-
+            // Query for properties.
+            queryProfiles($scope.Website.GAAccountId, $scope.Website.GAPropertyId);
+        } else {
+            console.log('No accounts found for this user.');
+        }
+    };
     function queryProfiles(accountId, propertyId) {
         // Get a list of all Views (Profiles) for the first property
         // of the first Account.
@@ -256,7 +262,7 @@ app.controller("WebsiteController", function ($scope, WebsiteService) {
                 // Log any errors.
                 console.log(err);
             });
-    }
+    };
 
     function handleProfiles(response) {
         // Handles the response from the profiles list method.
@@ -269,31 +275,57 @@ app.controller("WebsiteController", function ($scope, WebsiteService) {
         } else {
             console.log('No views (profiles) found for this user.');
         }
-    }
+    };
 
     function queryCoreReportingApi(profileId) {
-        debugger
         // Query the Core Reporting API for the number sessions for
         // the past seven days.
-        gapi.client.analytics.data.ga.get({
+     //var pageviews=   gapi.client.analytics.data.ga.get({
+     //       'ids': 'ga:' + profileId,
+     //       'start-date': '30daysAgo',
+     //       'end-date': 'today',
+     //       'metrics': 'ga:users,ga:pageviews'
+     //   })
+     //       .then(function (response) {
+                
+     //           $scope.GA.Visits = response.result.rows[0][0];
+                   
+     //           $scope.GA.Pageviews = response.result.rows[0][1];
+     //           $scope.$apply();
+     //       })
+     //       .then(null, function (err) {
+     //           // Log any errors.
+     //           console.log(err);
+     //       });
+
+        var pageviews = gapi.client.analytics.data.ga.get({
             'ids': 'ga:' + profileId,
             'start-date': '30daysAgo',
             'end-date': 'today',
             'metrics': 'ga:users,ga:pageviews'
-        })
+        });
+
+        var datachart = gapi.client.analytics.data.ga.get({
+            'ids': 'ga:' + profileId,
+            'start-date': '180daysAgo',
+            'end-date': 'today',
+            'dimensions': 'ga:month',
+            'metrics': 'ga:users,ga:pageviews'
+        });
+
+        Promise.all([pageviews, datachart])
             .then(function (response) {
                 debugger
-                $scope.GA = {
-                    Visits: response.result.rows[0][0],
-                    pageviews: response.result.rows[0][1]
-                }
-              
-            })
-            .then(null, function (err) {
-                // Log any errors.
-                console.log(err);
+                var data1 = response[0].result.rows.map(function (row) { return +row[2]; });
+                var data2 = response[1].result.rows.map(function (row) { return +row[2]; });
+                var labels = response[1].result.rows.map(function (row) { return +row[0]; });
+                debugger
             });
-    }
+        
+     
+    };
+
+
 
 
 
