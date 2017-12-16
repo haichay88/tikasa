@@ -196,11 +196,12 @@ app.controller("WebsiteController", function ($scope, WebsiteService) {
         CommonUtils.showWait(true);
         var promiseGet = WebsiteService.GetWebsite(model);
         promiseGet.then(function (pl) {
+            CommonUtils.showWait(false);
             if (!pl.data.IsError) {
                 $scope.Website = pl.data.Data;
-                authorize();
+                
             }
-            CommonUtils.showWait(false);
+           
         },
             function (errorPl) {
 
@@ -217,8 +218,8 @@ app.controller("WebsiteController", function ($scope, WebsiteService) {
             scope: SCOPES,
             immediate: useImmdiate
         };
-      
-
+       
+        debugger
         gapi.auth.authorize(authData, function (response) {
             //var authButton = document.getElementById('auth-button');
             if (response.error) {
@@ -228,7 +229,9 @@ app.controller("WebsiteController", function ($scope, WebsiteService) {
                 queryAccounts();
             }
         });
+        //queryCoreReportingApi($scope.Website.GAAccountId);
     };
+   
     function queryAccounts() {
         // Load the Google Analytics client library.
         gapi.client.load('analytics', 'v3').then(function () {
@@ -278,6 +281,7 @@ app.controller("WebsiteController", function ($scope, WebsiteService) {
     };
 
     function queryCoreReportingApi(profileId) {
+        debugger
         // Query the Core Reporting API for the number sessions for
         // the past seven days.
      //var pageviews=   gapi.client.analytics.data.ga.get({
@@ -316,10 +320,47 @@ app.controller("WebsiteController", function ($scope, WebsiteService) {
         Promise.all([pageviews, datachart])
             .then(function (response) {
                 debugger
-                var data1 = response[0].result.rows.map(function (row) { return +row[2]; });
-                var data2 = response[1].result.rows.map(function (row) { return +row[2]; });
-                var labels = response[1].result.rows.map(function (row) { return +row[0]; });
-                debugger
+                //var data1 = response[0].result.rows.map(function (row) { return +row[2]; });
+                //var data2 = response[1].result.rows.map(function (row) { return +row[2]; });
+                //var labels = response[1].result.rows.map(function (row) { return +row[0]; });
+                var ctx = $("#gachartline");
+                var chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                        datasets: [{
+                            label: '# of Votes',
+                            data: [12, 19, 3, 5, 2, 3],
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+              
             });
         
      

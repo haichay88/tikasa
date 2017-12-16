@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "tikasaapp-1485095399473",
+  "private_key_id": "838b68f8253f314378bb0ffa25cf79b83c599092",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDHgbr1sfQ0ncC0\nRktvM06vgH08ZHFvxpk3F0nvsaLL21U1EokgsHu/yqCn9WvQDk+7Swf4tJtznMBt\nPQ/koDOm0VS0kMYyTWgMKGGtwzWyTSHNr9vmRHHEi/v43ROwSzEgH1M202k1PfYt\nTYoIMrYed+GFpCkLrnqHwZJrkDSK7cIBmO31lUa0qC9Wx0Y8bL/w1XwYd6/Rzccq\nR4bdBGIbS2jpkU98LpgRd0Bpke1ngZin08y3OJAcKgVjPGO41oBmqOGI7itQ0qsV\nFzqLY88P4jyflg6GbSu3ezSzUZI9K6V46+Rt3O4BELe+gBmT4gsnqEMcvJy61Ej1\nSm+2ZkORAgMBAAECggEADtHJBZZlB5IGxhVZJd7Tq9dxZg6nevgveh9DnZeOOlKV\n6Rnx//DAFnpqleNV8XfYrhbIFi4zRGKazBp+r1rDj3MJ9doxsLudfJa0z8OZ/d87\nITRckyWXJlSIIF+qplwlf2d4RtCsJllui4WwmMSMkOWShdrwdhbNMP+c3NrSvlWC\nkcxduUcMQ4pusToVW4E8V79reCILSJMEjBCsrk0AOVSUruG6jgL7RTc8pzYtz3fc\nHWS+ZMUETJiQbByEenE2PlMiqFVaA/iNY+o4rVklD4X6AmyrXZU8+TH3uQDCz512\n1vH1JgoqbQAHROpE8yC0gDsHbRt/EDWC4Zf9S5nrqQKBgQDkXk8k86Sjxnedi8Bl\njDMAsEqQe8bpBJ2l1v5vqu6VV/rOfxVScgDwiXU0stuzf5/N/PaTwZ7G7fQRGBaE\nfvHzDMRIuzgAfLA4SkEMc46yTHOLmlIlhyDuO9XqVr7gaZiIWiz75yUzOiUtJKkS\n5+zo4QESCgNdfJ07nH0Up5FjGQKBgQDfpW89Ne8pbhxCOHjgENsXijrA1Gzq3rW9\noROH7icm+mxSiBGzSXpe3YwCDbZxJANJA5lWWtQsa1tcxKCFEw95HBwQXkd/1piU\nR2BfsS3Ma9+D3469Q7VA3y0bdKA4IjDdKnu5N8LzwLyousv7u4IywkHZLGPgUb2Z\nBolhNLIrOQKBgQCpEkl2CgvyVJVqRnUCuXFpKRuLLJhvG8O7bBijg+FvH9vH1b5r\nc4vOiXYEtgaCNhKR5p6HdemfTbxMi5DgNzvZvbH0RueHNMkiY5cVKNiUmJVS3cXD\nku+GcTZGcEKQ0pzjFiAHv3GDI6EyctnZ7WswXqT0PgWPyRp/b7QK/qRcwQKBgQCA\no2eYja1C51LZxCHCv+9FWvzwbT842WEv8baKOTHL+b7Uue90cI8ygbxGchy+dzhs\nhuVsBlKEOjwS4AZ0hMIhp0l9IL1/iq+4mlWUtRTiwCmQcMZplshqx/PqFusRXpk8\nnXMM1kYMbpAVfVxXL0N0bsfxYtcP7/ReUKQ0hVr2AQKBgQCresxgIFVGaaMkZiXL\njmsH6KEF0zgSoZmwd5e6pchkDxAjTXVDEWzFvASVWmx4tileCxumwAvGOCaPkioY\nTjIT8sClUmw0qlznElLyM0MqkRh/hlwX5WiEYn5rycLKXs3t5rgoM2xtSSniJo3+\nL6kM6GV1bpk5U5RCPx8lDXGulw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "gatikasa@tikasaapp-1485095399473.iam.gserviceaccount.com",
+  "client_id": "108763950302019917005",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gatikasa%40tikasaapp-1485095399473.iam.gserviceaccount.com"
+}

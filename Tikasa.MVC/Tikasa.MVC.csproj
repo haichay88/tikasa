@@ -71,6 +71,18 @@
     <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention">
       <HintPath>..\..\Bizkasa\Libs\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
     </Reference>
+    <Reference Include="MyFinance.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\MyFinance.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MyFinance.Extention, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\MyFinance.Extention.dll</HintPath>
+    </Reference>
+    <Reference Include="MyFinance.Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\MyFinance.Utils.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -557,6 +569,8 @@
     <Content Include="Plugin\ckeditor\skins\moono\readme.md" />
     <Content Include="fonts\flippa-icons.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Chart.bundle.js" />
+    <Content Include="Scripts\client.js" />
     <Content Include="Scripts\global.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -610,14 +624,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Bizkasa\MyFinance.Core\MyFinance.Core.csproj">
-      <Project>{26C6DB72-A895-4297-A638-837CF5A5ED98}</Project>
-      <Name>MyFinance.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Bizkasa\MyFinance.Utils\MyFinance.Utils.csproj">
-      <Project>{454e7439-95f4-427b-b2aa-a78acbb49807}</Project>
-      <Name>MyFinance.Utils</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Tikasa.Business\Tikasa.Business.csproj">
       <Project>{FC061393-A650-4B59-80A1-E2040A3014BF}</Project>
       <Name>Tikasa.Business</Name>

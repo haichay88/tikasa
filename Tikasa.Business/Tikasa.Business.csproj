@@ -30,6 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MyFinance.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\MyFinance.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MyFinance.Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\MyFinance.Utils.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,14 +53,6 @@
     <Compile Include="WebsiteBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Bizkasa\MyFinance.Core\MyFinance.Core.csproj">
-      <Project>{26C6DB72-A895-4297-A638-837CF5A5ED98}</Project>
-      <Name>MyFinance.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Bizkasa\MyFinance.Utils\MyFinance.Utils.csproj">
-      <Project>{454E7439-95F4-427B-B2AA-A78ACBB49807}</Project>
-      <Name>MyFinance.Utils</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Tikasa.Data\Tikasa.Data.csproj">
       <Project>{EA2EC500-CC95-4328-B396-98D9276810CC}</Project>
       <Name>Tikasa.Data</Name>

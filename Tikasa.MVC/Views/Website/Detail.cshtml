@@ -7,6 +7,7 @@
     <input type="hidden" value="@ViewBag.WebsiteId" id="WebsiteId" />
     <input type="hidden" value="{{Website.GAPropertyId}}" id="GAPropertyId" />
     <input type="hidden" value="{{Website.GAAccountId}}" id="GAAccountId" />
+    <input type="hidden" value="{{Website.Name}}" id="WebsiteName" />
     <div class="Section-body Section-body--flexDesktop Section-body--wide">
         <div class="Listing-body">
 
@@ -100,7 +101,7 @@
 
                         <div class="Listing-biddingInputGroup">
                             <span class="Listing-biddingInputCurrency">$</span>
-                            <input type="text" name="amount" id="name" class="Listing-biddingInput formatted-integer-number" placeholder="Enter bid amount">
+                            <input type="text" name="amount" id="name1" class="Listing-biddingInput formatted-integer-number" placeholder="Enter bid amount">
                         </div>
 
                         <button name="button" type="button" class="Btn Btn--block Btn--lg Btn--caps ng-isolate-scope" bid-button="" event-type="Bid Click" event-properties="{&quot;Bid Count&quot;:3,&quot;Buy It Now Price&quot;:null,&quot;Buy It Now&quot;:false,&quot;Listing ID&quot;:9314082,&quot;Property Name&quot;:&quot;CommonCoreLessonPlanTemplate.net&quot;,&quot;Property Type&quot;:&quot;website&quot;,&quot;Reserve Met&quot;:false,&quot;Reserve Price&quot;:&quot;hidden&quot;,&quot;Sale Method&quot;:&quot;auction&quot;,&quot;Seller ID&quot;:831939,&quot;Time Remaining In Hours&quot;:&quot;184.91&quot;,&quot;Semantic Property Type&quot;:&quot;EstablishedWebsite&quot;,&quot;Logged In&quot;:true}">
@@ -177,7 +178,7 @@
 
                     <p class="Listing-listingSummary">
                         {{Website.Summary}}
-                        {{GA.Pageviews}}
+                   
                     </p>
 
                 </div>
@@ -266,7 +267,7 @@
                                         </div>
 
                                         <div id="page_views" class="Snapshot-value Snapshot-value--verified Snapshot-value--small">
-                                           {{GA.Pageviews|number}}
+                                          
                                         </div>
 
                                     </span>
@@ -278,7 +279,7 @@
                                         </div>
 
                                         <div id="unique_visits" class="Snapshot-value Snapshot-value--verified Snapshot-value--small">
-                                            {{GA.Visits|number}}
+                                            
                                         </div>
 
                                     </span>
@@ -289,8 +290,9 @@
 
                         <div class="Snapshots--graph">
                             <div class="Chart Chart--snapshot ng-isolate-scope" >
-                                <div class="highcharts-container" id="highcharts-0" style="position: relative; overflow: hidden; width: 368px; height: 117px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-                                </div></div>
+                                <canvas class="highcharts-container" id="gachartline" width="368" height="139"></canvas>
+                               
+                            </div>
 
                         </div>
                     </div>
@@ -416,7 +418,9 @@
 
                         </h4>
 
-                        <div class="Chart  ng-isolate-scope" snapshot-chart="" months="[&quot;Nov 16&quot;,&quot;Dec 16&quot;,&quot;Jan 17&quot;,&quot;Feb 17&quot;,&quot;Mar 17&quot;,&quot;Apr 17&quot;,&quot;May 17&quot;,&quot;Jun 17&quot;,&quot;Jul 17&quot;,&quot;Aug 17&quot;,&quot;Sep 17&quot;,&quot;Oct 17&quot;]" line-one="[11367,5190,6668,4828,2895,1590,1679,614,1759,3530,3216,2980]" line-one-label="Page Views" line-one-verified="true" line-two="[4244,2018,2574,2026,1129,684,774,233,732,1331,1264,1175]" line-two-label="Unique Visits" line-two-verified="true" unit="" data-highcharts-chart="2"><div class="highcharts-container" id="highcharts-8" style="position: relative; overflow: hidden; width: 653px; height: 305px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg version="1.1" style="font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="653" height="305"><desc>Created with Highcharts 4.0.4</desc><defs><clipPath id="highcharts-9"><rect x="0" y="0" width="601" height="253"></rect></clipPath></defs><rect x="0" y="0" width="653" height="305" strokeWidth="0" fill="#FFFFFF" class=" highcharts-background"></rect><path fill="none" d="M 46 259.5 L 647 259.5" stroke="#808080" stroke-width="1"></path><g class="highcharts-grid" zIndex="1"></g><g class="highcharts-grid" zIndex="1"><path fill="none" d="M 46 5.5 L 647 5.5" stroke="#C0C0C0" stroke-width="1" zIndex="1" opacity="1"></path><path fill="none" d="M 46 57.5 L 647 57.5" stroke="#C0C0C0" stroke-width="1" zIndex="1" opacity="1"></path><path fill="none" d="M 46 107.5 L 647 107.5" stroke="#C0C0C0" stroke-width="1" zIndex="1" opacity="1"></path><path fill="none" d="M 46 158.5 L 647 158.5" stroke="#C0C0C0" stroke-width="1" zIndex="1" opacity="1"></path><path fill="none" d="M 46 208.5 L 647 208.5" stroke="#C0C0C0" stroke-width="1" zIndex="1" opacity="1"></path><path fill="none" d="M 46 259.5 L 647 259.5" stroke="#C0C0C0" stroke-width="1" zIndex="1" opacity="1"></path></g><g class="highcharts-axis" zIndex="2"><path fill="none" d="M 46 259.5 L 647 259.5" stroke="#C0D0E0" stroke-width="1" zIndex="7" visibility="visible"></path></g><g class="highcharts-axis" zIndex="2"></g><g class="highcharts-series-group" zIndex="3"><g class="highcharts-series" visibility="visible" zIndex="0.1" transform="translate(46,6) scale(1 1)" clip-path="url(#highcharts-9)"><path fill="rgba(38,153,6,0.075)" d="M 0 22.93191999999999 L 54.63636363636363 147.9544 L 109.27272727272727 118.03968 L 163.9090909090909 155.28127999999998 L 218.54545454545453 194.40519999999998 L 273.1818181818182 220.8184 L 327.8181818181818 219.01704 L 382.45454545454544 240.57264 L 437.09090909090907 217.39784 L 491.7272727272727 181.5528 L 546.3636363636364 187.90816 L 601 192.6848 L 601 253 L 0 253" zIndex="0"></path><path fill="none" d="M 0 22.93191999999999 L 54.63636363636363 147.9544 L 109.27272727272727 118.03968 L 163.9090909090909 155.28127999999998 L 218.54545454545453 194.40519999999998 L 273.1818181818182 220.8184 L 327.8181818181818 219.01704 L 382.45454545454544 240.57264 L 437.09090909090907 217.39784 L 491.7272727272727 181.5528 L 546.3636363636364 187.90816 L 601 192.6848" stroke="#269906" stroke-width="2" zIndex="1" stroke-linejoin="round" stroke-linecap="round"></path><path fill="none" d="M -10 22.93191999999999 L 0 22.93191999999999 L 54.63636363636363 147.9544 L 109.27272727272727 118.03968 L 163.9090909090909 155.28127999999998 L 218.54545454545453 194.40519999999998 L 273.1818181818182 220.8184 L 327.8181818181818 219.01704 L 382.45454545454544 240.57264 L 437.09090909090907 217.39784 L 491.7272727272727 181.5528 L 546.3636363636364 187.90816 L 601 192.6848 L 611 192.6848" stroke-linejoin="round" visibility="visible" stroke="rgba(192,192,192,0.0001)" stroke-width="22" zIndex="2" class=" highcharts-tracker" style=""></path></g><g class="highcharts-markers highcharts-tracker" visibility="visible" zIndex="0.1" transform="translate(46,6) scale(1 1)" clip-path="none" style=""><path fill="#269906" d="M 601 188.6848 C 606.328 188.6848 606.328 196.6848 601 196.6848 C 595.672 196.6848 595.672 188.6848 601 188.6848 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#269906" d="M 546 183.90816 C 551.328 183.90816 551.328 191.90816 546 191.90816 C 540.672 191.90816 540.672 183.90816 546 183.90816 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#269906" d="M 491 177.5528 C 496.328 177.5528 496.328 185.5528 491 185.5528 C 485.672 185.5528 485.672 177.5528 491 177.5528 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#269906" d="M 437 213.39784 C 442.328 213.39784 442.328 221.39784 437 221.39784 C 431.672 221.39784 431.672 213.39784 437 213.39784 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#269906" d="M 382 236.57264 C 387.328 236.57264 387.328 244.57264 382 244.57264 C 376.672 244.57264 376.672 236.57264 382 236.57264 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#269906" d="M 327 215.01704 C 332.328 215.01704 332.328 223.01704 327 223.01704 C 321.672 223.01704 321.672 215.01704 327 215.01704 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#269906" d="M 273 216.8184 C 278.328 216.8184 278.328 224.8184 273 224.8184 C 267.672 224.8184 267.672 216.8184 273 216.8184 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#269906" d="M 218 190.40519999999998 C 223.328 190.40519999999998 223.328 198.40519999999998 218 198.40519999999998 C 212.672 198.40519999999998 212.672 190.40519999999998 218 190.40519999999998 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#269906" d="M 163 151.28127999999998 C 168.328 151.28127999999998 168.328 159.28127999999998 163 159.28127999999998 C 157.672 159.28127999999998 157.672 151.28127999999998 163 151.28127999999998 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#269906" d="M 109 114.03968 C 114.328 114.03968 114.328 122.03968 109 122.03968 C 103.672 122.03968 103.672 114.03968 109 114.03968 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#269906" d="M 54 143.9544 C 59.328 143.9544 59.328 151.9544 54 151.9544 C 48.672 151.9544 48.672 143.9544 54 143.9544 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#269906" d="M 0 18.93191999999999 C 5.328 18.93191999999999 5.328 26.93191999999999 0 26.93191999999999 C -5.328 26.93191999999999 -5.328 18.93191999999999 0 18.93191999999999 Z" stroke="#FFFFFF" stroke-width="1.2"></path></g><g class="highcharts-series" visibility="visible" zIndex="0.1" transform="translate(46,6) scale(1 1)" clip-path="url(#highcharts-9)"><path fill="rgba(135,201,113,0.075)" d="M 0 167.10144 L 54.63636363636363 212.15568 L 109.27272727272727 200.90224 L 163.9090909090909 211.99376 L 218.54545454545453 230.14904 L 273.1818181818182 239.15584 L 327.8181818181818 237.33424 L 382.45454545454544 248.28408 L 437.09090909090907 238.18432 L 491.7272727272727 226.06056 L 546.3636363636364 227.41664 L 601 229.218 L 601 253 L 0 253" zIndex="0"></path><path fill="none" d="M 0 167.10144 L 54.63636363636363 212.15568 L 109.27272727272727 200.90224 L 163.9090909090909 211.99376 L 218.54545454545453 230.14904 L 273.1818181818182 239.15584 L 327.8181818181818 237.33424 L 382.45454545454544 248.28408 L 437.09090909090907 238.18432 L 491.7272727272727 226.06056 L 546.3636363636364 227.41664 L 601 229.218" stroke="#87c971" stroke-width="2" zIndex="1" stroke-linejoin="round" stroke-linecap="round"></path><path fill="none" d="M -10 167.10144 L 0 167.10144 L 54.63636363636363 212.15568 L 109.27272727272727 200.90224 L 163.9090909090909 211.99376 L 218.54545454545453 230.14904 L 273.1818181818182 239.15584 L 327.8181818181818 237.33424 L 382.45454545454544 248.28408 L 437.09090909090907 238.18432 L 491.7272727272727 226.06056 L 546.3636363636364 227.41664 L 601 229.218 L 611 229.218" stroke-linejoin="round" visibility="visible" stroke="rgba(192,192,192,0.0001)" stroke-width="22" zIndex="2" class=" highcharts-tracker" style=""></path></g><g class="highcharts-markers highcharts-tracker" visibility="visible" zIndex="0.1" transform="translate(46,6) scale(1 1)" clip-path="none" style=""><path fill="#87c971" d="M 601 225.218 L 605 229.218 601 233.218 597 229.218 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#87c971" d="M 546 223.41664 L 550 227.41664 546 231.41664 542 227.41664 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#87c971" d="M 491 222.06056 L 495 226.06056 491 230.06056 487 226.06056 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#87c971" d="M 437 234.18432 L 441 238.18432 437 242.18432 433 238.18432 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#87c971" d="M 382 244.28408 L 386 248.28408 382 252.28408 378 248.28408 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#87c971" d="M 327 233.33424 L 331 237.33424 327 241.33424 323 237.33424 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#87c971" d="M 273 235.15584 L 277 239.15584 273 243.15584 269 239.15584 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#87c971" d="M 218 226.14904 L 222 230.14904 218 234.14904 214 230.14904 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#87c971" d="M 163 207.99376 L 167 211.99376 163 215.99376 159 211.99376 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#87c971" d="M 109 196.90224 L 113 200.90224 109 204.90224 105 200.90224 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#87c971" d="M 54 208.15568 L 58 212.15568 54 216.15568 50 212.15568 Z" stroke="#FFFFFF" stroke-width="1.2"></path><path fill="#87c971" d="M 0 163.10144 L 4 167.10144 0 171.10144 -4 167.10144 Z" stroke="#FFFFFF" stroke-width="1.2"></path></g></g><g class="highcharts-axis-labels highcharts-xaxis-labels" zIndex="7"><text x="46" text-anchor="middle" style="width:30px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="279" opacity="1"><tspan>Nov</tspan><tspan dy="15" x="46">16</tspan></text><text x="100.63636363636364" text-anchor="middle" style="width:30px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="279" opacity="1"><tspan>Dec</tspan><tspan dy="15" x="100.63636363636364">16</tspan></text><text x="155.27272727272728" text-anchor="middle" style="width:30px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="279" opacity="1"><tspan>Jan</tspan><tspan dy="15" x="155.27272727272728">17</tspan></text><text x="209.9090909090909" text-anchor="middle" style="width:30px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="279" opacity="1"><tspan>Feb</tspan><tspan dy="15" x="209.9090909090909">17</tspan></text><text x="264.54545454545456" text-anchor="middle" style="width:30px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="279" opacity="1"><tspan>Mar</tspan><tspan dy="15" x="264.54545454545456">17</tspan></text><text x="319.1818181818182" text-anchor="middle" style="width:30px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="279" opacity="1"><tspan>Apr</tspan><tspan dy="15" x="319.1818181818182">17</tspan></text><text x="373.8181818181818" text-anchor="middle" style="width:30px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="279" opacity="1"><tspan>May</tspan><tspan dy="15" x="373.8181818181818">17</tspan></text><text x="428.45454545454544" text-anchor="middle" style="width:30px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="279" opacity="1"><tspan>Jun</tspan><tspan dy="15" x="428.45454545454544">17</tspan></text><text x="483.09090909090907" text-anchor="middle" style="width:30px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="279" opacity="1"><tspan>Jul</tspan><tspan dy="15" x="483.09090909090907">17</tspan></text><text x="537.7272727272726" text-anchor="middle" style="width:30px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="279" opacity="1"><tspan>Aug</tspan><tspan dy="15" x="537.7272727272726">17</tspan></text><text x="592.3636363636363" text-anchor="middle" style="width:30px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="279" opacity="1"><tspan>Sep</tspan><tspan dy="15" x="592.3636363636363">17</tspan></text><text x="643.859375" text-anchor="middle" style="width:30px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="279" opacity="1"><tspan>Oct</tspan><tspan dy="15" x="643.859375">17</tspan></text></g><g class="highcharts-axis-labels highcharts-yaxis-labels" zIndex="7"><text x="31" text-anchor="end" style="width:195px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="262.5" opacity="1">0k</text><text x="31" text-anchor="end" style="width:195px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="211.9" opacity="1">2.5k</text><text x="31" text-anchor="end" style="width:195px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="161.3" opacity="1">5k</text><text x="31" text-anchor="end" style="width:195px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="110.69999999999999" opacity="1">7.5k</text><text x="31" text-anchor="end" style="width:195px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="60.099999999999994" opacity="1">10k</text><text x="31" text-anchor="end" style="width:195px;color:#606060;cursor:default;font-size:11px;fill:#606060;" y="9.5" opacity="1">12.5k</text></g><g class="highcharts-tooltip" zIndex="8" style="cursor:default;padding:0;white-space:nowrap;" transform="translate(0,-9999)"><path fill="none" d="M 3 0 L 13 0 C 16 0 16 0 16 3 L 16 13 C 16 16 16 16 13 16 L 3 16 C 0 16 0 16 0 13 L 0 3 C 0 0 0 0 3 0" isShadow="true" stroke="black" stroke-opacity="0.049999999999999996" stroke-width="5" transform="translate(1, 1)"></path><path fill="none" d="M 3 0 L 13 0 C 16 0 16 0 16 3 L 16 13 C 16 16 16 16 13 16 L 3 16 C 0 16 0 16 0 13 L 0 3 C 0 0 0 0 3 0" isShadow="true" stroke="black" stroke-opacity="0.09999999999999999" stroke-width="3" transform="translate(1, 1)"></path><path fill="none" d="M 3 0 L 13 0 C 16 0 16 0 16 3 L 16 13 C 16 16 16 16 13 16 L 3 16 C 0 16 0 16 0 13 L 0 3 C 0 0 0 0 3 0" isShadow="true" stroke="black" stroke-opacity="0.15" stroke-width="1" transform="translate(1, 1)"></path><path fill="rgba(249, 249, 249, .85)" d="M 3 0 L 13 0 C 16 0 16 0 16 3 L 16 13 C 16 16 16 16 13 16 L 3 16 C 0 16 0 16 0 13 L 0 3 C 0 0 0 0 3 0"></path><text x="8" zIndex="1" style="font-size:12px;color:#333333;fill:#333333;" y="21"></text></g></svg></div></div>
+                        <div class="Chart  ng-isolate-scope" snapshot-chart="" >
+                            <canvas class="highcharts-container" id="gatrafficline" width="368" height="139"></canvas>
+                        </div>
 
 
                         <div class="Listing-trafficTableAndSnapshots">
@@ -506,52 +510,40 @@
                                 </h4>
 
                                 <div class="Snapshots">
-                                    <div class="
-    Snapshot
-
-    Snapshot--fullWidth
-  ">
+                                    <div class="Snapshot Snapshot--fullWidth">
                                         <span class="Snapshot-inspect" title="Pages / Session is the average number of pages viewed during a session. Repeated views of a single page are counted. This information was provided by Google Analytics." rel="tooltip">
                                             <div class="Snapshot-label">
                                                 Pages / Session
                                             </div>
 
-                                            <div id="pages_/_session" class="Snapshot-value Snapshot-value--verified">
-                                                2.43
+                                            <div id="pagessession" class="Snapshot-value Snapshot-value--verified">
+                                             
                                             </div>
 
                                         </span>
                                     </div>
 
-                                    <div class="
-    Snapshot
-
-    Snapshot--fullWidth
-  ">
+                                    <div class="Snapshot    Snapshot--fullWidth">
                                         <span class="Snapshot-inspect" title="The average length of a session. This information was provided by Google Analytics." rel="tooltip">
                                             <div class="Snapshot-label">
                                                 Avg. Session Duration
                                             </div>
 
-                                            <div id="avg._session_duration" class="Snapshot-value Snapshot-value--verified">
+                                            <div id="avgsessionduration" class="Snapshot-value Snapshot-value--verified">
                                                 00:01:24
                                             </div>
 
                                         </span>
                                     </div>
 
-                                    <div class="
-    Snapshot
-
-    Snapshot--fullWidth
-  ">
+                                    <div class="Snapshot    Snapshot--fullWidth">
                                         <span class="Snapshot-inspect" title="This is the percentage of visitors to the [property type] who leave the site after viewing only one page. This information was provided by Google Analytics." rel="tooltip">
                                             <div class="Snapshot-label">
                                                 Bounce Rate
                                             </div>
 
                                             <div id="bounce_rate" class="Snapshot-value Snapshot-value--verified">
-                                                57.64%
+                                                
                                             </div>
 
                                         </span>
@@ -1633,14 +1625,266 @@
 @section Scripts {
   
 <script>
-   
+
     // Replace with your client ID from the developer console.
     var CLIENT_ID = '417254395222-98f1k06rrg29uo7kp09jhrmi04fsqs0f.apps.googleusercontent.com';
 
     // Set authorized scope.
     var SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
+
+    window.chartColors = {
+        red: 'rgb(255, 99, 132)',
+        orange: 'rgb(255, 159, 64)',
+        yellow: 'rgb(255, 205, 86)',
+        green: 'rgb(75, 192, 192)',
+        blue: 'rgb(54, 162, 235)',
+        purple: 'rgb(153, 102, 255)',
+        grey: 'rgb(201, 203, 207)'
+    };
+    function authorize(event) {
+        // Handles the authorization flow.
+        // `immediate` should be false when invoked from the button click.
+        var useImmdiate = event ? false : true;
+        var authData = {
+            client_id: CLIENT_ID,
+            scope: SCOPES,
+            immediate: useImmdiate
+        };
+        gapi.auth.authorize(authData, function (response) {
+            //var authButton = document.getElementById('auth-button');
+            if (response.error) {
+                return;
+               // authButton.hidden = false;
+            }
+            else {
+              ///  authButton.hidden = true;
+                queryAccounts();
+            }
+        });
+    }
+
+
+    function queryAccounts() {
+        // Load the Google Analytics client library.
+        gapi.client.load('analytics', 'v3').then(function () {
+
+            // Get a list of all Google Analytics accounts for this user
+            gapi.client.analytics.management.accounts.list().then(handleAccounts);
+        });
+    }
+
+
+    function handleAccounts(response) {
+        // Handles the response from the accounts list method.
+        if (response.result.items && response.result.items.length) {
+            // Get the first Google Analytics account.
+            var firstAccountId = response.result.items[0].id;
+
+            // Query for properties.
+            queryProperties(firstAccountId);
+        } else {
+            console.log('No accounts found for this user.');
+        }
+    }
+
+
+    function queryProperties(accountId) {
+        // Get a list of all the properties for the account.
+        gapi.client.analytics.management.webproperties.list(
+            { 'accountId': accountId })
+            .then(handleProperties)
+            .then(null, function (err) {
+                // Log any errors.
+                console.log(err);
+            });
+    }
+
+
+    function handleProperties(response) {
+        // Handles the response from the webproperties list method.
+        if (response.result.items && response.result.items.length) {
+            var websiteName ="http://" +$("#WebsiteName").val();
+            var item = $.grep(response.result.items, function (n) {
+                return n.websiteUrl == websiteName;
+            });
+            // Get the first Google Analytics account
+            var firstAccountId = item[0].accountId;
+
+            // Get the first property ID
+            var firstPropertyId = item[0].id;
+            // Query for Views (Profiles).
+            queryProfiles(firstAccountId, firstPropertyId);
+        } else {
+            console.log('No properties found for this user.');
+        }
+    }
+
+
+    function queryProfiles(accountId, propertyId) {
+        // Get a list of all Views (Profiles) for the first property
+        // of the first Account.
+
+        gapi.client.analytics.management.profiles.list({
+            'accountId': accountId,
+            'webPropertyId': propertyId
+        })
+            .then(handleProfiles)
+            .then(null, function (err) {
+                // Log any errors.
+                console.log(err);
+            });
+    }
+
+
+    function handleProfiles(response) {
+        // Handles the response from the profiles list method.
+        if (response.result.items && response.result.items.length) {
+            // Get the first View (Profile) ID.
+            var firstProfileId = response.result.items[0].id;
+
+            // Query the Core Reporting API.
+            queryCoreReportingApi(firstProfileId);
+        } else {
+            console.log('No views (profiles) found for this user.');
+        }
+    }
+
+
+    function queryCoreReportingApi(profileId) {
+        // Query the Core Reporting API for the number sessions for
+        // the past seven days.
+
+
+        var pageviews = gapi.client.analytics.data.ga.get({
+            'ids': 'ga:' + profileId,
+            'start-date': '30daysAgo',
+            'end-date': 'today',
+            'metrics': 'ga:users,ga:pageviews'
+        });
+
+        var datachart = gapi.client.analytics.data.ga.get({
+            'ids': 'ga:' + profileId,
+            'start-date': '180daysAgo',
+            'end-date': 'today',
+            'dimensions': 'ga:month',
+            'metrics': 'ga:users,ga:pageviews'
+        });
+        var dataYearAgo = gapi.client.analytics.data.ga.get({
+            'ids': 'ga:' + profileId,
+            'start-date': '365daysAgo',
+            'end-date': 'today',
+            'dimensions': 'ga:month',
+            'metrics': 'ga:users,ga:pageviews'
+        });
+
+        var HealthTraffic = gapi.client.analytics.data.ga.get({
+            'ids': 'ga:' + profileId,
+            'start-date': '365daysAgo',
+            'end-date': 'today',
+            'metrics': 'ga:avgSessionDuration,ga:bounceRate,ga:pageviewsPerSession'
+        });
+
+        Promise.all([pageviews, datachart, dataYearAgo, HealthTraffic])
+            .then(function (response) {
+              
+                var user = response[0].result.rows.map(function (row) { return +row[0]; });
+                $("#unique_visits").html(user);
+                
+                var pageview = response[0].result.rows.map(function (row) { return +row[1]; });
+                $("#page_views").html(pageview);
+                var usersMonth = response[1].result.rows.map(function (row) { return +row[1]; });
+                var pageviewsMonth = response[1].result.rows.map(function (row) { return +row[2]; });
+                var labels = response[1].result.rows.map(function (row) { return +row[0]; });
+                var ctx = $("#gachartline");                
+                var chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        
+                        datasets: [{
+                            label: "User",
+                            fill: false,
+                            data: usersMonth,
+                            backgroundColor: window.chartColors.red,
+                            borderColor: window.chartColors.red,
+                            borderWidth: 1,
+
+                        },
+                            {
+                                label: "pageviews",
+                                fill: false,
+                                data: pageviewsMonth,
+                                backgroundColor: window.chartColors.blue,
+                                borderColor: window.chartColors.blue,
+                                borderWidth: 1
+                            }]
+                    },
+
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+
+
+                ///
+                var usersYear = response[2].result.rows.map(function (row) { return +row[1]; });
+                var pageviewsYear = response[2].result.rows.map(function (row) { return +row[2]; });
+                var labels = response[2].result.rows.map(function (row) { return +row[0]; });
+                var ctx = $("#gatrafficline");
+                var chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+
+                        datasets: [{
+                            label: "User",
+                            fill: false,
+                            data: usersYear,
+                            backgroundColor: window.chartColors.red,
+                            borderColor: window.chartColors.red,
+                            borderWidth: 1,
+
+                        },
+                        {
+                            label: "pageviews",
+                            fill: false,
+                            data: pageviewsYear,
+                            backgroundColor: window.chartColors.blue,
+                            borderColor: window.chartColors.blue,
+                            borderWidth: 1
+                        }]
+                    },
+
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+
+                var bouncerate = response[3].result.rows.map(function (row) { return +row[1]; });
+                var pagessession = response[3].result.rows.map(function (row) { return +row[2]; });
+                debugger
+                $("#bounce_rate").html(Math.round(bouncerate * 100) / 100 + "%"); 
+                $("#pagessession").html(Math.round(pagessession * 100) / 100 );
+                $("#avgsessionduration").html();
+            });
+    }
    
+    // Add an event listener to the 'auth-button'.
+  //  document.getElementById('auth-button').addEventListener('click', authorize);
 </script>
+<script src="https://apis.google.com/js/client.js?onload=authorize"></script>
     <script src="~/Scripts/App/website.js"></script>
    
 }

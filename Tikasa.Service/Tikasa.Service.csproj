@@ -30,6 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MyFinance.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\MyFinance.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MyFinance.Extention, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\MyFinance.Extention.dll</HintPath>
+    </Reference>
+    <Reference Include="MyFinance.Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\MyFinance.Utils.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,18 +58,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Bizkasa\MyFinance.Core\MyFinance.Core.csproj">
-      <Project>{26C6DB72-A895-4297-A638-837CF5A5ED98}</Project>
-      <Name>MyFinance.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Bizkasa\MyFinance.Extention\MyFinance.Extention.csproj">
-      <Project>{408C9D72-DC60-4C5D-B12A-3C053FA4DAE0}</Project>
-      <Name>MyFinance.Extention</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Bizkasa\MyFinance.Utils\MyFinance.Utils.csproj">
-      <Project>{454E7439-95F4-427B-B2AA-A78ACBB49807}</Project>
-      <Name>MyFinance.Utils</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Tikasa.Business\Tikasa.Business.csproj">
       <Project>{FC061393-A650-4B59-80A1-E2040A3014BF}</Project>
       <Name>Tikasa.Business</Name>

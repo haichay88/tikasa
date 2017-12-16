@@ -33,6 +33,10 @@
     <Reference Include="EntityFramework">
       <HintPath>..\..\Bizkasa\Libs\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="MyFinance.Extention, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\MyFinance.Extention.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -54,10 +58,6 @@
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Bizkasa\MyFinance.Extention\MyFinance.Extention.csproj">
-      <Project>{408C9D72-DC60-4C5D-B12A-3C053FA4DAE0}</Project>
-      <Name>MyFinance.Extention</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Tikasa.Entities\Tikasa.Entities.csproj">
       <Project>{CBC15A0F-4306-4D99-B7A1-8CEDFC180D47}</Project>
       <Name>Tikasa.Entities</Name>
