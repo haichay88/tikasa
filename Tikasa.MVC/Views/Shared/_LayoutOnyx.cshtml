@@ -67,7 +67,7 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body> 
+<body>
 
     <div id="loading" style="display: none;">
         <img src="~/Content/images/loader.gif">
@@ -78,19 +78,19 @@
 
 
         <!-- Home top header -->
-        @Html.Partial("_TopHeader",new Tikasa.MVC.Models.AuthorizeModel())
+        @Html.Partial("_TopHeader", new Tikasa.MVC.Models.AuthorizeModel())
         <div class="wrap-content">
             <!-- End home top header -->
             @RenderBody()
         </div>
-      
 
 
-      
+
+
         <!-- jQuery -->
         <footer class="main-footer pt-60 pb-40">
             <div class="container">
-               
+
                 <div class="row">
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="footer-copyright pt-40">
@@ -101,7 +101,7 @@
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="footer-social-menu pt-40">
                             <ul>
-                                <li><a href="https://www.facebook.com/bizkasa" target="_blank" ><span class="ti-facebook"></span></a></li>
+                                <li><a href="https://www.facebook.com/bizkasa" target="_blank"><span class="ti-facebook"></span></a></li>
                                 <li><a href="https://www.youtube.com/channel/UCshNtf05EkYG65dFfuuXYqw" target="_blank"><span class="ti-youtube"></span></a></li>
                                 <li><a href="https://plus.google.com/u/0/b/112707970433543066612/"><span class="ti-google"></span></a></li>
                             </ul>
@@ -122,9 +122,9 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                       
+
                         <h5 class="modal-title" id="exampleModalLabel">Đăng nhập</h5>
-                        
+
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -153,18 +153,18 @@
                                 <button type="submit" class="btn btn-success btn-block btn-lg" ng-click="Login()">Đăng nhập</button>
                             </div>
                             <div class="form-group">
-                           <div class="text-center">
-                               <a href="#registerModal" data-toggle="modal" class=" btn-link">Đăng Ký</a>|<a href="" class="  btn-link">Quên mật khẩu ?</a>
-                              
-                           </div>
-                                
+                                <div class="text-center">
+                                    <a href="#registerModal" data-toggle="modal" class=" btn-link">Đăng Ký</a>|<a href="" class="  btn-link">Quên mật khẩu ?</a>
+
+                                </div>
+
                             </div>
                         </form>
                     </div>
                     @*<div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Send message</button>
-                    </div>*@
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Send message</button>
+                        </div>*@
                 </div>
             </div>
         </div>
@@ -173,7 +173,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Đăng ký tài khoản</h5>
-                     
+
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -182,8 +182,8 @@
                         <form>
                             <div class="form-group">
                                 <div class="alert alert-error" role="alert" ng-show="Message!=undefined">
-                                  {{Message}}
-                                    <button type="button" class="close"  ng-click="Message=undefined">
+                                    {{Message}}
+                                    <button type="button" class="close" ng-click="Message=undefined">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -219,13 +219,13 @@
                         </form>
                     </div>
                     @*<div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Send message</button>
-                    </div>*@
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Send message</button>
+                        </div>*@
                 </div>
             </div>
         </div>
-        
+
     </div>
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -233,16 +233,17 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <!-- jquery slider image -->
     <script src="~/Scripts/Chart.bundle.js"></script>
-    
+
     <script src="~/Scripts/client.js"></script>
-   
+
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/angular-sanitize.js"></script>
     <script src="~/Scripts/global.js"></script>
+    <script src="~/Scripts/moment.js"></script>
     <script src="~/Scripts/app/appModule.js"></script>
     <script src="~/Scripts/app/user.js"></script>
     @RenderSection("Scripts", false)
-    
+
 </body>
 </html>
 

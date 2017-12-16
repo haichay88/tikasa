@@ -107,7 +107,7 @@ namespace Tikasa.Business
 
                 return token;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 base.AddError("Có lỗi trong quá trình đăng ký");
                 return string.Empty;

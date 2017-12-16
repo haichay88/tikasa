@@ -3,7 +3,7 @@
 }
 <link href="~/Content/fpa.css" rel="stylesheet" />
 
-<div class="Section " ng-controller="WebsiteController" ng-init="ShowDetail()">
+<div class="Section " ng-controller="WebsiteController" ng-init="ShowDetail()" id="websitecontroller">
     <input type="hidden" value="@ViewBag.WebsiteId" id="WebsiteId" />
     <input type="hidden" value="{{Website.GAPropertyId}}" id="GAPropertyId" />
     <input type="hidden" value="{{Website.GAAccountId}}" id="GAAccountId" />
@@ -435,66 +435,12 @@
                                     </thead>
 
                                     <tbody>
-                                        <tr>
-                                            <td class="Table-cell--number">Oct 17</td>
-                                            <td class="Table-cell--number">1,175</td>
-                                            <td class="Table-cell--number">2,980</td>
+                                        <tr ng-repeat="item in Traffics">
+                                            <td class="Table-cell--number">{{item.month}}</td>
+                                            <td class="Table-cell--number">{{item.user}}</td>
+                                            <td class="Table-cell--number">{{item.pageviews}}</td>
                                         </tr>
-                                        <tr>
-                                            <td class="Table-cell--number">Sep 17</td>
-                                            <td class="Table-cell--number">1,264</td>
-                                            <td class="Table-cell--number">3,216</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="Table-cell--number">Aug 17</td>
-                                            <td class="Table-cell--number">1,331</td>
-                                            <td class="Table-cell--number">3,530</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="Table-cell--number">Jul 17</td>
-                                            <td class="Table-cell--number">732</td>
-                                            <td class="Table-cell--number">1,759</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="Table-cell--number">Jun 17</td>
-                                            <td class="Table-cell--number">233</td>
-                                            <td class="Table-cell--number">614</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="Table-cell--number">May 17</td>
-                                            <td class="Table-cell--number">774</td>
-                                            <td class="Table-cell--number">1,679</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="Table-cell--number">Apr 17</td>
-                                            <td class="Table-cell--number">684</td>
-                                            <td class="Table-cell--number">1,590</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="Table-cell--number">Mar 17</td>
-                                            <td class="Table-cell--number">1,129</td>
-                                            <td class="Table-cell--number">2,895</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="Table-cell--number">Feb 17</td>
-                                            <td class="Table-cell--number">2,026</td>
-                                            <td class="Table-cell--number">4,828</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="Table-cell--number">Jan 17</td>
-                                            <td class="Table-cell--number">2,574</td>
-                                            <td class="Table-cell--number">6,668</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="Table-cell--number">Dec 16</td>
-                                            <td class="Table-cell--number">2,018</td>
-                                            <td class="Table-cell--number">5,190</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="Table-cell--number">Nov 16</td>
-                                            <td class="Table-cell--number">4,244</td>
-                                            <td class="Table-cell--number">11,367</td>
-                                        </tr>
+                                        
                                     </tbody>
                                 </table>
 
@@ -530,7 +476,7 @@
                                             </div>
 
                                             <div id="avgsessionduration" class="Snapshot-value Snapshot-value--verified">
-                                                00:01:24
+                                                
                                             </div>
 
                                         </span>
@@ -566,63 +512,25 @@
                                 <tr>
                                     <th></th>
                                     <th class="Table-headerCell">Page Views</th>
-                                    <th class="Table-headerCell">% of Total</th>
+                                    @*<th class="Table-headerCell">% of Total</th>*@
                                 </tr>
                             </thead>
 
                             <tbody>
-                                <tr>
+                                <tr ng-repeat="item in Top5Channels">
                                     <td>
-                                        Referral
+                                        {{item.channel}}
                                     </td>
 
                                     <td class="Table-cell--number">
-                                        1,119
+                                        {{item.pageviews}}
                                     </td>
 
-                                    <td class="Table-cell--number">
+                                    @*<td class="Table-cell--number">
                                         38%
-                                    </td>
+                                    </td>*@
                                 </tr>
-                                <tr>
-                                    <td>
-                                        Organic Search
-                                    </td>
-
-                                    <td class="Table-cell--number">
-                                        933
-                                    </td>
-
-                                    <td class="Table-cell--number">
-                                        31%
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Social
-                                    </td>
-
-                                    <td class="Table-cell--number">
-                                        594
-                                    </td>
-
-                                    <td class="Table-cell--number">
-                                        20%
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Direct
-                                    </td>
-
-                                    <td class="Table-cell--number">
-                                        334
-                                    </td>
-
-                                    <td class="Table-cell--number">
-                                        11%
-                                    </td>
-                                </tr>
+                                
                             </tbody>
                         </table>
 
@@ -644,26 +552,11 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>United States</td>
-                                    <td class="Table-cell--number">2,572</td>
+                                <tr ng-repeat="item in Top5Countries">
+                                    <td>{{item.country}}</td>
+                                    <td class="Table-cell--number">{{item.pageviews}}</td>
                                 </tr>
-                                <tr>
-                                    <td>Canada</td>
-                                    <td class="Table-cell--number">78</td>
-                                </tr>
-                                <tr>
-                                    <td>Australia</td>
-                                    <td class="Table-cell--number">31</td>
-                                </tr>
-                                <tr>
-                                    <td>United Kingdom</td>
-                                    <td class="Table-cell--number">30</td>
-                                </tr>
-                                <tr>
-                                    <td>(not set)</td>
-                                    <td class="Table-cell--number">25</td>
-                                </tr>
+                               
                             </tbody>
                         </table>
 
@@ -1054,7 +947,7 @@
 
                                     </td>
                                     <td>
-                                        3 December 2013
+                                     {{Website.who.CreationDate}}
                                     </td>
                                 </tr>
                                 <tr>
@@ -1066,15 +959,15 @@
                                         </a>
 
                                     </td>
-                                    <td>GoDaddy.com</td>
+                                    <td> {{Website.who.Registrar}}</td>
                                 </tr>
                             </tbody>
                         </table>
 
                         <span class="pull-right">
                             More info:
-                            <a target="blank" href="http://web.archive.org/web/*/commoncorelessonplantemplate.net">Wayback Machine</a>
-                            and <a href="https://who.is/whois/commoncorelessonplantemplate.net" target="_blank">Whois</a>
+                            <a target="blank" href="http://web.archive.org/web/*/{{Website.Name}}">Wayback Machine</a>
+                            and <a href="https://who.is/whois/{{Website.Name}}" target="_blank">Whois</a>
                         </span>
 
                         <h3 class="Panel-sectionHeading">Site Uniqueness</h3>
@@ -1784,14 +1677,35 @@
             'metrics': 'ga:avgSessionDuration,ga:bounceRate,ga:pageviewsPerSession'
         });
 
-        Promise.all([pageviews, datachart, dataYearAgo, HealthTraffic])
+        var top5Countries = gapi.client.analytics.data.ga.get({
+            'ids': 'ga:' + profileId,
+            'start-date': '365daysAgo',
+            'end-date': 'today',
+            'dimensions': 'ga:country',
+            'metrics': 'ga:pageviews',
+            'sort': '-ga:pageviews',
+            'max-results':'5'
+        });
+
+
+        var top5Channels = gapi.client.analytics.data.ga.get({
+            'ids': 'ga:' + profileId,
+            'start-date': '365daysAgo',
+            'end-date': 'today',
+            'dimensions': 'ga:source',
+            'metrics': 'ga:pageviews',
+            'sort': '-ga:pageviews',
+            'max-results': '5'
+        });
+
+        Promise.all([pageviews, datachart, dataYearAgo, HealthTraffic, top5Countries, top5Channels])
             .then(function (response) {
               
                 var user = response[0].result.rows.map(function (row) { return +row[0]; });
-                $("#unique_visits").html(user);
+                $("#unique_visits").html(formatNumber(user));
                 
                 var pageview = response[0].result.rows.map(function (row) { return +row[1]; });
-                $("#page_views").html(pageview);
+                $("#page_views").html(formatNumber(pageview));
                 var usersMonth = response[1].result.rows.map(function (row) { return +row[1]; });
                 var pageviewsMonth = response[1].result.rows.map(function (row) { return +row[2]; });
                 var labels = response[1].result.rows.map(function (row) { return +row[0]; });
@@ -1832,7 +1746,7 @@
                 });
 
 
-                ///
+                ///traffic per year
                 var usersYear = response[2].result.rows.map(function (row) { return +row[1]; });
                 var pageviewsYear = response[2].result.rows.map(function (row) { return +row[2]; });
                 var labels = response[2].result.rows.map(function (row) { return +row[0]; });
@@ -1872,15 +1786,37 @@
                     }
                 });
 
+                var avgsessionduration = response[3].result.rows.map(function (row) { return +row[0]; });
                 var bouncerate = response[3].result.rows.map(function (row) { return +row[1]; });
                 var pagessession = response[3].result.rows.map(function (row) { return +row[2]; });
-                debugger
+              
+              
                 $("#bounce_rate").html(Math.round(bouncerate * 100) / 100 + "%"); 
                 $("#pagessession").html(Math.round(pagessession * 100) / 100 );
-                $("#avgsessionduration").html();
+                $("#avgsessionduration").html(formatTime(avgsessionduration));
+                debugger
+
+                var health = response[2].result.rows.map(function (row) { return { month: "Th "+row[0], user: formatNumber(row[1]), pageviews: formatNumber(row[2]) }; });
+                var scope = angular.element(document.getElementById('websitecontroller')).scope();
+                scope.Traffics = health;
+                    /// top 5 country
+                var countries = response[4].result.rows.map(function (row) {
+                    return { country: row[0], pageviews: formatNumber(row[1]) };
+                });
+                scope.Top5Countries = countries;
+                    /// top 5 channel
+                var channel = response[5].result.rows.map(function (row) {
+                    return { channel: row[0], pageviews: formatNumber(row[1]) };
+                });
+
+                scope.Top5Channels = channel;
+                scope.$apply();
+
+            
+
             });
     }
-   
+    
     // Add an event listener to the 'auth-button'.
   //  document.getElementById('auth-button').addEventListener('click', authorize);
 </script>

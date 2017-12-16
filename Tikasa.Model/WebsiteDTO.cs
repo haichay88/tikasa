@@ -26,6 +26,8 @@ namespace Tikasa.Model
         public int StatusId { get; set; }
         public string GAAccountId { get; set; }
         public string GAPropertyId { get; set; }
+        public Who who { get; set; }
+
         public string Summary { get; set; }
         public Nullable<int> GoliveMonth { get; set; }
         public Nullable<int> GoliveYear { get; set; }

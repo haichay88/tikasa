@@ -79,6 +79,7 @@ namespace Tikasa.MVC.Controllers
         public JsonResult GetWebsites(SearchModel model)
         {
             var result = _Service.GetWebsites(model);
+            
             return result.ToJsonResult(result.Data);
         }
 
@@ -93,6 +94,7 @@ namespace Tikasa.MVC.Controllers
         public JsonResult GetWebsite(SearchModel model)
         {
             var result = _Service.GetWebsite(model);
+            result.Data.who = Whois.Lookup(result.Data.Name);
             return result.ToJsonResult(result.Data);
         }
         [HttpGet]
