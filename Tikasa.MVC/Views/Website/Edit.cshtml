@@ -484,7 +484,7 @@
                                         <div class="form-group--md">
                                             <p class="text text--semibold text--block text--lg">Google Adsense</p>
                                             <div class="ListingBuilder___labeledElementWrapper">
-                                                <button type="button" class="button button--md">Verify Google Adsense</button>
+                                                <button type="button" class="button button--md" id="btn-adsense">Verify Google Adsense</button>
                                             </div>
                                             <div class="VerificationState___wrapper"></div>
                                         </div>
@@ -821,7 +821,8 @@
         var CLIENT_ID = '417254395222-98f1k06rrg29uo7kp09jhrmi04fsqs0f.apps.googleusercontent.com';
 
             // Set authorized scope.
-            var SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
+        var SCOPES = ['https://www.googleapis.com/auth/analytics.readonly'];
+        var SCOPESAds = ['https://www.googleapis.com/auth/adsense.readonly'];
 
 
             function authorize(event) {
@@ -840,7 +841,29 @@
                     }
                     else {
                         authButton.hidden = true;
-                        queryAccounts();
+                       // queryAccounts();
+                    }
+                });
+            }
+
+
+            function authorizeAdsense(event) {
+                // Handles the authorization flow.
+                // `immediate` should be false when invoked from the button click.
+                var useImmdiate = event ? false : true;
+                var authData = {
+                    client_id: CLIENT_ID,
+                    scope: SCOPESAds,
+                    immediate: useImmdiate
+                };
+                gapi.auth.authorize(authData, function (response) {
+                    var authButton = document.getElementById('btn-adsense');
+                    if (response.error) {
+                        authButton.hidden = false;
+                    }
+                    else {
+                        authButton.hidden = true;
+                        // queryAccounts();
                     }
                 });
             }
@@ -953,6 +976,7 @@
 
             // Add an event listener to the 'auth-button'.
             document.getElementById('auth-button').addEventListener('click', authorize);
+            document.getElementById('btn-adsense').addEventListener('click', authorizeAdsense);
         </script>
 
     <script src="https://apis.google.com/js/client.js?onload=authorize"></script>
